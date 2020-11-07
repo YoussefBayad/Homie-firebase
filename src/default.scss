@@ -1,0 +1,160 @@
+/* variables */
+
+// colors
+// $white:
+// $black:
+// $grey:
+$accent: #cc5c43;
+
+// typography
+
+$title: 4rem;
+$medium: 2.4rem;
+$normal: 1.8rem;
+$small: 1.4rem;
+
+// screen size
+$tablet: 768;
+$large: 1024;
+$desktop: 1280;
+
+/* mixin */
+
+@mixin transition {
+  transition: all 0.4s ease;
+}
+@mixin box($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+@mixin cover-background {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@mixin tablet {
+  @media only screen and (min-width: $tablet * 1px) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media only screen and (min-width: $large * 1px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media only screen and (min-width: $desktop * 1px) {
+    @content;
+  }
+}
+@mixin background-transition($initial, $hover, $inversed: false) {
+  background: linear-gradient(
+    90deg,
+    $hover 0%,
+    $hover 50%,
+    $initial 50%,
+    $initial 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+
+  background-position: right bottom;
+  @if $inversed {
+    background-position: left bottom;
+  }
+  transition: background-position 0.25s ease-out;
+
+  &:hover {
+    background-position: left bottom;
+    @if $inversed {
+      background-position: right bottom;
+    }
+  }
+}
+@mixin flex($direction: 'row', $align: 'center', $justify: 'space-between') {
+  display: flex;
+  flex-direction: unquote($direction);
+  align-items: unquote($align);
+  justify-content: unquote($justify);
+}
+// default
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 10px;
+  letter-spacing: 0.1rem;
+  word-spacing: 0.1rem;
+  font-family: 'Montserrat', sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden !important;
+}
+body {
+  font-size: $normal;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+
+ul {
+  list-style: none;
+}
+
+//container
+.container {
+  width: 80%;
+  max-width: 1300px;
+  margin: auto;
+}
+
+//overlay
+
+.overlay {
+  @include transition;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  background-color: rgb(15, 15, 15);
+  opacity: 0.7;
+  z-index: 2;
+}
+
+// btns
+.btn {
+  background-color: black;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 1rem;
+  font-size: $normal;
+  width: 80%;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  @include transition;
+  &:hover {
+    color: black;
+    background-color: rgb(211, 207, 207);
+  }
+}
+
+// Forms
+input,
+select {
+  margin: 1.5rem;
+  padding: 1rem 1.6rem;
+  font-size: $normal;
+  border-radius: 0.5rem;
+  display: inline-block;
+  border: grey 2px solid;
+}
+
+.error {
+  color: #c93131;
+}

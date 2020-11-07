@@ -1,6 +1,9 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import './Firebase/utils'
+import MainLayout from './layouts/MainLayout'
+import Login from './pages/Login';
+import './default.scss'
+
 function App() {
   return (
     <div className="App">
@@ -9,12 +12,16 @@ function App() {
           <h1>Home</h1>
         </Route>
         <Route  path='/login' >
-          <h1>Login</h1>
+          <MainLayout>
+            <Login/>
+          </MainLayout>
         </Route>
         <Route  path='/signup' >
-          <h1>Signup</h1>
+          <MainLayout>
+            <h1>Signup</h1>
+          </MainLayout>
         </Route>
-        <Route  path='/chat' >
+        <Route  path='/chat' >  
           <h1>Chat</h1>
         </Route>
         <Route  path='/admin' >
@@ -24,7 +31,9 @@ function App() {
           <h1>profile</h1>
         </Route>
         <Route path='*' >
-          <h1>404</h1>
+          <MainLayout>
+            <h1>404</h1>
+          </MainLayout>
         </Route>
       </Switch>
     </div>
