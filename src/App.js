@@ -1,8 +1,15 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import MainLayout from './layouts/MainLayout'
+import WithAuth from "./hoc/withAuth"
+import WithAdminAuth from "./hoc/withAdminAuth"
+//pages
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+
+//layouts
+import MainLayout from './layouts/MainLayout'
+
+//style
 import './default.scss'
 
 function App() {
@@ -10,23 +17,33 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path='/' >
+          <WithAuth>
           <h1>Home</h1>
+          </WithAuth>
         </Route>
         <Route  path='/login' >
-          <MainLayout>
-            <Login/>
-          </MainLayout>
+          <WithAuth>
+            <MainLayout>
+              <Login/>
+            </MainLayout>
+          </WithAuth>
         </Route>
         <Route  path='/signup' >
-          <MainLayout>
-            <Signup/>
-          </MainLayout>
+          <WithAuth>
+            <MainLayout>
+              <Signup/>
+            </MainLayout>
+          </WithAuth>
         </Route>
-        <Route  path='/chat' >  
-          <h1>Chat</h1>
+        <Route  path='/chat' >
+          <WithAuth>  
+            <h1>Chat</h1>
+          </WithAuth>
         </Route>
         <Route  path='/admin' >
+        <WithAdminAuth>
           <h1>Admin</h1>
+        </WithAdminAuth>
         </Route>
         <Route  path='/profile' >
           <h1>profile</h1>

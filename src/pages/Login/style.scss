@@ -6,11 +6,11 @@
   width: 100%;
   max-width: 800px;
   margin: auto;
-  margin-top: 20vh;
+  margin-top: 10vh;
 
   form {
     @include flex('column', '', 'space-around');
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
   }
 }
 .google-login {
