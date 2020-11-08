@@ -1,10 +1,15 @@
 /* variables */
 
 // colors
-// $white:
-// $black:
-// $grey:
-$accent: #cc5c43;
+
+$white: white;
+$black: black;
+$grey: lightgrey;
+$accent: #e2336b;
+$accent2: #fcac46;
+$blue: #2ba7f3;
+$error: #e63d3d;
+$success: #4ac75b;
 
 // typography
 
@@ -33,6 +38,12 @@ $desktop: 1280;
   background-position: center;
 }
 
+@mixin hover($color: $blue) {
+  @include transition;
+  &:hover {
+    background: darken($color, 10%);
+  }
+}
 @mixin tablet {
   @media only screen and (min-width: $tablet * 1px) {
     @content;
@@ -52,10 +63,10 @@ $desktop: 1280;
 }
 @mixin background-transition($initial, $hover, $inversed: false) {
   background: linear-gradient(
-    90deg,
+    45deg,
     $hover 0%,
-    $hover 50%,
-    $initial 50%,
+    $hover 25%,
+    $initial 75%,
     $initial 100%
   );
   background-repeat: no-repeat;
@@ -100,7 +111,7 @@ body {
 }
 a {
   text-decoration: none;
-  color: white;
+  color: $accent2;
 }
 
 ul {
@@ -121,40 +132,39 @@ ul {
   height: 100%;
   width: 100%;
   cursor: pointer;
-  background-color: rgb(15, 15, 15);
+  background-color: black;
   opacity: 0.7;
   z-index: 2;
 }
 
 // btns
 .btn {
-  background-color: black;
-  color: white;
+  color: $white;
   border: none;
   outline: none;
   padding: 1rem;
+  margin-top: 1.5rem;
   font-size: $normal;
-  width: 80%;
+  width: 100%;
   cursor: pointer;
   border-radius: 0.5rem;
-  @include transition;
-  &:hover {
-    color: black;
-    background-color: rgb(211, 207, 207);
-  }
+  @include background-transition($accent, $accent2);
 }
 
 // Forms
 input,
 select {
-  margin: 1.5rem;
+  margin: 1.5rem 0;
   padding: 1rem 1.6rem;
   font-size: $normal;
   border-radius: 0.5rem;
   display: inline-block;
-  border: grey 2px solid;
+  border: $grey 2px solid;
+  background-color: $white;
+  outline-color: $accent;
 }
 
 .error {
   color: #c93131;
+  margin-bottom: 1.5rem;
 }

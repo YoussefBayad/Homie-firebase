@@ -5,6 +5,7 @@ import ErrorText from '../../components/ErrorText'
 import {signInWithGoogle,auth} from '../../Firebase/utils'
 import Button from '../../components/Button'
 import './style.scss'
+import { Link } from 'react-router-dom';
 
 const Login = () => {
 
@@ -53,19 +54,20 @@ const Login = () => {
               name="password"
             />
             <ErrorMessage component={ErrorText} name='password'/>
-
+            
             <Button type='submit' >Login</Button>
         </Form>
       </Formik>
         
         <Button
-      
+        className="google-login"
           onClick={() => 
             signInWithGoogle()
           }
         >
           Login With Google
         </Button>
+        <h4>Don't have an account ? <Link to='/signup'>SignUp</Link> </h4>
         </div>
     )
 }
