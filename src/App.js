@@ -2,6 +2,7 @@ import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 import MainLayout from './layouts/MainLayout'
 import Login from './pages/Login';
+import Signup from './pages/Signup';
 import './default.scss'
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
         </Route>
         <Route  path='/signup' >
           <MainLayout>
-            <h1>Signup</h1>
+            <Signup/>
           </MainLayout>
         </Route>
         <Route  path='/chat' >  

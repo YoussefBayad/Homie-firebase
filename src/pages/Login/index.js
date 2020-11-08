@@ -1,11 +1,14 @@
-import React,{useState} from 'react'
+import React,{useState} from 'react';
+import { Link } from 'react-router-dom';
 import {Formik, Form,Field,ErrorMessage} from 'formik';
 import  * as Yup from 'yup';
 import ErrorText from '../../components/ErrorText'
 import {signInWithGoogle,auth} from '../../Firebase/utils'
-import Button from '../../components/Button'
-import './style.scss'
-import { Link } from 'react-router-dom';
+import Button from '../../components/forms/Button'
+import Label from '../../components/forms/Label'
+
+// style
+import './style.scss';
 
 const Login = () => {
 
@@ -42,13 +45,18 @@ const Login = () => {
             >
           <Form>
             {error && <ErrorText>{error}</ErrorText>}
+            <Label htmlFor='email'>Email</Label>
             <Field
+              id='email'
               type="email"
               placeholder="Enter your email"
               name="email"
             />
             <ErrorMessage component={ErrorText} name='email' />
+            <Label htmlFor='password'>Password</Label>
+
             <Field
+              id="password"
               type="password"
               placeholder="Password"
               name="password"

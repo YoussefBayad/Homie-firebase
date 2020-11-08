@@ -154,7 +154,8 @@ ul {
 // Forms
 input,
 select {
-  margin: 1.5rem 0;
+  margin: 0;
+  margin-bottom: 1.5rem;
   padding: 1rem 1.6rem;
   font-size: $normal;
   border-radius: 0.5rem;
@@ -164,6 +165,11 @@ select {
   outline-color: $accent;
 }
 
+.label {
+  text-align: left;
+  margin: 1rem 0 0.5rem 0;
+  padding: 0;
+}
 .error {
   color: #c93131;
   margin-bottom: 1.5rem;
