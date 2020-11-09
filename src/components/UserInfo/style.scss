@@ -5,13 +5,7 @@
   height: 35jvh;
   min-height: 25rem;
   @include flex(column, center, space-between);
-  .circle img {
-    object-fit: cover;
-    background-color: lightblue;
-    height: 12rem;
-    width: 12rem;
-    border-radius: 50%;
-  }
+
   .username {
     font-weight: bold;
     font-size: $normal;

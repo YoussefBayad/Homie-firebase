@@ -2,7 +2,7 @@ import React from 'react';
 import Filter from '../Filter';
 import NotificationIcon from '../NotificationIcon';
 import ChatIcon from '../ChatIcon';
-
+import AddPost from '../AddPost';
 //style
 import './style.scss';
 
@@ -16,6 +16,7 @@ const index = () => {
           <NotificationIcon />
         </div>
       </nav>
+      <AddPost />
     </div>
   );
 };

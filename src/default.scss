@@ -172,6 +172,7 @@ select {
   outline-color: $accent;
 }
 
+//useful classes
 .label {
   text-align: left;
   margin: 1rem 0 0.5rem 0;
@@ -180,4 +181,11 @@ select {
 .error {
   color: #c93131;
   margin-bottom: 1.5rem;
+}
+.circle img {
+  object-fit: cover;
+  background-color: lightblue;
+  height: 12rem;
+  width: 12rem;
+  border-radius: 50%;
 }

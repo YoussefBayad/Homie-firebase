@@ -55,9 +55,7 @@ function App() {
           <h1>profile</h1>
         </Route>
         <Route path='*'>
-          <MainLayout>
-            <h1>404</h1>
-          </MainLayout>
+          <h1>404</h1>
         </Route>
       </Switch>
     </div>

@@ -1,0 +1,27 @@
+@import '../../default.scss';
+
+.add-post {
+  margin: 4.5rem auto;
+  width: 30rem;
+  @include flex('', start, center);
+  & .circle img {
+    margin-right: 1.5rem;
+    width: 6rem;
+    height: 6rem;
+  }
+  .first-row {
+    width: 100%;
+    @include flex(column, center, space-between);
+    & input {
+      border-radius: 3rem;
+      outline: none;
+    }
+    & button {
+      width: 10rem;
+    }
+  }
+  .second-row {
+    width: 100%;
+    @include flex('', center, space-between);
+  }
+}
