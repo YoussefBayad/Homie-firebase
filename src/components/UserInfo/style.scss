@@ -1,0 +1,39 @@
+@import '../../default.scss';
+
+.user-info {
+  width: 100%;
+  height: 35jvh;
+  min-height: 25rem;
+  @include flex(column, center, space-between);
+  .circle img {
+    object-fit: cover;
+    background-color: lightblue;
+    height: 12rem;
+    width: 12rem;
+    border-radius: 50%;
+  }
+  .username {
+    font-weight: bold;
+    font-size: $normal;
+  }
+  .bio {
+    font-weight: lighter;
+    font-size: $small;
+    color: darken($grey, 20%);
+  }
+}
+.profile-numbers {
+  margin: 3rem 0;
+  width: 100%;
+  @include flex(row, center, space-between);
+}
+.profile-number {
+  @include flex(column, center, center);
+
+  & p:first-child {
+    font-weight: bold;
+  }
+  & p:last-child {
+    font-size: $small;
+  }
+}

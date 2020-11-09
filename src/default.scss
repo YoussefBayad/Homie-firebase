@@ -17,6 +17,7 @@ $title: 4rem;
 $medium: 2.4rem;
 $normal: 1.8rem;
 $small: 1.4rem;
+$smallest: 1rem;
 
 // screen size
 $tablet: 768;
@@ -118,11 +119,17 @@ ul {
   list-style: none;
 }
 
-//container
+//layouts
+
 .container {
   width: 80%;
   max-width: 1300px;
   margin: auto;
+}
+.main-layout {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 30rem 1fr;
 }
 
 //overlay

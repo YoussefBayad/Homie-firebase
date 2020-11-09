@@ -8,9 +8,11 @@ import Signup from './pages/Signup';
 
 //layouts
 import MainLayout from './layouts/MainLayout'
+import Container from './layouts/ContainerLayout'
 
 //style
 import './default.scss'
+import Home from './pages/Home';
 
 function App() {
   return (
@@ -18,26 +20,30 @@ function App() {
       <Switch>
         <Route exact path='/' >
           <WithAuth>
-          <h1>Home</h1>
+            <MainLayout>
+              <Home/>
+            </MainLayout>
           </WithAuth>
         </Route>
         <Route  path='/login' >
           <WithAuth>
-            <MainLayout>
+            <Container>
               <Login/>
-            </MainLayout>
+            </Container>
           </WithAuth>
         </Route>
         <Route  path='/signup' >
           <WithAuth>
-            <MainLayout>
+            <Container>
               <Signup/>
-            </MainLayout>
+            </Container>
           </WithAuth>
         </Route>
         <Route  path='/chat' >
           <WithAuth>  
-            <h1>Chat</h1>
+            <MainLayout>
+              <h1>Chat</h1>
+            </MainLayout>
           </WithAuth>
         </Route>
         <Route  path='/admin' >
