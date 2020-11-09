@@ -1,12 +1,12 @@
-import React from 'react'
+import React from 'react';
 import '../../../default.scss';
 
-const Label = ({children, ...otherProps}) => {
-    return (
-        <label className='label' {...otherProps}>
-            {children}
-        </label>
-    )
-}
+const Label = ({ children, ...otherProps }) => {
+  return (
+    <label className='label' {...otherProps}>
+      {children}
+    </label>
+  );
+};
 
-export default Label
+export default Label;

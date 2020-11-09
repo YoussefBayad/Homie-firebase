@@ -1,18 +1,15 @@
-import React from 'react'
-
+import React from 'react';
+import Feed from '../../components/Feed';
 
 //style
-import './style.scss'
+import './style.scss';
 
 const Home = () => {
-    return (
-        <>
-           
-           <div className="feed">
-               feed
-           </div>
-        </>
-    )
-}
+  return (
+    <>
+      <Feed />
+    </>
+  );
+};
 
-export default Home
+export default Home;

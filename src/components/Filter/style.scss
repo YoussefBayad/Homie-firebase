@@ -1,0 +1,21 @@
+@import '../../default.scss';
+
+.filter-box {
+  border: 0.1rem solid;
+  padding: 1rem;
+  border-radius: 2rem;
+  @include flex(row, center, space-between);
+  max-width: 30rem;
+
+  .filter {
+    border: none;
+    outline: none;
+    @include box(100%);
+    font-size: $normal;
+    margin: 0;
+    padding: 0;
+    &::placeholder {
+      font-size: $normal;
+    }
+  }
+}

@@ -3,7 +3,7 @@ import '../../../default.scss';
 
 const Button = ({ children, ...otherProps }) => {
   return (
-    <button className="btn" {...otherProps}>
+    <button className='btn' {...otherProps}>
       {children}
     </button>
   );

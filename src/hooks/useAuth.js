@@ -9,11 +9,13 @@ const useAuth = () => {
   useEffect(() => {
     if (!currentUser) {
       history.push('/login');
-     }
-    else {
-      if (history.location.pathname === "/login" || history.location.pathname === "/signup" ) history.push('/');
-      else
-      history.push(history.location.pathname);
+    } else {
+      if (
+        history.location.pathname === '/login' ||
+        history.location.pathname === '/signup'
+      )
+        history.push('/');
+      else history.push(history.location.pathname);
     }
   }, [currentUser, history]);
 

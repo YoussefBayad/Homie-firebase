@@ -1,10 +1,8 @@
 import React from 'react';
-import '../default.scss'
+import '../default.scss';
 
 const ContainerLayout = ({ children }) => {
-    return (
-        <div className="container">{children}</div>
-    );
+  return <div className='container'>{children}</div>;
 };
 
-export default  ContainerLayout;
+export default ContainerLayout;

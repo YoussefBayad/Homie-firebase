@@ -1,0 +1,13 @@
+@import '../../default.scss';
+
+.feed {
+  padding: 3rem;
+
+  & nav {
+    @include flex('', center, space-between);
+
+    .right-nav {
+      @include flex('', center, space-between);
+    }
+  }
+}
