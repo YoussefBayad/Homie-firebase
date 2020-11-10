@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 const useAuth = () => {
-  const currentUser = useSelector((state) => state.currentUser);
+  const currentUser = useSelector((state) => state.auth.user);
   const history = useHistory();
 
   useEffect(() => {

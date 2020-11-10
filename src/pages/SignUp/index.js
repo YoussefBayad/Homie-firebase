@@ -32,7 +32,7 @@ const Signup = () => {
     email: Yup.string()
       .email('invalid email')
       .required('This field is required'),
-    password: Yup.string().required('This field is required'),
+    password: Yup.string().min(6).required('This field is required'),
   });
 
   const onSubmit = async (values, onSubmitProps) => {

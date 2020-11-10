@@ -2,8 +2,8 @@
 
 .feed {
   padding: 3rem;
-
-  & nav {
+  height: 200vh;
+  .feed-nav {
     @include flex('', center, space-between);
 
     .right-nav {

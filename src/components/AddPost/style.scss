@@ -3,6 +3,7 @@
 .add-post {
   margin: 4.5rem auto;
   width: 30rem;
+  height: 100%;
   @include flex('', start, center);
   & .circle img {
     margin-right: 1.5rem;
@@ -12,10 +13,7 @@
   .first-row {
     width: 100%;
     @include flex(column, center, space-between);
-    & input {
-      border-radius: 3rem;
-      outline: none;
-    }
+
     & button {
       width: 10rem;
     }

@@ -23,6 +23,7 @@ export const handleUserProfile = async (userAuth, additionalData) => {
 
   const userRef = db.doc(`users/${uid}`);
   const snapshot = await userRef.get();
+  console.log('snapshot', snapshot);
 
   if (!snapshot.exists) {
     const { displayName, email, photoURL } = userAuth;
@@ -33,11 +34,13 @@ export const handleUserProfile = async (userAuth, additionalData) => {
         displayName,
         email,
         photoURL,
-        createdAt: timestamp,
+        createdAt: timestamp(),
         userRoles,
         ...additionalData,
       });
-    } catch (err) {}
+    } catch (err) {
+      alert(err.message);
+    }
   }
 
   return userRef;

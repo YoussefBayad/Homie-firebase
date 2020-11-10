@@ -127,7 +127,6 @@ ul {
   margin: auto;
 }
 .main-layout {
-  height: 100vh;
   display: grid;
   grid-template-columns: 30rem 1fr;
 }
@@ -160,7 +159,8 @@ ul {
 
 // Forms
 input,
-select {
+select,
+textarea {
   margin: 0;
   margin-bottom: 1.5rem;
   padding: 1rem 1.6rem;

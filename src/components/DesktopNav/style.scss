@@ -1,0 +1,25 @@
+@import '../../default.scss';
+
+.desktop-nav {
+  margin-top: 2rem;
+  .link {
+    text-align: left !important;
+    margin-bottom: 1.5rem;
+    @include flex('', center, '');
+
+    & img {
+      width: 3rem;
+    }
+    & p {
+      font-weight: bold;
+      margin-left: 1.5rem;
+      color: $accent;
+    }
+  }
+  & .link:last-child {
+    margin-top: 4rem;
+    padding: 3rem 0 0 0;
+    border-top: 1px solid darken($grey, 30);
+    cursor: pointer;
+  }
+}

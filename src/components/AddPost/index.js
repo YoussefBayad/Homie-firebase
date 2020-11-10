@@ -11,7 +11,7 @@ const index = () => {
         <img src='/assets/icon/me.jpg' alt='user' />
       </div>
       <div className='first-row'>
-        <input type='textarea' placeholder="What's on your mind?" />
+        <textarea placeholder="What's on your mind?" />
         <div className='second-row'>
           <img src='/assets/icon/search.svg' alt='add media' />
           <Button disable='true'>Post</Button>

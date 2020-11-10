@@ -9,7 +9,7 @@ import './style.scss';
 const index = () => {
   return (
     <div className='feed'>
-      <nav>
+      <nav className='feed-nav'>
         <Filter />
         <div className='right-nav'>
           <ChatIcon />

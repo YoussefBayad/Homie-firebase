@@ -1,8 +1,13 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+
+// HOC and hooks
 import WithAuth from './hoc/withAuth';
 import WithAdminAuth from './hoc/withAdminAuth';
+import useAuthListener from './hooks/useAuthListener';
+
 //pages
+import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
@@ -12,11 +17,12 @@ import Container from './layouts/ContainerLayout';
 
 //style
 import './default.scss';
-import Home from './pages/Home';
 
 function App() {
+  useAuthListener();
+
   return (
-    <div className='App'>
+    <>
       <Switch>
         <Route exact path='/'>
           <WithAuth>
@@ -58,7 +64,7 @@ function App() {
           <h1>404</h1>
         </Route>
       </Switch>
-    </div>
+    </>
   );
 }
 
