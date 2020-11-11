@@ -3,13 +3,23 @@
 // colors
 
 $white: white;
-$black: black;
-$grey: lightgrey;
+$black: #1a1210;
+$grey: #bdbbbd;
+$lightgrey: #e6e6e7;
+$darkgrey: #80757d;
 $accent: #e2336b;
 $accent2: #fcac46;
 $blue: #2ba7f3;
 $error: #e63d3d;
 $success: #4ac75b;
+$sidebar: #f9f9f9;
+// $swatch_1: #e6e6e7;
+// $swatch_2: #bdbbbd;
+// $swatch_3: #1a1210;
+// $swatch_4: #61a3b5;
+// $swatch_5: #a75327;
+// $swatch_6: #5b5049;
+// $swatch_7: #80757d;
 
 // typography
 
@@ -119,6 +129,16 @@ ul {
   list-style: none;
 }
 
+img {
+  width: 100%;
+}
+svg {
+  @include box(3rem);
+  cursor: pointer;
+  &:hover {
+    fill: $accent;
+  }
+}
 //layouts
 
 .container {

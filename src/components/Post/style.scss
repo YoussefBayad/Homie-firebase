@@ -1,0 +1,49 @@
+@import '../../default.scss';
+
+.post {
+  width: 40rem;
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background-color: $sidebar;
+  border-radius: 1.5rem;
+  @include flex(column, center, center);
+  .post-data {
+    width: 100%;
+    @include flex(row, center, space-between);
+    & svg {
+      align-self: flex-start;
+    }
+  }
+
+  .post-header {
+    @include flex(row, center, space-between);
+    .post-date {
+      font-size: $small;
+      color: $darkgrey;
+    }
+    .post-username {
+      font-weight: bold;
+      color: $black;
+      font-size: 1.6rem;
+    }
+    & img {
+      @include box(5rem);
+      margin-right: 1.5rem;
+    }
+  }
+  .post-body {
+    margin: 1.5rem auto;
+    margin-bottom: 2rem;
+    & p {
+      font-weight: bold;
+    }
+  }
+
+  .post-interactions {
+    width: 100%;
+    border-top: 1px solid $darkgrey;
+    border-bottom: 1px solid $darkgrey;
+    padding: 0.5rem;
+    @include flex(row, center, space-between);
+  }
+}

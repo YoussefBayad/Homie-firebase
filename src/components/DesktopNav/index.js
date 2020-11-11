@@ -1,34 +1,45 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { auth } from '../../Firebase/utils';
+import { ReactComponent as SearchIcon } from '../../assets/icon/search.svg';
+import { ReactComponent as MingleIcon } from '../../assets/icon/direct.svg';
+import { ReactComponent as NotificationIcon } from '../../assets/icon/notification.svg';
+import { ReactComponent as UserIcon } from '../../assets/icon/user.svg';
+import { ReactComponent as FeedIcon } from '../../assets/icon/feed.svg';
+import { ReactComponent as LogoutIcon } from '../../assets/icon/logout.svg';
 
 //style
 import './style.scss';
+
 const index = () => {
+  const accentColor = '#e2336b';
   return (
     <nav className='desktop-nav'>
-      <Link to='/' className='link'>
-        <img src='/assets/icon/search.svg' alt='icon' />
+      <NavLink exact to='/' className='link' activeClassName='main-nav-active'>
+        <FeedIcon />
         <p>Feed</p>
-      </Link>
-      <Link to='/chat' className='link'>
-        <img src='/assets/icon/search.svg' alt='icon' />
+      </NavLink>
+      <NavLink to='/chat' className='link' activeClassName='main-nav-active'>
+        <MingleIcon />
         <p>Mingle</p>
-      </Link>
-      <Link to='/chat' className='link'>
-        <img src='/assets/icon/search.svg' alt='icon' />
+      </NavLink>
+      <NavLink
+        to='/notification'
+        className='link'
+        activeClassName='main-nav-active'>
+        <NotificationIcon />
         <p>notification</p>
-      </Link>
-      <Link to='/notification' className='link'>
-        <img src='/assets/icon/search.svg' alt='icon' />
-        <p>Post</p>
-      </Link>
-      <Link to='/profile' className='link'>
-        <img src='/assets/icon/search.svg' alt='icon' />
+      </NavLink>
+      <NavLink to='/search' className='link' activeClassName='main-nav-active'>
+        <SearchIcon />
+        <p>Search</p>
+      </NavLink>
+      <NavLink to='/profile' className='link' activeClassName='main-nav-active'>
+        <UserIcon />
         <p>Profile</p>
-      </Link>
+      </NavLink>
       <div className='link' onClick={() => auth.signOut()}>
-        <img src='/assets/icon/search.svg' alt='icon' />
+        <LogoutIcon />
         <p>Logout</p>
       </div>
     </nav>

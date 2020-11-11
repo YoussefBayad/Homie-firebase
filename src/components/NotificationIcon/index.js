@@ -1,9 +1,10 @@
 import React from 'react';
+import { ReactComponent as NotificationIcon } from '../../assets/icon/notification.svg';
 
 const index = () => {
   return (
     <div className='cart-icon'>
-      <img src='/assets/icon/search.svg ' alt='notification icon' />
+      <NotificationIcon />
     </div>
   );
 };

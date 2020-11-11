@@ -1,9 +1,12 @@
 import React from 'react';
+import { ReactComponent as MingleIcon } from '../../assets/icon/direct.svg';
 
+//style
+import './style.scss';
 const index = () => {
   return (
-    <div className='cart-icon'>
-      <img src='/assets/icon/search.svg ' alt='chat icon' />
+    <div className='chat-icon'>
+      <MingleIcon />
     </div>
   );
 };

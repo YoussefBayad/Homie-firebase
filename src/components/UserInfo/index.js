@@ -1,11 +1,11 @@
 import React from 'react';
 import './style.scss';
-
+import avatar from '../../assets/icon/me.jpg';
 const UserInfo = () => {
   return (
     <div className='user-info'>
       <div className='circle'>
-        <img src='/assets/icon/me.jpg' alt='' />
+        <img src={avatar} alt='' />
       </div>
       <h3 className='username'>Joseph Bayad</h3>
       <h4 className='bio'>I will Make it</h4>

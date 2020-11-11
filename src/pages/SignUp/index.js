@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { auth, signInWithGoogle } from '../../Firebase/utils';
+import {
+  auth,
+  handleUserProfile,
+  signInWithGoogle,
+} from '../../Firebase/utils';
 import * as Yup from 'yup';
 import ErrorText from '../../components/ErrorText';
 import Button from '../../components/forms/Button';
@@ -43,7 +47,7 @@ const Signup = () => {
         values.password
       );
       const { displayName } = values;
-      //   await handleUserProfile(user, { displayName});
+      await handleUserProfile(user, { displayName });
       onSubmitProps.resetForm();
     } catch (err) {
       setError(err.message);

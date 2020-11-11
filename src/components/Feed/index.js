@@ -3,6 +3,7 @@ import Filter from '../Filter';
 import NotificationIcon from '../NotificationIcon';
 import ChatIcon from '../ChatIcon';
 import AddPost from '../AddPost';
+import Post from '../Post';
 //style
 import './style.scss';
 
@@ -17,6 +18,9 @@ const index = () => {
         </div>
       </nav>
       <AddPost />
+      <Post />
+      <Post />
+      <Post />
     </div>
   );
 };

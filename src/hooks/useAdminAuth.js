@@ -15,7 +15,7 @@ export const checkUserIsAdmin = (currentUser) => {
 //use admin Hook
 
 const useAdminAuth = () => {
-  const currentUser = useSelector((state) => state.currentUser);
+  const currentUser = useSelector((state) => state.auth.user);
   const history = useHistory();
 
   useEffect(() => {

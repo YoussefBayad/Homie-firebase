@@ -42,7 +42,7 @@ const Login = () => {
         validationSchema={validationSchema}
         validateOnChange={false}
         onSubmit={onSubmit}>
-        <Form>
+        <Form layout>
           {error && <ErrorText>{error}</ErrorText>}
           <Label htmlFor='email'>Email</Label>
           <Field

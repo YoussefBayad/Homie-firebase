@@ -21,5 +21,10 @@
   .second-row {
     width: 100%;
     @include flex('', center, space-between);
+    & svg {
+      align-self: flex-end;
+      cursor: pointer;
+      @include box(4rem);
+    }
   }
 }

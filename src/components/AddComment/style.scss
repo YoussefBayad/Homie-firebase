@@ -1,0 +1,17 @@
+@import '../../default.scss';
+
+.add-comment {
+  width: 100%;
+  margin-top: 1.5rem;
+  & .circle img {
+    @include box(4rem);
+    margin-right: 0.5rem;
+  }
+  @include flex(row, center, center);
+
+  & input {
+    border-radius: 3rem;
+    width: 100%;
+    margin: 0;
+  }
+}

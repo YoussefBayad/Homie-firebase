@@ -3,23 +3,50 @@
 .desktop-nav {
   margin-top: 2rem;
   .link {
-    text-align: left !important;
-    margin-bottom: 1.5rem;
+    text-align: left;
+    margin-bottom: 2rem;
+    height: 2.5rem;
     @include flex('', center, '');
 
-    & img {
+    & img,
+    svg {
       width: 3rem;
     }
     & p {
       font-weight: bold;
       margin-left: 1.5rem;
+      color: $black;
+    }
+    &:hover {
+      & p {
+        color: lighten($accent, 20%);
+      }
+      & svg {
+        fill: lighten($accent, 20%);
+      }
+    }
+  }
+  .main-nav-active {
+    & p {
       color: $accent;
+    }
+    & svg {
+      fill: $accent;
     }
   }
   & .link:last-child {
-    margin-top: 4rem;
+    margin-top: 6rem;
     padding: 3rem 0 0 0;
     border-top: 1px solid darken($grey, 30);
     cursor: pointer;
+
+    &:hover {
+      & p {
+        color: $accent;
+      }
+      & svg {
+        fill: $accent;
+      }
+    }
   }
 }

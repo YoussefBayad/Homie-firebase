@@ -19,7 +19,7 @@ import Container from './layouts/ContainerLayout';
 import './default.scss';
 
 function App() {
-  useAuthListener();
+  // useAuthListener();
 
   return (
     <>
@@ -52,13 +52,31 @@ function App() {
             </MainLayout>
           </WithAuth>
         </Route>
+        <Route path='/notification'>
+          <WithAuth>
+            <MainLayout>
+              <h1>notification</h1>
+            </MainLayout>
+          </WithAuth>
+        </Route>
+        <Route path='/search'>
+          <WithAuth>
+            <MainLayout>
+              <h1>search</h1>
+            </MainLayout>
+          </WithAuth>
+        </Route>
         <Route path='/admin'>
           <WithAdminAuth>
             <h1>Admin</h1>
           </WithAdminAuth>
         </Route>
         <Route path='/profile'>
-          <h1>profile</h1>
+          <WithAuth>
+            <MainLayout>
+              <h1>Profile</h1>
+            </MainLayout>
+          </WithAuth>
         </Route>
         <Route path='*'>
           <h1>404</h1>
