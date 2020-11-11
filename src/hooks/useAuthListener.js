@@ -2,7 +2,7 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useDispatch } from 'react-redux';
 import { auth, handleUserProfile } from '../Firebase/utils';
-import { authChange } from '../redux/User/userSlice';
+import { authChange } from '../redux/userSlice';
 
 const useAuthListener = async () => {
   const dispatch = useDispatch();

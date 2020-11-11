@@ -76,7 +76,7 @@ $desktop: 1280;
   background: linear-gradient(
     45deg,
     $hover 0%,
-    $hover 25%,
+    $hover 35%,
     $initial 75%,
     $initial 100%
   );
@@ -175,6 +175,10 @@ svg {
   cursor: pointer;
   border-radius: 0.5rem;
   @include background-transition($accent, $accent2);
+  &:disabled,
+  &:disabled:hover {
+    opacity: 0.5;
+  }
 }
 
 // Forms

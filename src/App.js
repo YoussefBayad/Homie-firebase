@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import WithAuth from './hoc/withAuth';
 import WithAdminAuth from './hoc/withAdminAuth';
 import useAuthListener from './hooks/useAuthListener';
+import usePostsListener from './hooks/usePostsListener';
 
 //pages
 import Home from './pages/Home';
@@ -19,7 +20,8 @@ import Container from './layouts/ContainerLayout';
 import './default.scss';
 
 function App() {
-  // useAuthListener();
+  useAuthListener();
+  usePostsListener();
 
   return (
     <>

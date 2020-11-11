@@ -1,10 +1,11 @@
 @import '../../default.scss';
 
 .post {
-  width: 40rem;
-  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 60rem;
+  margin: 2rem auto;
   padding: 1.5rem;
-  background-color: $sidebar;
+  background-color: $lightgrey;
   border-radius: 1.5rem;
   @include flex(column, center, center);
   .post-data {

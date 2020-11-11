@@ -2,8 +2,8 @@
 
 .add-post {
   margin: 4.5rem auto;
-  width: 30rem;
-  height: 100%;
+  width: 100%;
+  max-width: 60rem;
   @include flex('', start, center);
   & .circle img {
     margin-right: 1.5rem;
@@ -13,7 +13,10 @@
   .first-row {
     width: 100%;
     @include flex(column, center, space-between);
-
+    & textarea {
+      width: 100%;
+      height: 10rem;
+    }
     & button {
       width: 10rem;
     }

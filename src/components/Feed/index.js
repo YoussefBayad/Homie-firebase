@@ -17,10 +17,16 @@ const index = () => {
           <NotificationIcon />
         </div>
       </nav>
-      <AddPost />
-      <Post />
-      <Post />
-      <Post />
+      <AddPost id='top' />
+      <div className='posts'>
+        <Post />
+        <Post />
+        <Post />
+      </div>
+
+      <a href='#top' className='back-to-top'>
+        Back to top
+      </a>
     </div>
   );
 };
