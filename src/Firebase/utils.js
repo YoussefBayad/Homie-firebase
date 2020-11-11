@@ -3,6 +3,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/storage';
+import { date } from 'yup';
 
 firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
@@ -33,7 +34,7 @@ export const handleUserProfile = async (userAuth, additionalData) => {
         displayName,
         email,
         photoURL,
-        createdAt: timestamp(),
+        createdAt: new Date().toISOString(),
         userRoles,
         ...additionalData,
       });
@@ -44,6 +45,3 @@ export const handleUserProfile = async (userAuth, additionalData) => {
 
   return userRef;
 };
-
-// timestamp
-export const timestamp = firebase.firestore.FieldValue.serverTimestamp;

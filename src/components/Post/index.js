@@ -8,6 +8,7 @@ import avatar from '../../assets/icon/me.jpg';
 import { ReactComponent as LikeIcon } from '../../assets/icon/like.svg';
 import { ReactComponent as CommentIcon } from '../../assets/icon/comment.svg';
 import { ReactComponent as ShareIcon } from '../../assets/icon/share.svg';
+import { parseISO, formatDistanceToNow } from 'date-fns';
 
 //style
 import './style.scss';
@@ -15,9 +16,11 @@ import './style.scss';
 const index = ({
   id,
   user: { userId, photoURL, displayName },
-  createdAT,
+  createdAt,
   content,
 }) => {
+  const date = parseISO(createdAt);
+  const timeAgo = formatDistanceToNow(date);
   return (
     <div className='post'>
       <div className='post-data'>
@@ -27,7 +30,9 @@ const index = ({
           </div>
           <div className='username-and-date'>
             <p className='post-username'>{displayName} </p>
-            <p className='post-date'>{createdAT}</p>
+            <p className='post-date' title={date}>
+              <i>{timeAgo} ago</i>
+            </p>
           </div>
         </div>
         <PostSetting id={id} />

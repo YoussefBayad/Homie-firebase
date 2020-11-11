@@ -4,7 +4,6 @@ import Button from '../forms/Button';
 import avatar from '../../assets/icon/me.jpg';
 import { ReactComponent as ImgIcon } from '../../assets/icon/media.svg';
 import { addPost } from '../../redux/postsSlice';
-import { timestamp } from '../../Firebase/utils';
 //style
 import './style.scss';
 
@@ -18,7 +17,7 @@ const AddPost = () => {
 
   const handleAddPost = () => {
     const post = {
-      createdAt: timestamp(),
+      createdAt: new Date().toISOString(),
       user: {
         displayName: user.displayName,
         id: user.id,

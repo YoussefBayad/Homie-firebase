@@ -7,8 +7,4 @@ export default configureStore({
     auth: userReducer,
     posts: postsReducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
 });
