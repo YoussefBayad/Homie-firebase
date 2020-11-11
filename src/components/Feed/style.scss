@@ -6,16 +6,18 @@
   border-radius: 1.5rem 0 0 0;
   z-index: 2;
   .feed-nav {
+    // position: sticky;
+    // top: -1px;
+    // padding: 3rem 0;
+    // background-color: $white;
+    // width: 100%;
+    // z-index: 2;
     @include flex('', center, space-between);
     .right-nav {
       @include flex('', center, space-between);
     }
   }
-  .posts {
-    margin: auto;
-    display: grid;
-    grid-template-columns: minmax(26rem, 1fr);
-  }
+
   .back-to-top {
     display: block;
 

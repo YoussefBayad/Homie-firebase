@@ -6,7 +6,6 @@ import '../default.scss';
 const MainLayout = ({ children }) => {
   return (
     <div className='main-layout'>
-      <div className='sidebar-placeholder'></div>
       <Sidebar />
       {children}
     </div>

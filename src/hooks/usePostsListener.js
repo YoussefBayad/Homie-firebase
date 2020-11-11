@@ -1,26 +1,29 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useCollection } from 'react-firebase-hooks/firestore';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { db } from '../Firebase/utils';
 
 const usePostsListener = () => {
+  const query = db.collection('posts').orderBy('createdAt', 'desc');
   const dispatch = useDispatch();
-  const [posts, loading, error] = useCollection(db.collection('posts'));
+  const [data, loading, error] = useCollectionData(query, { idField: 'id' });
+
   if (loading)
     dispatch({
       type: 'posts/fetchPosts/pending',
-      payload: { posts, loading, error },
+      payload: loading,
     });
   if (error)
     dispatch({
       type: 'posts/fetchPosts/rejected',
-      payload: { posts, loading, error },
+      payload: error,
     });
-  if (posts)
+  if (data) {
     dispatch({
       type: 'posts/fetchPosts/fulfilled',
-      payload: { posts, loading, error },
+      payload: { data, loading, error },
     });
+  }
 };
 
 export default usePostsListener;

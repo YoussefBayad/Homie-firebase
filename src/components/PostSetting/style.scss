@@ -1,0 +1,25 @@
+@import '../../default.scss';
+
+.post-setting {
+  align-self: flex-start;
+  @include flex(column, center, space-between);
+  .post-setting-modal {
+    margin-top: 2.5rem;
+    position: absolute;
+    background-color: $grey;
+    color: $white;
+    font-size: $small;
+    padding: 0.5rem;
+    border-radius: 1.5rem;
+    & p {
+      cursor: pointer;
+      margin: 0.5rem;
+      &:first-child {
+        @include text-hover();
+      }
+      &:last-child {
+        @include text-hover($error);
+      }
+    }
+  }
+}

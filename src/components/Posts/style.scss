@@ -1,0 +1,5 @@
+.posts {
+  margin: auto;
+  display: grid;
+  grid-template-columns: minmax(26rem, 1fr);
+}

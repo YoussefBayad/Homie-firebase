@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { db } from '../Firebase/utils';
+import avatar from '../assets/icon/me.jpg';
 
 const initialState = {
   data: undefined,
@@ -7,6 +8,18 @@ const initialState = {
   error: undefined,
 };
 
+// [
+//   {
+//     id: 1,
+//     user: {
+//       photoURL: avatar,
+//       id: 1,
+//       displayName: 'Joseph Bayad',
+//     },
+//     content: 'you will make it',
+//     createdAt: new Date().toLocaleString,
+//   },
+// ]
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
   const postsRef = db.collection('posts');
   const postsCollection = await postsRef.orderBy('createdAt', 'desc').get();
@@ -18,19 +31,18 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
 });
 
 export const addPost = createAsyncThunk('posts/addPost', async (post) => {
-  const response = await db.collection('posts').add(post);
-
+  try {
+    var response = await db.collection('posts').add(post);
+  } catch (error) {}
   return response;
 });
 export const editPost = createAsyncThunk('posts/editPost', async (newPost) => {
   const response = await db.collection('posts').doc(newPost.id).update(newPost);
-
   return response;
 });
 
 export const deletePost = createAsyncThunk('posts/deletePost', async (id) => {
   const response = await db.collection('posts').doc(id).delete();
-
   return response;
 });
 
@@ -50,21 +62,15 @@ const postsSlice = createSlice({
   },
   extraReducers: {
     [fetchPosts.pending]: (state, action) => {
-      state = action.payload;
+      const loading = action.payload;
+      state.loading = loading;
     },
     [fetchPosts.fulfilled]: (state, action) => {
-      const data = action.payload.posts.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      state = {
-        data,
-        error: action.payload.error,
-        loading: action.payload.loading,
-      };
+      return action.payload;
     },
     [fetchPosts.rejected]: (state, action) => {
-      state = action.payload;
+      const error = action.payload;
+      state.error = error;
     },
     [addPost.pending]: (state, action) => {},
     [addPost.fulfilled]: (state, action) => {},

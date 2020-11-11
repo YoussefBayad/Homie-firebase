@@ -3,11 +3,11 @@ import Filter from '../Filter';
 import NotificationIcon from '../NotificationIcon';
 import ChatIcon from '../ChatIcon';
 import AddPost from '../AddPost';
-import Post from '../Post';
+import Posts from '../Posts';
 //style
 import './style.scss';
 
-const index = () => {
+const Feed = () => {
   return (
     <div className='feed'>
       <nav className='feed-nav'>
@@ -18,11 +18,7 @@ const index = () => {
         </div>
       </nav>
       <AddPost id='top' />
-      <div className='posts'>
-        <Post />
-        <Post />
-        <Post />
-      </div>
+      <Posts />
 
       <a href='#top' className='back-to-top'>
         Back to top
@@ -31,4 +27,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Feed;

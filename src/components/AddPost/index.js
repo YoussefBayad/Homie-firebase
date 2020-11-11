@@ -15,21 +15,23 @@ const AddPost = () => {
   const [content, setContent] = useState('');
   const canSave = content && !loading;
   const photoURL = 'later Bro';
-  const post = {
-    createdAt: timestamp(),
-    user: {
-      displayName: user.displayName,
-      id: user.id,
-      photoURL: user.photoURL,
-    },
-    likesCount: 0,
-    commentsCount: 0,
-    sharesCount: 0,
-    content,
-    photoURL,
-  };
+
   const handleAddPost = () => {
+    const post = {
+      createdAt: timestamp(),
+      user: {
+        displayName: user.displayName,
+        id: user.id,
+        photoURL: user.photoURL,
+      },
+      likesCount: 0,
+      commentsCount: 0,
+      sharesCount: 0,
+      content,
+      photoURL,
+    };
     dispatch(addPost(post));
+    setContent('');
   };
   return (
     <div className='add-post'>
