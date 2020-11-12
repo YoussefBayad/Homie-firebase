@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
@@ -9,11 +10,11 @@ const Posts = () => {
   const { data: posts, loading, error } = useSelector((state) => state.posts);
 
   return (
-    <div className='posts'>
+    <motion.div layout className='posts'>
       {loading && <h1>Loading...</h1>}
       {error && <h1>{error}</h1>}
       {posts && posts.map((post) => <Post key={post.id} {...post} />)}
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,7 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
+import avatar from '../assets/icon/me.jpg';
 
 const initialState = {
-  user: null,
+  user: {
+    displayName: 'joseph bayad',
+    photoURL: avatar,
+    bio: 'I will make it',
+    id: 1,
+  },
   loading: false,
   error: undefined,
 };

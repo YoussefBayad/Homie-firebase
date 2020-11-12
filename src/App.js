@@ -20,7 +20,7 @@ import Container from './layouts/ContainerLayout';
 import './default.scss';
 
 function App() {
-  useAuthListener();
+  // useAuthListener();
   usePostsListener();
 
   return (
@@ -73,7 +73,7 @@ function App() {
             <h1>Admin</h1>
           </WithAdminAuth>
         </Route>
-        <Route path='/profile'>
+        <Route path='/profile/:id'>
           <WithAuth>
             <MainLayout>
               <h1>Profile</h1>

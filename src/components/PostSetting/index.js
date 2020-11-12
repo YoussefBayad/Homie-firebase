@@ -7,12 +7,11 @@ import { ReactComponent as EditIcon } from '../../assets/icon/edit.svg';
 //style
 import './style.scss';
 
-const PostSetting = ({ id }) => {
+const PostSetting = ({ id, setIsEditing }) => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [ref] = useOutsideClickRef(() => setIsOpen(false));
 
-  const handleEditPost = () => {};
   const handleDeletePost = () => {
     dispatch(deletePost(id));
   };
@@ -23,7 +22,12 @@ const PostSetting = ({ id }) => {
 
       {isOpen && (
         <div ref={ref} className='post-setting-modal'>
-          <p onClick={handleEditPost} className='edit-post'>
+          <p
+            onClick={() => {
+              setIsEditing((prev) => !prev);
+              setIsOpen(false);
+            }}
+            className='edit-post'>
             Edit
           </p>
           <p onClick={handleDeletePost} className='delete-post'>

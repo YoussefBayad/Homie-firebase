@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Button from '../forms/Button';
-import avatar from '../../assets/icon/me.jpg';
 import { ReactComponent as ImgIcon } from '../../assets/icon/media.svg';
 import { addPost } from '../../redux/postsSlice';
+import Textarea from '../forms/Textarea';
+
 //style
 import './style.scss';
 
@@ -13,7 +14,7 @@ const AddPost = () => {
   const user = useSelector((state) => state.auth.user);
   const [content, setContent] = useState('');
   const canSave = content && !loading;
-  const photoURL = 'later Bro';
+  const photoURL = null;
 
   const handleAddPost = () => {
     const post = {
@@ -35,12 +36,13 @@ const AddPost = () => {
   return (
     <div className='add-post'>
       <div className='circle'>
-        <img src={avatar} alt='user' />
+        <img title={user.displayName} src={user.photoURL} alt='user' />
       </div>
       <div className='first-row'>
-        <textarea
+        <Textarea
           placeholder="What's on your mind?"
-          onChange={(e) => setContent(e.target.value)}
+          content={content}
+          setContent={setContent}
         />
         <div className='second-row'>
           <ImgIcon fill=' #fcac46' />

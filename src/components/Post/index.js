@@ -1,53 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { parseISO, formatDistanceToNow } from 'date-fns';
 import AddComment from '../AddComment';
 import PostSetting from '../PostSetting';
+import PostHeader from './PostHeader';
+import EditPost from './EditPost';
 
 //icons
-import avatar from '../../assets/icon/me.jpg';
 
 import { ReactComponent as LikeIcon } from '../../assets/icon/like.svg';
 import { ReactComponent as CommentIcon } from '../../assets/icon/comment.svg';
 import { ReactComponent as ShareIcon } from '../../assets/icon/share.svg';
-import { parseISO, formatDistanceToNow } from 'date-fns';
 
 //style
 import './style.scss';
 
-const index = ({
+const Post = ({
   id,
   user: { userId, photoURL, displayName },
   createdAt,
   content,
 }) => {
+  const [isEditing, setIsEditing] = useState(false);
   const date = parseISO(createdAt);
   const timeAgo = formatDistanceToNow(date);
+
   return (
     <div className='post'>
       <div className='post-data'>
-        <div className='post-header'>
-          <div className='circle'>
-            <img src={photoURL} alt='user' />
+        <PostHeader
+          id={userId}
+          photoURL={photoURL}
+          displayName={displayName}
+          date={date}
+          timeAgo={timeAgo}
+        />
+        <PostSetting id={id} setIsEditing={setIsEditing} />
+      </div>
+      {isEditing === false ? (
+        <>
+          <div className='post-body'>
+            <p> {content}</p>
           </div>
-          <div className='username-and-date'>
-            <p className='post-username'>{displayName} </p>
-            <p className='post-date' title={date}>
-              <i>{timeAgo} ago</i>
-            </p>
+          <div className='post-interactions'>
+            <LikeIcon />
+            <CommentIcon />
+            <ShareIcon />
           </div>
-        </div>
-        <PostSetting id={id} />
-      </div>
-      <div className='post-body'>
-        <p> {content}</p>
-      </div>
-      <div className='post-interactions'>
-        <LikeIcon />
-        <CommentIcon />
-        <ShareIcon />
-      </div>
-      <AddComment />
+          <AddComment />
+        </>
+      ) : (
+        <EditPost content={content} id={id} setIsEditing={setIsEditing} />
+      )}
     </div>
   );
 };
 
-export default index;
+export default Post;
