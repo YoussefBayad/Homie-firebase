@@ -21,28 +21,38 @@ const initialState = {
 //   },
 // ]
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
-  const postsRef = db.collection('posts');
-  const postsCollection = await postsRef.orderBy('createdAt', 'desc').get();
-  const posts = postsCollection.map((doc) => ({
-    ...doc.data(),
-    id: doc.id,
-  }));
-  return posts;
+  // const postsRef = db.collection('posts');
+  // const postsCollection = await postsRef.orderBy('createdAt', 'desc').get();
+  // const posts = postsCollection.map((doc) => ({
+  //   ...doc.data(),
+  //   id: doc.id,
+  // }));
+  // return posts;
 });
 
 export const addPost = createAsyncThunk('posts/addPost', async (post) => {
   try {
     var response = await db.collection('posts').add(post);
-  } catch (error) {}
+  } catch (error) {
+    console.error(error.message);
+  }
   return response;
 });
 export const editPost = createAsyncThunk('posts/editPost', async (newPost) => {
-  const response = await db.collection('posts').doc(newPost.id).update(newPost);
+  try {
+    var response = await db.collection('posts').doc(newPost.id).update(newPost);
+  } catch (error) {
+    console.error(error.message);
+  }
   return response;
 });
 
 export const deletePost = createAsyncThunk('posts/deletePost', async (id) => {
-  const response = await db.collection('posts').doc(id).delete();
+  try {
+    var response = await db.collection('posts').doc(id).delete();
+  } catch (error) {
+    console.error(error.message);
+  }
   return response;
 });
 
@@ -50,9 +60,9 @@ const postsSlice = createSlice({
   name: 'posts',
   initialState,
   reducers: {
-    latest(state) {
-      state.data.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
-    },
+    // latest(state) {
+    //   state.data.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
+    // },
     lowest(state) {
       state.data.sort((a, b) => (a.likesCount > b.likesCount ? 1 : -1));
     },
@@ -72,16 +82,16 @@ const postsSlice = createSlice({
       const error = action.payload;
       state.error = error;
     },
-    [addPost.pending]: (state, action) => {},
-    [addPost.fulfilled]: (state, action) => {},
+    // [addPost.pending]: (state, action) => {},
+    // [addPost.fulfilled]: (state, action) => {},
 
-    [addPost.rejected]: (state, action) => {},
-    [deletePost.pending]: (state, action) => {},
-    [deletePost.fulfilled]: (state, action) => {},
-    [deletePost.rejected]: (state, action) => {},
-    [editPost.pending]: (state, action) => {},
-    [editPost.fulfilled]: (state, action) => {},
-    [editPost.rejected]: (state, action) => {},
+    // [addPost.rejected]: (state, action) => {},
+    // [deletePost.pending]: (state, action) => {},
+    // [deletePost.fulfilled]: (state, action) => {},
+    // [deletePost.rejected]: (state, action) => {},
+    // [editPost.pending]: (state, action) => {},
+    // [editPost.fulfilled]: (state, action) => {},
+    // [editPost.rejected]: (state, action) => {},
   },
 });
 

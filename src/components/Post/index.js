@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { parseISO, formatDistanceToNow } from 'date-fns';
-import AddComment from '../AddComment';
+import AddComment from '../../features/comments/AddComment';
+import ShowComments from '../../features/comments/ShowComments';
+import Comment from '../../features/comments/Comment';
 import PostSetting from '../PostSetting';
 import PostHeader from './PostHeader';
 import EditPost from './EditPost';
@@ -46,7 +48,11 @@ const Post = ({
             <CommentIcon />
             <ShareIcon />
           </div>
-          <AddComment />
+          {/* <ShowComments postId={id} /> */}
+          <Comment photoURL={photoURL} displayName={displayName} />
+          <Comment photoURL={photoURL} displayName={displayName} />
+          <Comment photoURL={photoURL} displayName={displayName} />
+          <AddComment photoURL={photoURL} displayName={displayName} />
         </>
       ) : (
         <EditPost content={content} id={id} setIsEditing={setIsEditing} />

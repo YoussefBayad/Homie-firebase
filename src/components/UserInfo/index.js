@@ -1,25 +1,30 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+
+//style
 import './style.scss';
-import avatar from '../../assets/icon/me.jpg';
+
 const UserInfo = () => {
+  const { user, loading, error } = useSelector((state) => state.auth);
+
   return (
     <div className='user-info'>
       <div className='circle'>
-        <img src={avatar} alt='' />
+        <img src={user.photoURL} alt='' />
       </div>
-      <h3 className='username'>Joseph Bayad</h3>
-      <h4 className='bio'>I will Make it</h4>
+      <h3 className='username'>{user.displayName}</h3>
+      <h4 className='bio'>{user.bio}</h4>
       <div className='profile-numbers'>
         <div className='profile-number'>
-          <p>46</p>
+          <p>{user.postsCount}</p>
           <p>posts</p>
         </div>
         <div className='profile-number'>
-          <p>2.8k</p>
+          <p>{user.followersCount}</p>
           <p>followers</p>
         </div>
         <div className='profile-number'>
-          <p>54</p>
+          <p>{user.followingCount}</p>
           <p>following</p>
         </div>
       </div>
