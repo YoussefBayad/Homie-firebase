@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { parseISO, formatDistanceToNow } from 'date-fns';
 import AddComment from '../../features/comments/AddComment';
 import ShowComments from '../../features/comments/ShowComments';
 import Comment from '../../features/comments/Comment';
@@ -18,14 +17,13 @@ import './style.scss';
 
 const Post = ({
   id,
-  user: { userId, photoURL, displayName },
+  user: { id: userId, photoURL, displayName },
   createdAt,
   content,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
-  const date = parseISO(createdAt);
-  const timeAgo = formatDistanceToNow(date);
 
+  console.log('userId', userId);
   return (
     <div className='post'>
       <div className='post-data'>
@@ -33,10 +31,9 @@ const Post = ({
           id={userId}
           photoURL={photoURL}
           displayName={displayName}
-          date={date}
-          timeAgo={timeAgo}
+          createdAt={createdAt}
         />
-        <PostSetting id={id} setIsEditing={setIsEditing} />
+        <PostSetting id={id} userId={userId} setIsEditing={setIsEditing} />
       </div>
       {isEditing === false ? (
         <>
@@ -55,7 +52,12 @@ const Post = ({
           <AddComment photoURL={photoURL} displayName={displayName} />
         </>
       ) : (
-        <EditPost content={content} id={id} setIsEditing={setIsEditing} />
+        <EditPost
+          userId={userId}
+          content={content}
+          id={id}
+          setIsEditing={setIsEditing}
+        />
       )}
     </div>
   );

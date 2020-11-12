@@ -2,17 +2,33 @@
 @import '../../../default.scss';
 .comment {
   @extend .add-comment;
-  @include flex('', '', start);
+  @include flex(column, start, start);
   background-color: darken($lightgrey, 8%);
   border-radius: 3rem;
-  padding: 0.5rem;
+  padding: 1rem;
   color: $black;
 
-  & div {
-    align-self: center;
+  .comment-content {
+    width: 100%;
+    @include flex('', center, space-between);
     & svg {
-      margin-left: 2rem;
       width: 2.5rem;
+    }
+  }
+  .comment-header {
+    width: 100%;
+    @include flex('', '', space-between);
+  }
+  .comment-info {
+    .post-username {
+      font-size: $small !important;
+    }
+    .post-date {
+      font-size: $smallest !important;
+    }
+    & img {
+      width: 3rem !important;
+      height: 3rem !important;
     }
   }
 }

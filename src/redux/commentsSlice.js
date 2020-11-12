@@ -9,18 +9,18 @@ const initialState = {
 };
 
 export const fetchComments = createAsyncThunk(
-  'comments/fetchComments',
-  async ({ postId }) => {
-    console.log('fetchng comments');
-    const query = db
-      .collection('comments')
-      .where('postId', '==', postId)
-      .orderBy('createdAt', 'asc');
-    const [data, loading, error] = useCollectionDataOnce(query, {
-      idField: 'id',
-    });
-    if (data) return data;
-  }
+  'comments/fetchComments'
+  // async ({ postId }) => {
+  //   console.log('fetchng comments');
+  //   const query = db
+  //     .collection('comments')
+  //     .where('postId', '==', postId)
+  //     .orderBy('createdAt', 'asc');
+  //   const [data, loading, error] = useCollectionDataOnce(query, {
+  //     idField: 'id',
+  //   });
+  //   if (data) return data;
+  // }
 );
 
 export const addComment = createAsyncThunk(
@@ -67,13 +67,13 @@ const commentsSlice = createSlice({
   reducers: {},
   extraReducers: {
     [fetchComments.pending]: (state, action) => {
-      state.loading = true;
+      return action.payload;
     },
     [fetchComments.fulfilled]: (state, action) => {
-      state.data = action.payload;
+      return action.payload;
     },
     [fetchComments.rejected]: (state, action) => {
-      state.error = action.payload;
+      return action.payload;
     },
     // [addComment.pending]: (state, action) => {},
     // [addComment.fulfilled]: (state, action) => {},

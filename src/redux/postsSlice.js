@@ -51,7 +51,7 @@ export const deletePost = createAsyncThunk('posts/deletePost', async (id) => {
   try {
     var response = await db.collection('posts').doc(id).delete();
   } catch (error) {
-    console.error(error.message);
+    console.error('deletePost', error.message);
   }
   return response;
 });

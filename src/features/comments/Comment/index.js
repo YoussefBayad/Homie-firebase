@@ -1,16 +1,25 @@
 import React from 'react';
+import PostHeader from '../../../components/Post/PostHeader';
 import PostSetting from '../../../components/PostSetting';
 //style
 import './style.scss';
 
-const Comment = ({ photoURL, displayName }) => {
+const Comment = ({ userId, createdAt, photoURL, displayName }) => {
   return (
     <div className='comment'>
-      <div className='circle'>
-        <img src={photoURL} title={displayName} alt='user' />
+      <div className='comment-header'>
+        <PostHeader
+          id={userId}
+          photoURL={photoURL}
+          displayName={displayName}
+          createdAt={new Date().toISOString()}
+          className='post-header comment-info'
+        />
+        <PostSetting userId={1} postId={1} />
       </div>
-      <p>i agree you will make it</p>
-      <PostSetting />
+      <div className='comment-content'>
+        <p>i agree you will make it</p>
+      </div>
     </div>
   );
 };
