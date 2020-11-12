@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as NotificationIcon } from '../../assets/icon/notification.svg';
+import { ReactComponent as NotificationIcon } from '../../../assets/icon/notification.svg';
 
 const index = () => {
   return (

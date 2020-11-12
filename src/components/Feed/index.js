@@ -1,9 +1,9 @@
 import React from 'react';
-import Filter from '../Filter';
-import NotificationIcon from '../NotificationIcon';
-import ChatIcon from '../ChatIcon';
-import AddPost from '../AddPost';
-import Posts from '../Posts';
+import Filter from '../forms/Filter';
+import NotificationIcon from '../navigation/NotificationIcon';
+import ChatIcon from '../navigation/ChatIcon';
+import AddPost from '../../features/posts/AddPost';
+import Posts from '../../features/posts/Posts';
 //style
 import './style.scss';
 

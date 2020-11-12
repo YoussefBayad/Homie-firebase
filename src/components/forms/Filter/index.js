@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.scss';
-import { ReactComponent as SearchIcon } from '../../assets/icon/search.svg';
+import { ReactComponent as SearchIcon } from '../../../assets/icon/search.svg';
 
 const Filter = () => {
   return (

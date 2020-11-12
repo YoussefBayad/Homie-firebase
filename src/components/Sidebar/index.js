@@ -1,6 +1,6 @@
 import React from 'react';
 import UserInfo from '../UserInfo';
-import DesktopNav from '../DesktopNav';
+import DesktopNav from '../navigation/DesktopNav';
 
 //style
 import './style.scss';

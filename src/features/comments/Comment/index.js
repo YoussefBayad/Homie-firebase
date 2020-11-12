@@ -1,6 +1,6 @@
 import React from 'react';
-import PostHeader from '../../../components/Post/PostHeader';
-import PostSetting from '../../../components/PostSetting';
+import PostHeader from '../../posts/Post/PostHeader';
+import PostSetting from '../../../components/setting';
 
 //style
 import './style.scss';

@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import AddComment from '../../features/comments/AddComment';
-import ShowComments from '../../features/comments/ShowComments';
-import Comment from '../../features/comments/Comment';
-import PostSetting from '../PostSetting';
+import AddComment from '../../comments/AddComment';
+import ShowComments from '../../comments/ShowComments';
+import Comment from '../../comments/Comment';
+import PostSetting from '../../../components/setting';
 import PostHeader from './PostHeader';
-import EditPost from './EditPost';
+import EditPost from '../EditPost';
 
 //icons
 
-import { ReactComponent as LikeIcon } from '../../assets/icon/like.svg';
-import { ReactComponent as CommentIcon } from '../../assets/icon/comment.svg';
-import { ReactComponent as ShareIcon } from '../../assets/icon/share.svg';
+import { ReactComponent as LikeIcon } from '../../../assets/icon/like.svg';
+import { ReactComponent as CommentIcon } from '../../../assets/icon/comment.svg';
+import { ReactComponent as ShareIcon } from '../../../assets/icon/share.svg';
 
 //style
 import './style.scss';

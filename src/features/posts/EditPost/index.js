@@ -1,12 +1,11 @@
-import React from 'react';
-import Textarea from '../forms/Textarea';
-import Button from '../forms/Button';
-import { editPost } from '../../redux/postsSlice';
+import React, { useState } from 'react';
+import Textarea from '../../../components/forms/Textarea';
+import Button from '../../../components/forms/Button';
+import { editPost } from '../../../redux/postsSlice';
 import { useDispatch } from 'react-redux';
 
 //style
 import './style.scss';
-import { useState } from 'react';
 
 const EditPost = ({ content, id, setIsEditing }) => {
   const dispatch = useDispatch();

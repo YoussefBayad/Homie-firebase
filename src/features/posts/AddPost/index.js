@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Button from '../forms/Button';
-import { ReactComponent as ImgIcon } from '../../assets/icon/media.svg';
-import { addPost } from '../../redux/postsSlice';
-import Textarea from '../forms/Textarea';
+import Button from '../../../components/forms/Button';
+import { ReactComponent as ImgIcon } from '../../../assets/icon/media.svg';
+import { addPost } from '../../../redux/postsSlice';
+import Textarea from '../../../components/forms/Textarea';
 
 //style
 import './style.scss';

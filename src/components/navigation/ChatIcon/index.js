@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as MingleIcon } from '../../assets/icon/direct.svg';
+import { ReactComponent as MingleIcon } from '../../../assets/icon/direct.svg';
 
 //style
 import './style.scss';

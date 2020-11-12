@@ -3,8 +3,6 @@ import { useSelector } from 'react-redux';
 import useCommentsListener from '../../../hooks/useCommentsListener';
 import Comment from '../Comment';
 const Comments = ({ postId }) => {
-  console.log('post id', postId);
-
   useCommentsListener(postId);
   const { data: comments, loading, error } = useSelector(
     (state) => state.comments
