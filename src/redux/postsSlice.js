@@ -79,8 +79,7 @@ const postsSlice = createSlice({
       return action.payload;
     },
     [fetchPosts.rejected]: (state, action) => {
-      const error = action.payload;
-      state.error = error;
+      return action.payload;
     },
     // [addPost.pending]: (state, action) => {},
     // [addPost.fulfilled]: (state, action) => {},

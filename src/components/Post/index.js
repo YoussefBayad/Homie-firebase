@@ -23,7 +23,6 @@ const Post = ({
 }) => {
   const [isEditing, setIsEditing] = useState(false);
 
-  console.log('userId', userId);
   return (
     <div className='post'>
       <div className='post-data'>
@@ -45,11 +44,9 @@ const Post = ({
             <CommentIcon />
             <ShareIcon />
           </div>
-          {/* <ShowComments postId={id} /> */}
-          <Comment photoURL={photoURL} displayName={displayName} />
-          <Comment photoURL={photoURL} displayName={displayName} />
-          <Comment photoURL={photoURL} displayName={displayName} />
-          <AddComment photoURL={photoURL} displayName={displayName} />
+          <ShowComments postId={id} />
+
+          <AddComment postId={id} />
         </>
       ) : (
         <EditPost

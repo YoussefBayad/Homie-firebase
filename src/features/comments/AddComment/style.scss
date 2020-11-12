@@ -9,10 +9,19 @@
   }
   @include flex(row, center, center);
 
-  & input {
+  .add-comment-input {
+    background-color: white;
     border-radius: 3rem;
     width: 100%;
     margin: 0;
-    outline: none;
+    padding: 1rem;
+    @include flex('', center, space-between);
+    & input {
+      height: 100%;
+      border: none;
+      outline: none;
+      padding: 0;
+      margin: 0;
+    }
   }
 }

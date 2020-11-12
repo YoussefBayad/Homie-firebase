@@ -8,11 +8,10 @@ import Post from '../Post';
 import './style.scss';
 const Posts = () => {
   const { data: posts, loading, error } = useSelector((state) => state.posts);
-
   return (
     <motion.div layout className='posts'>
       {loading && <h1>Loading...</h1>}
-      {error && <h1>{error}</h1>}
+      {error && <h1>{error.message}</h1>}
       {posts && posts.map((post) => <Post key={post.id} {...post} />)}
     </motion.div>
   );

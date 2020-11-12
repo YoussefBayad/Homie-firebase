@@ -11,7 +11,6 @@ const initialState = {
 export const fetchComments = createAsyncThunk(
   'comments/fetchComments'
   // async ({ postId }) => {
-  //   console.log('fetchng comments');
   //   const query = db
   //     .collection('comments')
   //     .where('postId', '==', postId)

@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import Comments from '../Comments';
-import fetchComments from '../../../redux/commentsSlice';
+
+//style
+import './style.scss';
 
 const ShowComments = ({ postId }) => {
   const [showComments, setShowComments] = useState(false);
-  const dispatch = useDispatch();
   return (
-    <div>
+    <div className='show-comments'>
       {showComments ? (
-        <Comments />
+        <Comments postId={postId} />
       ) : (
         <p
           onClick={() => {
-            dispatch(fetchComments(postId));
             setShowComments(true);
           }}>
           show comment

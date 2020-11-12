@@ -16,7 +16,7 @@ const usePostsListener = () => {
   if (error)
     dispatch({
       type: 'posts/fetchPosts/rejected',
-      payload: error,
+      payload: { data, loading, error },
     });
   if (data) {
     dispatch({
