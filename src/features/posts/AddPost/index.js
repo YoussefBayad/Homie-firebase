@@ -13,7 +13,7 @@ const AddPost = () => {
   const loading = useSelector((state) => state.posts.loading);
   const user = useSelector((state) => state.auth.user);
   const [content, setContent] = useState('');
-  const canSave = content && !loading;
+  const canSave = content.trim() && !loading;
   const photoURL = null;
 
   const handleAddPost = () => {

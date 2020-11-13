@@ -10,9 +10,10 @@ const AddComment = ({ postId, setShowComments }) => {
   const { user } = useSelector((state) => state.auth);
   const { displayName, photoURL, id } = user;
   const [content, setContent] = useState('');
+  const canSave = content.trim() && true;
   const handleAddComment = (e) => {
     e.preventDefault();
-    if (content === '') return;
+    if (content.trim() === '') return;
     const comment = {
       createdAt: new Date().toISOString(),
       user: {
@@ -41,7 +42,7 @@ const AddComment = ({ postId, setShowComments }) => {
             placeholder='Write a comment...'
           />
           <DirectIcon
-            className={content && 'submit'}
+            className={canSave && 'submit'}
             type='submit'
             onClick={handleAddComment}
           />

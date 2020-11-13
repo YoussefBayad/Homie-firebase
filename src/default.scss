@@ -138,9 +138,13 @@ ul {
 img {
   width: 100%;
 }
+*:hover {
+  @include transition;
+}
 svg {
   @include box(3rem);
   cursor: pointer;
+
   &:hover {
     fill: $accent;
   }

@@ -16,5 +16,8 @@
     transform: rotate(180deg);
     fill: darken($blue, 20%);
     @include transition;
+    &:hover {
+      fill: darken($blue, 20%);
+    }
   }
 }

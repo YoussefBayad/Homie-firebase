@@ -29,5 +29,15 @@
     border-bottom: 1px solid $darkgrey;
     padding: 0.5rem;
     @include flex(row, center, space-between);
+
+    & svg:first-child:hover {
+      fill: $error;
+    }
+    & svg:nth-child(2):hover {
+      fill: darken($success, 10%);
+    }
+    & svg:last-child:hover {
+      fill: $blue;
+    }
   }
 }
