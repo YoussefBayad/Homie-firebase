@@ -5,7 +5,7 @@
   max-width: 60rem;
   margin: 2rem auto;
   padding: 1.5rem;
-  background-color: $lightgrey;
+  background-color: darken($sidebar, 2%);
   border-radius: 1.5rem;
   @include flex(column, center, center);
   .post-data {

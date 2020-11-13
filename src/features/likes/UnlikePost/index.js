@@ -4,8 +4,6 @@ import { ReactComponent as HeartIcon } from '../../../assets/icon/heart.svg';
 import { unlike } from '../../../redux/likesSlice';
 
 const UnlikePost = ({ id }) => {
-  console.log('ulike', id);
-
   const dispatch = useDispatch();
 
   const handleUnlikePost = () => {
