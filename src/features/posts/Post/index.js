@@ -11,6 +11,7 @@ import EditPost from '../EditPost';
 import { ReactComponent as LikeIcon } from '../../../assets/icon/like.svg';
 import { ReactComponent as CommentIcon } from '../../../assets/icon/comment.svg';
 import { ReactComponent as ShareIcon } from '../../../assets/icon/share.svg';
+import { deletePost } from '../../..//redux/postsSlice';
 
 //style
 import './style.scss';
@@ -32,7 +33,12 @@ const Post = ({
           displayName={displayName}
           createdAt={createdAt}
         />
-        <PostSetting id={id} userId={userId} setIsEditing={setIsEditing} />
+        <PostSetting
+          id={id}
+          userId={userId}
+          setIsEditing={setIsEditing}
+          deleteThunk={deletePost}
+        />
       </div>
       {isEditing === false ? (
         <>

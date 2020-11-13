@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import useOutsideClickRef from '@rooks/use-outside-click-ref';
 import { useDispatch, useSelector } from 'react-redux';
-import { deletePost } from '../../redux/postsSlice';
 //icon
 import { ReactComponent as EditIcon } from '../../assets/icon/edit.svg';
 //style
 import './style.scss';
 
-const PostSetting = ({ id, userId, setIsEditing }) => {
+const PostSetting = ({ id, userId, setIsEditing, deleteThunk }) => {
   const { user: currentUser } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
@@ -15,7 +14,7 @@ const PostSetting = ({ id, userId, setIsEditing }) => {
   const [ref] = useOutsideClickRef(() => setIsOpen(false));
   const showSetting = currentUser.id === userId;
   const handleDeletePost = () => {
-    dispatch(deletePost(id));
+    dispatch(deleteThunk(id));
   };
 
   return (

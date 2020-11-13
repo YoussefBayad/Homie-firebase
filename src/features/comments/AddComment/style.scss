@@ -7,8 +7,10 @@
     @include box(4rem);
     margin-right: 0.5rem;
   }
-  @include flex(row, center, center);
-
+  @include flex(row, center, start);
+  & form {
+    width: 100%;
+  }
   .add-comment-input {
     background-color: white;
     border-radius: 3rem;

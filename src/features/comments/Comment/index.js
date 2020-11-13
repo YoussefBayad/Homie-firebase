@@ -1,12 +1,13 @@
 import React from 'react';
 import CommentHeader from '../../../components/UsernameAndDate';
 import CommentSetting from '../../../components/setting';
+import { deleteComment } from '../../../redux/commentsSlice';
 
 //style
 import './style.scss';
 
 const Comment = ({
-  user: { userId, photoURL, displayName },
+  user: { id: userId, photoURL, displayName },
   id,
   createdAt,
   content,
@@ -21,7 +22,7 @@ const Comment = ({
           createdAt={createdAt}
           className='post-header comment-info'
         />
-        <CommentSetting userId={userId} postId={id} />
+        <CommentSetting userId={userId} id={id} deleteThunk={deleteComment} />
       </div>
       <div className='comment-content'>
         <p>{content}</p>
