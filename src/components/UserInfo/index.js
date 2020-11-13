@@ -10,31 +10,27 @@ const UserInfo = () => {
 
   return (
     <div className='user-info'>
-      {!loading ? (
-        <>
-          <div className='circle'>
-            <img src={user.photoURL} alt='' />
+      <>
+        <div className='circle'>
+          <img src={user.photoURL} alt='' />
+        </div>
+        <h3 className='username'>{user.displayName}</h3>
+        <h4 className='bio'>{user.bio}</h4>
+        <div className='profile-numbers'>
+          <div className='profile-number'>
+            <p>{user.postsCount}</p>
+            <p>posts</p>
           </div>
-          <h3 className='username'>{user.displayName}</h3>
-          <h4 className='bio'>{user.bio}</h4>
-          <div className='profile-numbers'>
-            <div className='profile-number'>
-              <p>{user.postsCount}</p>
-              <p>posts</p>
-            </div>
-            <div className='profile-number'>
-              <p>{user.followersCount}</p>
-              <p>followers</p>
-            </div>
-            <div className='profile-number'>
-              <p>{user.followingCount}</p>
-              <p>following</p>
-            </div>
+          <div className='profile-number'>
+            <p>{user.followersCount}</p>
+            <p>followers</p>
           </div>
-        </>
-      ) : (
-        <Spinner />
-      )}
+          <div className='profile-number'>
+            <p>{user.followingCount}</p>
+            <p>following</p>
+          </div>
+        </div>
+      </>
     </div>
   );
 };

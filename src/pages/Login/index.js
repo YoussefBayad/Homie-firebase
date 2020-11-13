@@ -14,15 +14,8 @@ import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Login = () => {
-  const user = useSelector((state) => state.auth.user);
-
   const [error, setError] = useState('');
-  const location = useLocation();
-  const history = useHistory();
-  let { from } = location.state || { from: { pathname: '/' } };
-  if (user) {
-    history.replace(from);
-  }
+
   const dispatch = useDispatch();
   const initialValues = {
     email: '',

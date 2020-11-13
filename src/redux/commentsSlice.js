@@ -69,6 +69,8 @@ const commentsSlice = createSlice({
       return action.payload;
     },
     [fetchComments.fulfilled]: (state, action) => {
+      action.payload.data.sort((a, b) => (a.createdAt > b.createdAt ? 1 : -1));
+
       return action.payload;
     },
     [fetchComments.rejected]: (state, action) => {

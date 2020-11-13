@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 // HOC and hooks
 import WithAuth from './hoc/withAuth';
+import WithNoAuth from './hoc/withNoAuth';
 import WithAdminAuth from './hoc/withAdminAuth';
 import useAuthListener from './hooks/useAuthListener';
 import usePostsListener from './hooks/usePostsListener';
@@ -31,16 +32,16 @@ function App() {
             <Home />
           </MainLayout>
         </WithAuth>
-        <Route path='/login'>
+        <WithNoAuth path='/login'>
           <Container>
             <Login />
           </Container>
-        </Route>
-        <Route path='/signup'>
+        </WithNoAuth>
+        <WithNoAuth path='/signup'>
           <Container>
             <Signup />
           </Container>
-        </Route>
+        </WithNoAuth>
         <WithAuth path='/chat'>
           <MainLayout>
             <h1>Chat</h1>

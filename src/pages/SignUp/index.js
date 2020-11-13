@@ -15,14 +15,6 @@ import Label from '../../components/forms/Label';
 const Signup = () => {
   const [error, setError] = useState('');
 
-  const user = useSelector((state) => state.auth.user);
-  const location = useLocation();
-  const history = useHistory();
-  let { from } = location.state || { from: { pathname: '/' } };
-  if (user) {
-    history.replace(from);
-  }
-
   // formik setup
   const initialValues = {
     displayName: '',
