@@ -5,7 +5,7 @@ import { addComment } from '../../../redux/commentsSlice';
 //style
 import './style.scss';
 
-const AddComment = ({ postId }) => {
+const AddComment = ({ postId, setShowComments }) => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const { displayName, photoURL, id } = user;
@@ -24,6 +24,7 @@ const AddComment = ({ postId }) => {
       postId,
     };
     dispatch(addComment(comment));
+    setShowComments(true);
     setContent('');
   };
   return (

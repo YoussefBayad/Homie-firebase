@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 //style
 import './style.scss';
 
-const Edit = ({ content, id, editThunk, setIsEditing }) => {
+const Edit = ({ content, id, editThunk, setIsEditing, height }) => {
   const dispatch = useDispatch();
   const [newContent, setNewContent] = useState(content);
   const handleEditPost = () => {
@@ -20,8 +20,13 @@ const Edit = ({ content, id, editThunk, setIsEditing }) => {
   };
 
   return (
-    <div className='edit-post'>
-      <Textarea autoFocus content={newContent} setContent={setNewContent} />
+    <div className='edit'>
+      <Textarea
+        style={{ height: height }}
+        autoFocus
+        content={newContent}
+        setContent={setNewContent}
+      />
       <Button disabled={!newContent} onClick={handleEditPost}>
         Update
       </Button>

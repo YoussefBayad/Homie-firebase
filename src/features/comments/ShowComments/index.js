@@ -5,8 +5,7 @@ import useCommentsListener from '../../../hooks/useCommentsListener';
 //style
 import './style.scss';
 
-const ShowComments = ({ postId }) => {
-  const [showComments, setShowComments] = useState(false);
+const ShowComments = ({ postId, showComments, setShowComments }) => {
   useCommentsListener(postId);
 
   return (

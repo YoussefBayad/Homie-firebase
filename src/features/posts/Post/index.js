@@ -4,17 +4,17 @@ import ShowComments from '../../comments/ShowComments';
 import PostSetting from '../../../components/setting';
 import PostHeader from '../../../components/UsernameAndDate';
 import EditPost from '../../../components/Edit';
-import editPost from '../../../redux/postsSlice';
 
 //icons
 
 import { ReactComponent as LikeIcon } from '../../../assets/icon/like.svg';
 import { ReactComponent as CommentIcon } from '../../../assets/icon/comment.svg';
 import { ReactComponent as ShareIcon } from '../../../assets/icon/share.svg';
-import { deletePost } from '../../..//redux/postsSlice';
+import { deletePost, editPost } from '../../../redux/postsSlice';
 
 //style
 import './style.scss';
+import { set } from 'date-fns';
 
 const Post = ({
   id,
@@ -23,6 +23,7 @@ const Post = ({
   content,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
+  const [showComments, setShowComments] = useState(false);
 
   return (
     <div className='post'>
@@ -41,18 +42,9 @@ const Post = ({
         />
       </div>
       {!isEditing ? (
-        <>
-          <div className='post-body'>
-            <p> {content}</p>
-          </div>
-          <div className='post-interactions'>
-            <LikeIcon />
-            <CommentIcon />
-            <ShareIcon />
-          </div>
-          <ShowComments postId={id} />
-          <AddComment postId={id} />
-        </>
+        <div className='post-body'>
+          <p> {content}</p>
+        </div>
       ) : (
         <EditPost
           userId={userId}
@@ -62,6 +54,17 @@ const Post = ({
           setIsEditing={setIsEditing}
         />
       )}
+      <div className='post-interactions'>
+        <LikeIcon />
+        <CommentIcon />
+        <ShareIcon />
+      </div>
+      <ShowComments
+        showComments={showComments}
+        setShowComments={setShowComments}
+        postId={id}
+      />
+      <AddComment setShowComments={setShowComments} postId={id} />
     </div>
   );
 };

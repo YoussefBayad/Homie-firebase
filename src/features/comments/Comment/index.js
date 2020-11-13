@@ -43,6 +43,7 @@ const Comment = ({
           id={id}
           editThunk={editComment}
           setIsEditing={setIsEditing}
+          height='5rem'
         />
       )}
     </div>
