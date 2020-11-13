@@ -4,6 +4,7 @@ import NotificationIcon from '../navigation/NotificationIcon';
 import ChatIcon from '../navigation/ChatIcon';
 import AddPost from '../../features/posts/AddPost';
 import Posts from '../../features/posts/Posts';
+import BackToTop from '../BackToTop';
 //style
 import './style.scss';
 
@@ -19,10 +20,7 @@ const Feed = () => {
       </nav>
       <AddPost id='top' />
       <Posts />
-
-      <a href='#top' className='back-to-top'>
-        Back to top
-      </a>
+      <BackToTop />
     </div>
   );
 };

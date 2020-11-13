@@ -1,0 +1,20 @@
+@import '../../default.scss';
+
+.back-to-top {
+  display: block;
+  @include box(5rem);
+  margin: 3rem auto;
+  border-radius: 50%;
+  @include background-transition($blue, lighten($blue, 20%));
+  @include flex('', center, center);
+  cursor: pointer;
+  padding: 1rem;
+  &:hover svg {
+    transform: translateY(-0.5rem) rotate(180deg);
+  }
+  & svg {
+    transform: rotate(180deg);
+    fill: darken($blue, 20%);
+    @include transition;
+  }
+}
