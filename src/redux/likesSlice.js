@@ -2,12 +2,24 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { db } from '../Firebase/utils';
 
 const initialState = {
-  data: undefined,
+  data: [],
   loading: false,
   error: undefined,
 };
 
-export const fetchLikes = createAsyncThunk('likes/fetchLike');
+export const fetchLikes = createAsyncThunk(
+  'likes/fetchLikes'
+  // async ({ postId }) => {
+  //   const query = db
+  //     .collection('comments')
+  //     .where('postId', '==', postId)
+  //     .orderBy('createdAt', 'asc');
+  //   const [data, loading, error] = useCollectionDataOnce(query, {
+  //     idField: 'id',
+  //   });
+  //   if (data) return data;
+  // }
+);
 
 export const like = createAsyncThunk('likes/likePost', async (like) => {
   try {
@@ -34,12 +46,15 @@ const likesSlice = createSlice({
   extraReducers: {
     [fetchLikes.pending]: (state, action) => {
       return action.payload;
+      console.log('pendig');
     },
     [fetchLikes.fulfilled]: (state, action) => {
       return action.payload;
+      console.log('fufu');
     },
     [fetchLikes.rejected]: (state, action) => {
       return action.payload;
+      console.log('reje');
     },
   },
 });

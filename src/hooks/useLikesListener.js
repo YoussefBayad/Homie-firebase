@@ -1,13 +1,14 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { db } from '../Firebase/utils';
 
-const useLikesListener = (userId) => {
+const useLikesListener = () => {
+  console.log('set listener');
+  const userId = useSelector((state) => state.auth.user.id);
   const dispatch = useDispatch();
 
   const query = db.collection('likes').where('userId', '==', userId);
   const [data, loading, error] = useCollectionData(query, { idField: 'id' });
-
   if (loading)
     dispatch({
       type: 'likes/fetchLikes/pending',
