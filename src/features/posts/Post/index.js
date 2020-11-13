@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import AddComment from '../../comments/AddComment';
 import ShowComments from '../../comments/ShowComments';
-import Comment from '../../comments/Comment';
 import PostSetting from '../../../components/setting';
 import PostHeader from '../../../components/UsernameAndDate';
-import EditPost from '../EditPost';
+import EditPost from '../../../components/Edit';
+import editPost from '../../../redux/postsSlice';
 
 //icons
 
@@ -40,7 +40,7 @@ const Post = ({
           deleteThunk={deletePost}
         />
       </div>
-      {isEditing === false ? (
+      {!isEditing ? (
         <>
           <div className='post-body'>
             <p> {content}</p>
@@ -58,6 +58,7 @@ const Post = ({
           userId={userId}
           content={content}
           id={id}
+          editThunk={editPost}
           setIsEditing={setIsEditing}
         />
       )}

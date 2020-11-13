@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
-import Textarea from '../../../components/forms/Textarea';
-import Button from '../../../components/forms/Button';
-import { editPost } from '../../../redux/postsSlice';
+import Textarea from '../forms/Textarea';
+import Button from '../forms/Button';
 import { useDispatch } from 'react-redux';
 
 //style
 import './style.scss';
 
-const EditPost = ({ content, id, setIsEditing }) => {
+const Edit = ({ content, id, editThunk, setIsEditing }) => {
   const dispatch = useDispatch();
   const [newContent, setNewContent] = useState(content);
   const handleEditPost = () => {
     dispatch(
-      editPost({
+      editThunk({
         id,
         content: newContent,
       })
@@ -30,4 +29,4 @@ const EditPost = ({ content, id, setIsEditing }) => {
   );
 };
 
-export default EditPost;
+export default Edit;
