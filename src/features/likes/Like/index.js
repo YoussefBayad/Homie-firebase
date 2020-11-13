@@ -9,7 +9,7 @@ const Like = ({ postId, userId }) => {
   return (
     <div className='like'>
       {isUserLikedPost && isUserLikedPost.length > 0 ? (
-        <UnlikePost postId={isUserLikedPost.id} />
+        <UnlikePost id={isUserLikedPost[0].id} />
       ) : (
         <LikePost postId={postId} userId={userId} />
       )}

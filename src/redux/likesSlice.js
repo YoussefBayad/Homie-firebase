@@ -31,6 +31,7 @@ export const like = createAsyncThunk('likes/likePost', async (like) => {
 });
 
 export const unlike = createAsyncThunk('likes/unlike', async (id) => {
+  console.log('dispatched', id);
   try {
     var response = await db.collection('likes').doc(id).delete();
   } catch (error) {
