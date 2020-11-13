@@ -13,13 +13,15 @@ const useAuth = () => {
       if (
         history.location.pathname === '/login' ||
         history.location.pathname === '/signup'
-      )
+      ) {
         history.push('/');
-      else history.push(history.location.pathname);
+      } else {
+        history.push(history.location.pathname);
+      }
     }
   }, [currentUser, history]);
 
-  return true;
+  return currentUser;
 };
 
 export default useAuth;

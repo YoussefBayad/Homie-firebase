@@ -1,9 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import useCommentsListener from '../../../hooks/useCommentsListener';
 import Comment from '../Comment';
-const Comments = ({ postId }) => {
-  useCommentsListener(postId);
+const Comments = () => {
   const { data: comments, loading, error } = useSelector(
     (state) => state.comments
   );

@@ -23,5 +23,13 @@
       padding: 0;
       margin: 0;
     }
+    & svg {
+      transform: rotate(40deg);
+      fill: $blue;
+      fill-opacity: 0.2;
+    }
+    .submit {
+      fill-opacity: 1;
+    }
   }
 }

@@ -14,7 +14,7 @@ const EditPost = ({ content, id, setIsEditing }) => {
     dispatch(
       editPost({
         id,
-        newContent,
+        content: newContent,
       })
     );
     setIsEditing(false);
@@ -23,7 +23,9 @@ const EditPost = ({ content, id, setIsEditing }) => {
   return (
     <div className='edit-post'>
       <Textarea autoFocus content={newContent} setContent={setNewContent} />
-      <Button onClick={handleEditPost}>Update</Button>
+      <Button disabled={!newContent} onClick={handleEditPost}>
+        Update
+      </Button>
     </div>
   );
 };

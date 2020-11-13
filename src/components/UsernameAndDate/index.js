@@ -1,14 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { parseISO, formatDistanceToNow } from 'date-fns';
+//style
+import './style.scss';
 
-const PostHeader = ({
-  id,
-  photoURL,
-  displayName,
-  createdAt,
-  ...otherProps
-}) => {
+const index = ({ id, photoURL, displayName, createdAt, ...otherProps }) => {
   const date = parseISO(createdAt);
   const timeAgo = formatDistanceToNow(date);
   return (
@@ -28,4 +24,4 @@ const PostHeader = ({
   );
 };
 
-export default PostHeader;
+export default index;

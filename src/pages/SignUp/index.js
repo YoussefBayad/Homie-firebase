@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import {
   auth,
@@ -13,16 +13,15 @@ import Button from '../../components/forms/Button';
 import Label from '../../components/forms/Label';
 
 const Signup = () => {
-  const history = useHistory();
   const [error, setError] = useState('');
 
-  //   const currentUser = useSelector((state) => state.currentUser);
-
-  //   useEffect(() => {
-  //     if (currentUser) {
-  //       history.push('/');
-  //     }
-  //   }, [currentUser, history]);
+  const user = useSelector((state) => state.auth.user);
+  const location = useLocation();
+  const history = useHistory();
+  let { from } = location.state || { from: { pathname: '/' } };
+  if (user) {
+    history.replace(from);
+  }
 
   // formik setup
   const initialValues = {

@@ -26,60 +26,46 @@ function App() {
   return (
     <>
       <Switch>
-        <Route exact path='/'>
-          <WithAuth>
-            <MainLayout>
-              <Home />
-            </MainLayout>
-          </WithAuth>
-        </Route>
+        <WithAuth exact path='/'>
+          <MainLayout>
+            <Home />
+          </MainLayout>
+        </WithAuth>
         <Route path='/login'>
-          <WithAuth>
-            <Container>
-              <Login />
-            </Container>
-          </WithAuth>
+          <Container>
+            <Login />
+          </Container>
         </Route>
         <Route path='/signup'>
-          <WithAuth>
-            <Container>
-              <Signup />
-            </Container>
-          </WithAuth>
+          <Container>
+            <Signup />
+          </Container>
         </Route>
-        <Route path='/chat'>
-          <WithAuth>
-            <MainLayout>
-              <h1>Chat</h1>
-            </MainLayout>
-          </WithAuth>
-        </Route>
-        <Route path='/notification'>
-          <WithAuth>
-            <MainLayout>
-              <h1>notification</h1>
-            </MainLayout>
-          </WithAuth>
-        </Route>
-        <Route path='/search'>
-          <WithAuth>
-            <MainLayout>
-              <h1>search</h1>
-            </MainLayout>
-          </WithAuth>
-        </Route>
-        <Route path='/admin'>
+        <WithAuth path='/chat'>
+          <MainLayout>
+            <h1>Chat</h1>
+          </MainLayout>
+        </WithAuth>
+        <WithAuth path='/notification'>
+          <MainLayout>
+            <h1>notification</h1>
+          </MainLayout>
+        </WithAuth>
+        <WithAuth path='/search'>
+          <MainLayout>
+            <h1>search</h1>
+          </MainLayout>
+        </WithAuth>
+        <WithAuth path='/admin'>
           <WithAdminAuth>
             <h1>Admin</h1>
           </WithAdminAuth>
-        </Route>
-        <Route path='/profile/:id'>
-          <WithAuth>
-            <MainLayout>
-              <h1>Profile</h1>
-            </MainLayout>
-          </WithAuth>
-        </Route>
+        </WithAuth>
+        <WithAuth path='/profile/:id'>
+          <MainLayout>
+            <h1>Profile</h1>
+          </MainLayout>
+        </WithAuth>
         <Route path='*'>
           <h1>404</h1>
         </Route>

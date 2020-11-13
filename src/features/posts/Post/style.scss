@@ -13,22 +13,6 @@
     @include flex(row, center, space-between);
   }
 
-  .post-header {
-    @include flex(row, center, space-between);
-    .post-date {
-      font-size: $small;
-      color: $darkgrey;
-    }
-    .post-username {
-      font-weight: bold;
-      color: $black;
-      font-size: 1.6rem;
-    }
-    & img {
-      @include box(5rem);
-      margin-right: 1.5rem;
-    }
-  }
   .post-body {
     width: 100%;
     margin-top: 0.5rem;

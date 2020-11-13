@@ -3,7 +3,7 @@ import AddComment from '../../comments/AddComment';
 import ShowComments from '../../comments/ShowComments';
 import Comment from '../../comments/Comment';
 import PostSetting from '../../../components/setting';
-import PostHeader from './PostHeader';
+import PostHeader from '../../../components/UsernameAndDate';
 import EditPost from '../EditPost';
 
 //icons
@@ -45,7 +45,6 @@ const Post = ({
             <ShareIcon />
           </div>
           <ShowComments postId={id} />
-
           <AddComment postId={id} />
         </>
       ) : (

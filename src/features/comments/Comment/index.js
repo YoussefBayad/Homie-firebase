@@ -1,25 +1,30 @@
 import React from 'react';
-import PostHeader from '../../posts/Post/PostHeader';
-import PostSetting from '../../../components/setting';
+import CommentHeader from '../../../components/UsernameAndDate';
+import CommentSetting from '../../../components/setting';
 
 //style
 import './style.scss';
 
-const Comment = ({ userId, createdAt, photoURL, displayName }) => {
+const Comment = ({
+  user: { userId, photoURL, displayName },
+  id,
+  createdAt,
+  content,
+}) => {
   return (
     <div className='comment'>
       <div className='comment-header'>
-        <PostHeader
+        <CommentHeader
           id={userId}
           photoURL={photoURL}
           displayName={displayName}
-          createdAt={new Date().toISOString()}
+          createdAt={createdAt}
           className='post-header comment-info'
         />
-        <PostSetting userId={1} postId={1} />
+        <CommentSetting userId={userId} postId={id} />
       </div>
       <div className='comment-content'>
-        <p>i agree you will make it</p>
+        <p>{content}</p>
       </div>
     </div>
   );

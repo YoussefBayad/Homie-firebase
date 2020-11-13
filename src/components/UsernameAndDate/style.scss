@@ -1,0 +1,17 @@
+@import '../../default.scss';
+.post-header {
+  @include flex(row, center, space-between);
+  .post-date {
+    font-size: $small;
+    color: $darkgrey;
+  }
+  .post-username {
+    font-weight: bold;
+    color: $black;
+    font-size: 1.6rem;
+  }
+  .circle img {
+    @include box(5rem);
+    margin-right: 1.5rem;
+  }
+}

@@ -6,10 +6,11 @@
   .post-setting-modal {
     margin-top: 2.5rem;
     position: absolute;
-    background-color: $grey;
-    color: $white;
+    background-color: darken($lightgrey, 9%);
+    color: $black;
     font-size: $small;
     padding: 0.5rem;
+    padding-right: 0rem;
     border-radius: 1.5rem;
     & p {
       cursor: pointer;

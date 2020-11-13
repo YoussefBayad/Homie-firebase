@@ -12,8 +12,7 @@ import { ReactComponent as LogoutIcon } from '../../../assets/icon/logout.svg';
 //style
 import './style.scss';
 
-const DesktopNav = () => {
-  const userId = useSelector((state) => state.auth.user.id);
+const DesktopNav = ({ userId }) => {
   return (
     <nav className='desktop-nav'>
       <NavLink exact to='/' className='link' activeClassName='main-nav-active'>

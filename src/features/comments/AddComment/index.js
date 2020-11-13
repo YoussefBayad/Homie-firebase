@@ -25,7 +25,6 @@ const AddComment = ({ postId }) => {
     };
     dispatch(addComment(comment));
     setContent('');
-    console.log('done');
   };
   return (
     <div className='add-comment'>
@@ -40,7 +39,11 @@ const AddComment = ({ postId }) => {
             type='text'
             placeholder='Write a comment...'
           />
-          <DirectIcon type='submit' onClick={handleAddComment} />
+          <DirectIcon
+            className={content && 'submit'}
+            type='submit'
+            onClick={handleAddComment}
+          />
         </div>
       </form>
     </div>

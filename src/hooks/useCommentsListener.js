@@ -3,11 +3,8 @@ import { useDispatch } from 'react-redux';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { db } from '../Firebase/utils';
 
-const useCommentsListener = ({ postId }) => {
-  const query = db
-    .collection('comments')
-    .where('postId', '==', postId)
-    .orderBy('createdAt', 'asc');
+const useCommentsListener = (postId) => {
+  const query = db.collection('comments').where('postId', '==', postId);
 
   const dispatch = useDispatch();
   const [data, loading, error] = useCollectionData(query, { idField: 'id' });
