@@ -19,10 +19,13 @@ import Container from './layouts/ContainerLayout';
 
 //style
 import './default.scss';
+import { useSelector } from 'react-redux';
+import useLikesListener from './hooks/useLikesListener';
 
 function App() {
   // useAuthListener();
   usePostsListener();
+  useLikesListener();
 
   return (
     <>

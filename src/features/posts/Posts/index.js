@@ -8,6 +8,7 @@ import Post from '../Post';
 import './style.scss';
 const Posts = () => {
   const { data: posts, loading, error } = useSelector((state) => state.posts);
+
   return (
     <motion.div layout className='posts'>
       {loading && <Spinner style={{ height: '15rem', width: '15rem' }} />}

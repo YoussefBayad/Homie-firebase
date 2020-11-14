@@ -4,7 +4,7 @@ import ShowComments from '../../comments/ShowComments';
 import PostSetting from '../../../components/setting';
 import PostHeader from '../../../components/UsernameAndDate';
 import EditPost from '../../../components/Edit';
-
+import Like from '../../likes/Like';
 //icons
 
 import { ReactComponent as LikeIcon } from '../../../assets/icon/like.svg';
@@ -14,7 +14,6 @@ import { deletePost, editPost } from '../../../redux/postsSlice';
 
 //style
 import './style.scss';
-import { set } from 'date-fns';
 
 const Post = ({
   id,
@@ -55,7 +54,7 @@ const Post = ({
         />
       )}
       <div className='post-interactions'>
-        <LikeIcon />
+        <Like postId={id} userId={userId} />
         <CommentIcon />
         <ShareIcon />
       </div>

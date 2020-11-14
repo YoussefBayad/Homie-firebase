@@ -1,22 +1,18 @@
 import React, { useState } from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { authChange } from '../../redux/userSlice';
 import ErrorText from '../../components/ErrorText';
 import { signInWithGoogle, auth } from '../../Firebase/utils';
 import Button from '../../components/forms/Button';
 import Label from '../../components/forms/Label';
-import avatar from '../../assets/icon/me.jpg';
 
 // style
 import './style.scss';
-import { useDispatch, useSelector } from 'react-redux';
 
 const Login = () => {
   const [error, setError] = useState('');
 
-  const dispatch = useDispatch();
   const initialValues = {
     email: '',
     password: '',
@@ -30,27 +26,12 @@ const Login = () => {
   });
 
   const onSubmit = async (values, onSubmitProps) => {
-    // try {
-    //   await auth.signInWithEmailAndPassword(values.email, values.password);
-    //   onSubmitProps.resetForm();
-    // } catch (err) {
-    //   setError(err.message);
-    // }
-    dispatch(
-      authChange({
-        user: {
-          displayName: 'joseph bayad',
-          photoURL: avatar,
-          bio: 'I will make it',
-          id: 1,
-          postsCount: 27,
-          followersCount: '2.5k',
-          followingCount: 86,
-        },
-        loading: false,
-        error: null,
-      })
-    );
+    try {
+      await auth.signInWithEmailAndPassword(values.email, values.password);
+      onSubmitProps.resetForm();
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
