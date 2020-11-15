@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import Comments from '../Comments';
+import React from 'react';
 import useCommentsListener from '../../../hooks/useCommentsListener';
 
 //style
@@ -10,9 +9,7 @@ const ShowComments = ({ postId, showComments, setShowComments }) => {
 
   return (
     <div className='show-comments'>
-      {showComments ? (
-        <Comments />
-      ) : (
+      {!showComments && (
         <p
           className='show-comments-p'
           onClick={() => {
@@ -25,4 +22,4 @@ const ShowComments = ({ postId, showComments, setShowComments }) => {
   );
 };
 
-export default ShowComments;
+export default React.memo(ShowComments);

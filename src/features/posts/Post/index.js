@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
-import AddComment from '../../comments/AddComment';
-import ShowComments from '../../comments/ShowComments';
+import Comments from '../../comments/Comments';
 import PostSetting from '../../../components/setting';
-import PostHeader from '../../../components/UsernameAndDate';
+import PostHeader from '../../../components/UsernameAndDate/';
 import EditPost from '../../../components/Edit';
 import Like from '../../likes/Like';
 //icons
 
-import { ReactComponent as LikeIcon } from '../../../assets/icon/like.svg';
 import { ReactComponent as CommentIcon } from '../../../assets/icon/comment.svg';
 import { ReactComponent as ShareIcon } from '../../../assets/icon/share.svg';
 import { deletePost, editPost } from '../../../redux/postsSlice';
 
 //style
 import './style.scss';
+import { useMemo } from 'react';
 
 const Post = ({
   id,
@@ -22,7 +21,6 @@ const Post = ({
   content,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [showComments, setShowComments] = useState(false);
 
   return (
     <div className='post'>
@@ -53,19 +51,19 @@ const Post = ({
           setIsEditing={setIsEditing}
         />
       )}
-      <div className='post-interactions'>
-        <Like postId={id} userId={userId} />
-        <CommentIcon />
-        <ShareIcon />
-      </div>
-      <ShowComments
-        showComments={showComments}
-        setShowComments={setShowComments}
-        postId={id}
-      />
-      <AddComment setShowComments={setShowComments} postId={id} />
+      {useMemo(
+        () => (
+          <div className='post-interactions'>
+            <Like postId={id} userId={userId} />
+            <CommentIcon />
+            <ShareIcon />
+          </div>
+        ),
+        [id, userId]
+      )}
+      <Comments postId={id} />
     </div>
   );
 };
 
-export default Post;
+export default React.memo(Post);

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CommentHeader from '../../../components/UsernameAndDate';
+import CommentHeader from '../../../components/UsernameAndDate/';
 import CommentSetting from '../../../components/setting';
 import { deleteComment, editComment } from '../../../redux/commentsSlice';
 import EditComment from '../../../components/Edit';
@@ -50,4 +50,4 @@ const Comment = ({
   );
 };
 
-export default Comment;
+export default React.memo(Comment);

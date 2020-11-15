@@ -7,6 +7,8 @@ import Textarea from '../../../components/forms/Textarea';
 
 //style
 import './style.scss';
+import { useMemo } from 'react';
+import { useCallback } from 'react';
 
 const AddPost = () => {
   const dispatch = useDispatch();
@@ -35,17 +37,24 @@ const AddPost = () => {
   };
   return (
     <div className='add-post'>
-      <div className='circle'>
-        <img title={user.displayName} src={user.photoURL} alt='user' />
-      </div>
+      {useMemo(
+        () => (
+          <div className='circle'>
+            <img title={user.displayName} src={user.photoURL} alt='user' />
+          </div>
+        ),
+        [user.displayName, user.photoURL]
+      )}
       <div className='first-row'>
         <Textarea
           placeholder="What's on your mind?"
           content={content}
           setContent={setContent}
         />
+
         <div className='second-row'>
           <ImgIcon fill=' #fcac46' />
+
           <Button onClick={handleAddPost} disabled={!canSave}>
             Post
           </Button>
@@ -55,4 +64,4 @@ const AddPost = () => {
   );
 };
 
-export default AddPost;
+export default React.memo(AddPost);

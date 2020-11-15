@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as DirectIcon } from '../../../assets/icon/direct.svg';
 import { addComment } from '../../../redux/commentsSlice';
@@ -11,23 +12,27 @@ const AddComment = ({ postId, setShowComments }) => {
   const { displayName, photoURL, id } = user;
   const [content, setContent] = useState('');
   const canSave = content.trim() && true;
-  const handleAddComment = (e) => {
-    e.preventDefault();
-    if (content.trim() === '') return;
-    const comment = {
-      createdAt: new Date().toISOString(),
-      user: {
-        displayName,
-        photoURL,
-        id,
-      },
-      content,
-      postId,
-    };
-    dispatch(addComment(comment));
-    setShowComments(true);
-    setContent('');
-  };
+
+  const handleAddComment = useCallback(
+    (e) => {
+      e.preventDefault();
+      if (content.trim() === '') return;
+      const comment = {
+        createdAt: new Date().toISOString(),
+        user: {
+          displayName,
+          photoURL,
+          id,
+        },
+        content,
+        postId,
+      };
+      dispatch(addComment(comment));
+      setShowComments(true);
+      setContent('');
+    },
+    [displayName, photoURL, id, content, dispatch, postId, setShowComments]
+  );
   return (
     <div className='add-comment'>
       <div className='circle'>
@@ -52,4 +57,4 @@ const AddComment = ({ postId, setShowComments }) => {
   );
 };
 
-export default AddComment;
+export default React.memo(AddComment);

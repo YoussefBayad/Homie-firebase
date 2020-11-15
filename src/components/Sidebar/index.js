@@ -5,7 +5,7 @@ import DesktopNav from '../navigation/DesktopNav';
 //style
 import './style.scss';
 
-const Sidebar = () => {
+const Sidebar = React.memo(() => {
   return (
     <div className='sidebar'>
       <h1 className='title'>Homie</h1>
@@ -13,6 +13,6 @@ const Sidebar = () => {
       <DesktopNav />
     </div>
   );
-};
+});
 
 export default Sidebar;

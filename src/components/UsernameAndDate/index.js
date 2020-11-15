@@ -4,7 +4,13 @@ import { parseISO, formatDistanceToNow } from 'date-fns';
 //style
 import './style.scss';
 
-const index = ({ id, photoURL, displayName, createdAt, ...otherProps }) => {
+const UsernameAndDate = ({
+  id,
+  photoURL,
+  displayName,
+  createdAt,
+  ...otherProps
+}) => {
   const date = parseISO(createdAt);
   const timeAgo = formatDistanceToNow(date);
   return (
@@ -24,4 +30,4 @@ const index = ({ id, photoURL, displayName, createdAt, ...otherProps }) => {
   );
 };
 
-export default index;
+export default React.memo(UsernameAndDate);

@@ -20,6 +20,7 @@ const useLikesListener = () => {
       payload: { data, loading, error },
     });
   if (data) {
+    console.log('Likes listener');
     dispatch({
       type: 'likes/fetchLikes/fulfilled',
       payload: { data, loading, error },
