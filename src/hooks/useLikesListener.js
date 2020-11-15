@@ -3,8 +3,8 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { db } from '../Firebase/utils';
 
 const useLikesListener = () => {
-  console.log('set listener');
-  const userId = useSelector((state) => state.auth.user.id);
+  const user = useSelector((state) => state.auth.user);
+  const userId = user && user.id;
   const dispatch = useDispatch();
 
   const query = db.collection('likes').where('userId', '==', userId);

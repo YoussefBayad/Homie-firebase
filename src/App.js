@@ -7,6 +7,7 @@ import WithNoAuth from './hoc/withNoAuth';
 import WithAdminAuth from './hoc/withAdminAuth';
 import useAuthListener from './hooks/useAuthListener';
 import usePostsListener from './hooks/usePostsListener';
+import useLikesListener from './hooks/useLikesListener';
 
 //pages
 import Home from './pages/Home';
@@ -19,11 +20,9 @@ import Container from './layouts/ContainerLayout';
 
 //style
 import './default.scss';
-import { useSelector } from 'react-redux';
-import useLikesListener from './hooks/useLikesListener';
 
 function App() {
-  // useAuthListener();
+  useAuthListener();
   usePostsListener();
   useLikesListener();
 

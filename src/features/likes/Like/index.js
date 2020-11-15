@@ -5,7 +5,8 @@ import UnlikePost from '../UnlikePost';
 
 const Like = ({ postId, userId }) => {
   const likes = useSelector((state) => state.likes.data);
-  const isUserLikedPost = likes.filter((like) => like.postId === postId);
+  const isUserLikedPost =
+    likes && likes.filter((like) => like.postId === postId);
   return (
     <div className='like'>
       {isUserLikedPost && isUserLikedPost.length > 0 ? (

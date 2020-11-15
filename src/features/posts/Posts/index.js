@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Spinner from '../../../components/Spinner';
@@ -10,11 +9,11 @@ const Posts = () => {
   const { data: posts, loading, error } = useSelector((state) => state.posts);
 
   return (
-    <motion.div layout className='posts'>
+    <div className='posts'>
       {loading && <Spinner style={{ height: '15rem', width: '15rem' }} />}
       {error && <h1>{error.message}</h1>}
       {posts && posts.map((post) => <Post key={post.id} {...post} />)}
-    </motion.div>
+    </div>
   );
 };
 
