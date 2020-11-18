@@ -111,8 +111,7 @@ const postsSlice = createSlice({
       if (!action.payload) return;
 
       state.data = state.data.map((post) => {
-        if (post.id === action.payload.id)
-          post.content = action.payload.content;
+        if (post.id === action.payload.id) post = action.payload;
         return post;
       });
     },

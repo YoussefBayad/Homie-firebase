@@ -19,6 +19,9 @@ const Post = ({
   user: { id: userId, photoURL, displayName },
   createdAt,
   content,
+  commentsCount,
+  likesCount,
+  sharesCount,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
 
@@ -54,12 +57,21 @@ const Post = ({
       {useMemo(
         () => (
           <div className='post-interactions'>
-            <Like postId={id} userId={userId} />
-            <CommentIcon />
-            <ShareIcon />
+            <div className='interaction'>
+              <Like postId={id} userId={userId} likesCount={likesCount} />
+              <p className='count'>{likesCount} </p>
+            </div>
+            <div className='interaction'>
+              <CommentIcon />
+              <p className='count'>{commentsCount}</p>
+            </div>
+            <div className='interaction'>
+              <ShareIcon />
+              <p className='count'>{sharesCount}</p>
+            </div>
           </div>
         ),
-        [id, userId]
+        [id, userId, commentsCount, likesCount, sharesCount]
       )}
       <Comments postId={id} />
     </div>

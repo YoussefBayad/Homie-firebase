@@ -29,15 +29,40 @@
     border-bottom: 1px solid $darkgrey;
     padding: 0.5rem;
     @include flex(row, center, space-between);
+    .count {
+      @include transition;
+    }
+    & div:nth-child(1):hover {
+      svg {
+        fill: $error;
+      }
+      p {
+        color: $error;
+      }
+    }
+    & div:nth-child(2):hover {
+      svg {
+        fill: darken($success, 10%);
+      }
+      p {
+        color: darken($success, 10%);
+      }
+    }
+    & div:nth-child(3):hover {
+      svg {
+        fill: $blue;
+      }
+      p {
+        color: $blue;
+      }
+    }
+  }
 
-    & svg:nth-child(1):hover {
-      fill: $error;
-    }
-    & svg:nth-child(2):hover {
-      fill: darken($success, 10%);
-    }
-    & svg:nth-child(3):hover {
-      fill: $blue;
+  .interaction {
+    @include flex('', center, center);
+    & p {
+      margin-left: 1.5rem;
+      font-weight: bold;
     }
   }
 }

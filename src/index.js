@@ -21,7 +21,7 @@ db.collection('posts').onSnapshot((snapshot) => {
     if (change.type === 'modified') {
       store.dispatch({
         type: 'posts/editPost/fulfilled',
-        payload: { content: change.doc.data().content, id: change.doc.id },
+        payload: { ...change.doc.data(), id: change.doc.id },
       });
       console.log('edited', change.doc.data().content, change.doc.id);
     }
