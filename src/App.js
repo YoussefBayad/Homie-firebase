@@ -6,8 +6,6 @@ import WithAuth from './hoc/withAuth';
 import WithNoAuth from './hoc/withNoAuth';
 import WithAdminAuth from './hoc/withAdminAuth';
 import useAuthListener from './hooks/useAuthListener';
-import usePostsListener from './hooks/usePostsListener';
-import useLikesListener from './hooks/useLikesListener';
 
 //pages
 import Home from './pages/Home';
@@ -23,7 +21,6 @@ import './default.scss';
 
 function App() {
   // useAuthListener();
-
   return (
     <>
       <Switch>

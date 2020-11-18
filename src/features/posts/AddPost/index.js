@@ -9,16 +9,15 @@ import Textarea from '../../../components/forms/Textarea';
 import './style.scss';
 import { useMemo } from 'react';
 import { useCallback } from 'react';
+const photoURL = null;
 
 const AddPost = () => {
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.posts.loading);
   const user = useSelector((state) => state.auth.user);
   const [content, setContent] = useState('');
-  const canSave = content.trim() && !loading;
-  const photoURL = null;
+  const canSave = useMemo(() => content.trim() && true, [content]);
 
-  const handleAddPost = () => {
+  const handleAddPost = useCallback(() => {
     const post = {
       createdAt: new Date().toISOString(),
       user: {
@@ -34,7 +33,7 @@ const AddPost = () => {
     };
     dispatch(addPost(post));
     setContent('');
-  };
+  }, [user.displayName, user.id, user.photoURL, content, dispatch]);
   return (
     <div className='add-post'>
       {useMemo(

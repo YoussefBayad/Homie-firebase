@@ -13,7 +13,7 @@ const PostSetting = ({ id, userId, setIsEditing, deleteThunk }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [ref] = useOutsideClickRef(() => setIsOpen(false));
   const showSetting = currentUser.id === userId;
-  const handleDeletePost = () => {
+  const handleDelete = () => {
     dispatch(deleteThunk(id));
   };
 
@@ -30,7 +30,7 @@ const PostSetting = ({ id, userId, setIsEditing, deleteThunk }) => {
             className='edit-post'>
             Edit
           </p>
-          <p onClick={handleDeletePost} className='delete-post'>
+          <p onClick={handleDelete} className='delete-post'>
             Delete
           </p>
         </div>

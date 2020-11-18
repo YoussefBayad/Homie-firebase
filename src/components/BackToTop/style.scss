@@ -5,7 +5,7 @@
   @include box(5rem);
   margin: 3rem auto;
   border-radius: 50%;
-  @include background-transition($blue, lighten($blue, 20%));
+  @include background-transition($accent2, lighten($accent2, 20%));
   @include flex('', center, center);
   cursor: pointer;
   padding: 1rem;
@@ -14,10 +14,10 @@
   }
   & svg {
     transform: rotate(180deg);
-    fill: darken($blue, 20%);
+    fill: darken($accent2, 20%);
     @include transition;
     &:hover {
-      fill: darken($blue, 20%);
+      fill: darken($accent2, 20%);
     }
   }
 }

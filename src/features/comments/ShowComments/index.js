@@ -5,7 +5,7 @@ import useCommentsListener from '../../../hooks/useCommentsListener';
 import './style.scss';
 
 const ShowComments = ({ postId, showComments, setShowComments }) => {
-  useCommentsListener(postId);
+  // useCommentsListener(postId);
 
   return (
     <div className='show-comments'>

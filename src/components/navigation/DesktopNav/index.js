@@ -11,6 +11,7 @@ import { ReactComponent as LogoutIcon } from '../../../assets/icon/logout.svg';
 
 //style
 import './style.scss';
+import usePostsListener from '../../../hooks/usePostsListener';
 
 const DesktopNav = ({ userId }) => {
   return (

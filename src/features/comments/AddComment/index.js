@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as DirectIcon } from '../../../assets/icon/direct.svg';
@@ -35,9 +35,14 @@ const AddComment = ({ postId, setShowComments }) => {
   );
   return (
     <div className='add-comment'>
-      <div className='circle'>
-        <img src={photoURL} title={displayName} alt='user' />
-      </div>
+      {useMemo(
+        () => (
+          <div className='circle'>
+            <img src={photoURL} title={displayName} alt='user' />
+          </div>
+        ),
+        [photoURL, displayName]
+      )}
       <form onSubmit={handleAddComment}>
         <div className='add-comment-input'>
           <input

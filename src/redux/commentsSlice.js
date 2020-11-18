@@ -3,7 +3,7 @@ import { db } from '../Firebase/utils';
 import { useCollectionDataOnce } from 'react-firebase-hooks/firestore';
 
 const initialState = {
-  data: undefined,
+  data: [],
   loading: false,
   error: undefined,
 };

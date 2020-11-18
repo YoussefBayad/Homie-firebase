@@ -1,10 +1,12 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '../../../components/Spinner';
+import { db } from '../../../Firebase/utils';
 import Post from '../Post';
 
 //style
 import './style.scss';
+
 const Posts = () => {
   const { data: posts, loading, error } = useSelector((state) => state.posts);
 
@@ -17,4 +19,4 @@ const Posts = () => {
   );
 };
 
-export default Posts;
+export default React.memo(Posts);

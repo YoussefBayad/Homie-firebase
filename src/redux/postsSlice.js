@@ -1,10 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { db } from '../Firebase/utils';
-import avatar from '../assets/icon/me.jpg';
 
 const initialState = {
-  data: undefined,
-  loading: false,
+  data: [],
+  loading: true,
   error: undefined,
 };
 
@@ -20,23 +19,30 @@ const initialState = {
 //     createdAt: new Date().toLocaleString,
 //   },
 // ]
-export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
-  // const postsRef = db.collection('posts');
-  // const postsCollection = await postsRef.orderBy('createdAt', 'desc').get();
-  // const posts = postsCollection.map((doc) => ({
-  //   ...doc.data(),
-  //   id: doc.id,
-  // }));
-  // return posts;
-});
+
+export const fetchPosts = createAsyncThunk(
+  'posts/fetchPosts',
+  async (_, { dispatch, getState }) => {
+    try {
+      var data = [];
+      const query = db.collection('posts').orderBy('createdAt', 'desc');
+
+      const collection = await query.get();
+      for (const doc of collection.docs) {
+        data.push({ ...doc.data(), id: doc.id });
+      }
+    } catch (err) {
+      dispatch({ type: 'posts/fetchPosts/rejected', payload: err });
+    }
+    return data;
+  }
+);
 
 export const addPost = createAsyncThunk('posts/addPost', async (post) => {
-  try {
-    var response = await db.collection('posts').add(post);
-  } catch (error) {
-    console.error(error.message);
-  }
-  return response;
+  await db
+    .collection('posts')
+    .add(post)
+    .catch((err) => console.error(err));
 });
 export const editPost = createAsyncThunk('posts/editPost', async (newPost) => {
   try {
@@ -44,7 +50,6 @@ export const editPost = createAsyncThunk('posts/editPost', async (newPost) => {
   } catch (error) {
     console.error(error.message);
   }
-  return response;
 });
 
 export const deletePost = createAsyncThunk('posts/deletePost', async (id) => {
@@ -53,7 +58,6 @@ export const deletePost = createAsyncThunk('posts/deletePost', async (id) => {
   } catch (error) {
     console.error('deletePost', error.message);
   }
-  return response;
 });
 
 const postsSlice = createSlice({
@@ -72,24 +76,46 @@ const postsSlice = createSlice({
   },
   extraReducers: {
     [fetchPosts.pending]: (state, action) => {
-      const loading = action.payload;
-      state.loading = loading;
+      return state;
     },
     [fetchPosts.fulfilled]: (state, action) => {
-      return action.payload;
+      return { data: action.payload || [], loading: false, error: undefined };
     },
     [fetchPosts.rejected]: (state, action) => {
-      return action.payload;
+      state.error = action.payload;
     },
-    // [addPost.pending]: (state, action) => {},
-    // [addPost.fulfilled]: (state, action) => {},
+    [addPost.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [addPost.fulfilled]: (state, action) => {
+      if (!action.payload) return;
+      state.loading = false;
+      state.data.push(action.payload);
+    },
 
     // [addPost.rejected]: (state, action) => {},
-    // [deletePost.pending]: (state, action) => {},
-    // [deletePost.fulfilled]: (state, action) => {},
+    [deletePost.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [deletePost.fulfilled]: (state, action) => {
+      if (!action.payload) return;
+
+      state.loading = false;
+      state.data = state.data.filter((post) => post.id !== action.payload);
+    },
     // [deletePost.rejected]: (state, action) => {},
-    // [editPost.pending]: (state, action) => {},
-    // [editPost.fulfilled]: (state, action) => {},
+    // [editPost.pending]: (state, action) => {
+
+    // },
+    [editPost.fulfilled]: (state, action) => {
+      if (!action.payload) return;
+
+      state.data = state.data.map((post) => {
+        if (post.id === action.payload.id)
+          post.content = action.payload.content;
+        return post;
+      });
+    },
     // [editPost.rejected]: (state, action) => {},
   },
 });

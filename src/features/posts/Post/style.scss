@@ -30,13 +30,13 @@
     padding: 0.5rem;
     @include flex(row, center, space-between);
 
-    & svg:first-child:hover {
+    & svg:nth-child(1):hover {
       fill: $error;
     }
     & svg:nth-child(2):hover {
       fill: darken($success, 10%);
     }
-    & svg:last-child:hover {
+    & svg:nth-child(3):hover {
       fill: $blue;
     }
   }

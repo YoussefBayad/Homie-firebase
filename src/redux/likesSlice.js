@@ -31,7 +31,6 @@ export const like = createAsyncThunk('likes/likePost', async (like) => {
 });
 
 export const unlike = createAsyncThunk('likes/unlike', async (id) => {
-  console.log('dispatched', id);
   try {
     var response = await db.collection('likes').doc(id).delete();
   } catch (error) {
@@ -47,15 +46,12 @@ const likesSlice = createSlice({
   extraReducers: {
     [fetchLikes.pending]: (state, action) => {
       return action.payload;
-      console.log('pendig');
     },
     [fetchLikes.fulfilled]: (state, action) => {
       return action.payload;
-      console.log('fufu');
     },
     [fetchLikes.rejected]: (state, action) => {
       return action.payload;
-      console.log('reje');
     },
   },
 });
