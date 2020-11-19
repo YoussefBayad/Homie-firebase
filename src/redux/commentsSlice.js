@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { db } from '../Firebase/utils';
-import { useCollectionDataOnce } from 'react-firebase-hooks/firestore';
 
 const initialState = {
   data: [],
@@ -30,7 +29,6 @@ export const addComment = createAsyncThunk(
     } catch (error) {
       console.error(error.message);
     }
-    return response;
   }
 );
 export const editComment = createAsyncThunk(
@@ -44,7 +42,6 @@ export const editComment = createAsyncThunk(
     } catch (error) {
       console.error(error.message);
     }
-    return response;
   }
 );
 
@@ -56,7 +53,6 @@ export const deleteComment = createAsyncThunk(
     } catch (error) {
       console.error(error.message);
     }
-    return response;
   }
 );
 
@@ -78,14 +74,30 @@ const commentsSlice = createSlice({
     [fetchComments.rejected]: (state, action) => {
       return action.payload;
     },
-    // [addComment.pending]: (state, action) => {},
-    // [addComment.fulfilled]: (state, action) => {},
+    [addComment.pending]: (state, action) => {},
+    [addComment.fulfilled]: (state, action) => {
+      if (!action.payload) return;
+      state.data.push(action.payload);
+    },
     // [addComment.rejected]: (state, action) => {},
     // [deleteComment.pending]: (state, action) => {},
-    // [deleteComment.fulfilled]: (state, action) => {},
+    [deleteComment.fulfilled]: (state, action) => {
+      if (!action.payload) return;
+
+      state.data = state.data.filter(
+        (comment) => comment.id !== action.payload
+      );
+    },
     // [deleteComment.rejected]: (state, action) => {},
     // [editComment.pending]: (state, action) => {},
-    // [editComment.fulfilled]: (state, action) => {},
+    [editComment.fulfilled]: (state, action) => {
+      if (!action.payload) return;
+
+      state.data = state.data.map((post) => {
+        if (post.id === action.payload.id) post = action.payload;
+        return post;
+      });
+    },
     // [editComment.rejected]: (state, action) => {},
   },
 });

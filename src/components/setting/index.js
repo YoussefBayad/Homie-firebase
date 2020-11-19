@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import useOutsideClickRef from '@rooks/use-outside-click-ref';
 import { useDispatch, useSelector } from 'react-redux';
 //icon
@@ -39,4 +39,4 @@ const PostSetting = ({ id, userId, setIsEditing, deleteThunk }) => {
   );
 };
 
-export default PostSetting;
+export default memo(PostSetting);

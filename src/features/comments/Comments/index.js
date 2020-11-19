@@ -1,15 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Comment from '../Comment';
 import ShowComments from '../ShowComments';
 import AddComment from '../AddComment';
+import Spinner from '../../../components/Spinner';
+import commentsListener from '../../../utils/commentsListener';
 
 const Comments = ({ postId }) => {
   const { data: comments, loading, error } = useSelector(
     (state) => state.comments
   );
   const [showComments, setShowComments] = useState(false);
-
+  useEffect(() => {
+    let unsubscribe = () => {};
+    if (showComments) {
+      console.log('comments mount');
+      unsubscribe = commentsListener();
+    }
+    return () => {
+      unsubscribe();
+      console.log('comments unmount');
+    };
+  }, [showComments]);
   return (
     <>
       <ShowComments
@@ -18,7 +30,7 @@ const Comments = ({ postId }) => {
         postId={postId}
       />
 
-      {loading && <h1>{loading}</h1>}
+      {loading && <Spinner />}
       {error && <h1>{error.message}</h1>}
       {showComments &&
         comments &&

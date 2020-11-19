@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { auth } from '../../../Firebase/utils';
 import { ReactComponent as SearchIcon } from '../../../assets/icon/search.svg';
@@ -11,7 +10,6 @@ import { ReactComponent as LogoutIcon } from '../../../assets/icon/logout.svg';
 
 //style
 import './style.scss';
-import usePostsListener from '../../../hooks/usePostsListener';
 
 const DesktopNav = ({ userId }) => {
   return (
