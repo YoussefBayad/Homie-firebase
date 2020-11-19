@@ -24,7 +24,7 @@ const initialState = {
 //   followingCount: 86,
 // }
 
-const editUserInfo = createAsyncThunk(
+export const editUserInfo = createAsyncThunk(
   'user/editUserInfo',
   async (newUserInfo) => {
     try {
@@ -44,11 +44,9 @@ const userSlice = createSlice({
     },
   },
   extraReducers: {
-    [editUserInfo.pending]: (state, action) => {
-      state.loading = true;
-    },
+    [editUserInfo.pending]: (state, action) => {},
     [editUserInfo.fulfilled]: (state, action) => {
-      state.loading = false;
+      if (!action.payload) return;
       state.user = action.payload;
     },
     [editUserInfo.rejected]: (state, action) => {},

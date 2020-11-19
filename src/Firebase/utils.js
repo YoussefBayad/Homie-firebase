@@ -3,7 +3,6 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/storage';
-import { date } from 'yup';
 
 firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
@@ -36,6 +35,10 @@ export const handleUserProfile = async (userAuth, additionalData) => {
         photoURL,
         createdAt: new Date().toISOString(),
         userRoles,
+        postsCount: 0,
+        followersCount: 0,
+        followingCount: 0,
+        bio: null,
         ...additionalData,
       });
     } catch (err) {

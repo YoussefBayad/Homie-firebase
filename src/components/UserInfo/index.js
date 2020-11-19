@@ -1,21 +1,74 @@
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Button from '../forms/Button';
 import Spinner from '../Spinner';
+import * as Yup from 'yup';
+import ErrorText from '../ErrorText';
 
 //style
 import './style.scss';
+import { editUserInfo } from '../../redux/userSlice';
 
-const UserInfo = ({ user }) => {
+const UserInfo = ({ user, setIsEditing, isEditing }) => {
+  const dispatch = useDispatch();
+  const initialValues = {
+    displayName: user.displayName,
+    bio: user.bio,
+  };
+
+  const validationSchema = Yup.object({
+    displayName: Yup.string().required('Username is required'),
+    bio: Yup.string().required('Bio is required'),
+  });
+
+  const onSubmit = (values, onSubmitProps) => {
+    dispatch(
+      editUserInfo({
+        id: user.id,
+        displayName: values.displayName,
+        bio: values.bio,
+      })
+    );
+    onSubmitProps.resetForm();
+    setIsEditing(false);
+  };
   return (
     <div className='user-info'>
       <Link to={`/profile/${user.id}`}>
         <div className='circle'>
           <img src={user.photoURL} alt='' />
         </div>
-        <h3 className='username'>{user.displayName}</h3>
       </Link>
-      <h4 className='bio'>{user.bio}</h4>
+      {!isEditing ? (
+        <>
+          <h3 className='username'>{user.displayName}</h3>
+          <h4 className='bio'>{user.bio}</h4>
+        </>
+      ) : (
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          validateOnChange={false}
+          validateOnBlur={false}
+          onSubmit={onSubmit}>
+          <Form>
+            <Field
+              type='displayName'
+              placeholder='Username'
+              name='displayName'
+            />
+            <ErrorMessage component={ErrorText} name='displayName' />
+            <Field type='bio' placeholder='Bio...' name='bio' />
+            <ErrorMessage component={ErrorText} name='bio' />
+
+            <Button type='submit' className='btn profile-info-save'>
+              save
+            </Button>
+          </Form>
+        </Formik>
+      )}
       <div className='profile-numbers'>
         <div className='profile-number'>
           <p>{user.postsCount}</p>
