@@ -3,10 +3,12 @@ import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as DirectIcon } from '../../../assets/icon/direct.svg';
 import { addComment } from '../../../redux/commentsSlice';
+import { editPost } from '../../../redux/postsSlice';
+
 //style
 import './style.scss';
 
-const AddComment = ({ postId, setShowComments }) => {
+const AddComment = ({ postId, setShowComments, commentsCount }) => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const { displayName, photoURL, id } = user;
@@ -28,10 +30,20 @@ const AddComment = ({ postId, setShowComments }) => {
         postId,
       };
       dispatch(addComment(comment));
+      dispatch(editPost({ id: postId, commentsCount: commentsCount + 1 }));
       setShowComments(true);
       setContent('');
     },
-    [displayName, photoURL, id, content, dispatch, postId, setShowComments]
+    [
+      displayName,
+      photoURL,
+      id,
+      content,
+      dispatch,
+      postId,
+      setShowComments,
+      commentsCount,
+    ]
   );
   return (
     <div className='add-comment'>

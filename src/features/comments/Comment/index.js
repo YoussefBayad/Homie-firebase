@@ -12,6 +12,8 @@ const Comment = ({
   id,
   createdAt,
   content,
+  commentsCount,
+  postId,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
 
@@ -30,6 +32,8 @@ const Comment = ({
           id={id}
           deleteThunk={deleteComment}
           setIsEditing={setIsEditing}
+          postId={postId}
+          commentsCount={commentsCount}
         />
       </div>
       {!isEditing ? (

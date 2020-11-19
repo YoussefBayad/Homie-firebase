@@ -73,7 +73,7 @@ const Post = ({
         ),
         [id, userId, commentsCount, likesCount, sharesCount]
       )}
-      <Comments postId={id} />
+      <Comments postId={id} commentsCount={commentsCount} />
     </div>
   );
 };

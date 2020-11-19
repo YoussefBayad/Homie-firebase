@@ -5,8 +5,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as EditIcon } from '../../assets/icon/edit.svg';
 //style
 import './style.scss';
+import { editPost } from '../../redux/postsSlice';
 
-const PostSetting = ({ id, userId, setIsEditing, deleteThunk }) => {
+const PostSetting = ({
+  id,
+  userId,
+  setIsEditing,
+  deleteThunk,
+  commentsCount,
+  postId,
+}) => {
   const { user: currentUser } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
@@ -15,6 +23,9 @@ const PostSetting = ({ id, userId, setIsEditing, deleteThunk }) => {
   const showSetting = currentUser.id === userId;
   const handleDelete = () => {
     dispatch(deleteThunk(id));
+    if (commentsCount) {
+      dispatch(editPost({ id: postId, commentsCount: commentsCount - 1 }));
+    }
   };
 
   return (

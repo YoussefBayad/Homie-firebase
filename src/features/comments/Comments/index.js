@@ -6,7 +6,7 @@ import AddComment from '../AddComment';
 import Spinner from '../../../components/Spinner';
 import commentsListener from '../../../utils/commentsListener';
 
-const Comments = ({ postId }) => {
+const Comments = ({ postId, commentsCount }) => {
   const { data: comments, loading, error } = useSelector(
     (state) => state.comments
   );
@@ -14,7 +14,9 @@ const Comments = ({ postId }) => {
 
   const postComments = comments
     .filter((comment) => comment.postId === postId)
-    .map((comment) => <Comment key={comment.id} {...comment} />);
+    .map((comment) => (
+      <Comment key={comment.id} {...comment} commentsCount={commentsCount} />
+    ));
 
   useEffect(() => {
     let unsubscribe = () => {};
@@ -39,7 +41,11 @@ const Comments = ({ postId }) => {
       {error && <h1>{error.message}</h1>}
       {showComments && postComments}
 
-      <AddComment setShowComments={setShowComments} postId={postId} />
+      <AddComment
+        setShowComments={setShowComments}
+        postId={postId}
+        commentsCount={commentsCount}
+      />
     </>
   );
 };
