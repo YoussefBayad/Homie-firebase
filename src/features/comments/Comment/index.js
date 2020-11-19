@@ -6,6 +6,7 @@ import EditComment from '../../../components/Edit';
 
 //style
 import './style.scss';
+import { useMemo } from 'react';
 
 const Comment = ({
   user: { id: userId, photoURL, displayName },
@@ -19,39 +20,56 @@ const Comment = ({
 
   return (
     <div className='comment'>
-      <div className='comment-header'>
-        <CommentHeader
-          id={userId}
-          photoURL={photoURL}
-          displayName={displayName}
-          createdAt={createdAt}
-          className='post-header comment-info'
-        />
-        <CommentSetting
-          userId={userId}
-          id={id}
-          deleteThunk={deleteComment}
-          setIsEditing={setIsEditing}
-          postId={postId}
-          commentsCount={commentsCount}
-        />
-      </div>
-      {!isEditing ? (
-        <div className='comment-content'>
-          <p>{content}</p>
-        </div>
-      ) : (
-        <EditComment
-          userId={userId}
-          content={content}
-          id={id}
-          editThunk={editComment}
-          setIsEditing={setIsEditing}
-          height='5rem'
-        />
+      {useMemo(
+        () => (
+          <>
+            <div className='comment-header'>
+              <CommentHeader
+                id={userId}
+                photoURL={photoURL}
+                displayName={displayName}
+                createdAt={createdAt}
+                className='post-header comment-info'
+              />
+              <CommentSetting
+                userId={userId}
+                id={id}
+                deleteThunk={deleteComment}
+                setIsEditing={setIsEditing}
+                postId={postId}
+                commentsCount={commentsCount}
+              />
+            </div>
+
+            {!isEditing ? (
+              <div className='comment-content'>
+                <p>{content}</p>
+              </div>
+            ) : (
+              <EditComment
+                userId={userId}
+                content={content}
+                id={id}
+                editThunk={editComment}
+                setIsEditing={setIsEditing}
+                height='5rem'
+              />
+            )}
+          </>
+        ),
+        [
+          userId,
+          photoURL,
+          displayName,
+          createdAt,
+          id,
+          postId,
+          isEditing,
+          content,
+        ]
       )}
     </div>
   );
 };
 
-export default React.memo(Comment);
+export default Comment;
