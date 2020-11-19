@@ -9,18 +9,20 @@ import BackToTop from '../BackToTop';
 import './style.scss';
 import postsListener from '../../utils/postsListener';
 import likesListener from '../../utils/likesListener';
+import { useSelector } from 'react-redux';
 
 const Feed = () => {
+  const userId = useSelector((state) => state.auth.user.id);
   useEffect(() => {
     console.log('mount');
     const unsubscribePosts = postsListener();
-    const unsubscribeLikes = likesListener();
+    const unsubscribeLikes = likesListener(userId);
     return () => {
       console.log('cleanUp');
       unsubscribePosts();
       unsubscribeLikes();
     };
-  }, []);
+  }, [userId]);
   return (
     <div className='feed'>
       {useMemo(

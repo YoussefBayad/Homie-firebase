@@ -11,17 +11,22 @@ const Comments = ({ postId }) => {
     (state) => state.comments
   );
   const [showComments, setShowComments] = useState(false);
+
+  const postComments = comments
+    .filter((comment) => comment.postId === postId)
+    .map((comment) => <Comment key={comment.id} {...comment} />);
+
   useEffect(() => {
     let unsubscribe = () => {};
     if (showComments) {
       console.log('comments mount');
-      unsubscribe = commentsListener();
+      unsubscribe = commentsListener(postId);
     }
     return () => {
       unsubscribe();
       console.log('comments unmount');
     };
-  }, [showComments]);
+  }, [showComments, postId]);
   return (
     <>
       <ShowComments
@@ -32,9 +37,7 @@ const Comments = ({ postId }) => {
 
       {loading && <Spinner />}
       {error && <h1>{error.message}</h1>}
-      {showComments &&
-        comments &&
-        comments.map((comment) => <Comment key={comment.id} {...comment} />)}
+      {showComments && postComments}
 
       <AddComment setShowComments={setShowComments} postId={postId} />
     </>

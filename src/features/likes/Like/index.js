@@ -3,16 +3,20 @@ import { useSelector } from 'react-redux';
 import LikePost from '../LikePost';
 import UnlikePost from '../UnlikePost';
 
-const Like = ({ postId, userId }) => {
+const Like = ({ postId, userId, likesCount }) => {
   const likes = useSelector((state) => state.likes.data);
-  const isUserLikedPost =
-    likes && likes.filter((like) => like.postId === postId);
+  const isUserLikedPost = likes && likes.find((like) => like.postId === postId);
+  console.log('isUserLikedPost', isUserLikedPost);
   return (
     <div className='like'>
-      {isUserLikedPost && isUserLikedPost.length > 0 ? (
-        <UnlikePost id={isUserLikedPost[0].id} />
+      {isUserLikedPost ? (
+        <UnlikePost
+          postId={postId}
+          id={isUserLikedPost.id}
+          likesCount={likesCount}
+        />
       ) : (
-        <LikePost postId={postId} userId={userId} />
+        <LikePost postId={postId} userId={userId} likesCount={likesCount} />
       )}
     </div>
   );
