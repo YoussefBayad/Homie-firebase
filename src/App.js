@@ -18,6 +18,7 @@ import Container from './layouts/ContainerLayout';
 
 //style
 import './default.scss';
+import Profile from './pages/Profile';
 
 function App() {
   // useAuthListener();
@@ -61,7 +62,7 @@ function App() {
         </WithAuth>
         <WithAuth path='/profile/:id'>
           <MainLayout>
-            <h1>Profile</h1>
+            <Profile />
           </MainLayout>
         </WithAuth>
         <Route path='*'>
