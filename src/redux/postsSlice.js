@@ -2,28 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { db } from '../Firebase/utils';
 import avatar from '../assets/icon/me.jpg';
 const initialState = {
-  data: [
-    {
-      id: 2,
-      user: {
-        photoURL: avatar,
-        id: 1,
-        displayName: 'Joseph Bayad',
-      },
-      content: 'you will make it',
-      createdAt: new Date().toISOString(),
-    },
-    {
-      id: 5,
-      user: {
-        photoURL: avatar,
-        id: 1,
-        displayName: 'Joseph Bayad',
-      },
-      content: 'hiiii',
-      createdAt: new Date().toISOString(),
-    },
-  ],
+  data: [],
   loading: false,
   error: undefined,
 };
@@ -110,8 +89,10 @@ const postsSlice = createSlice({
     },
     [addPost.fulfilled]: (state, action) => {
       if (!action.payload) return;
+
       state.loading = false;
       state.data.push(action.payload);
+      state.data.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
     },
 
     // [addPost.rejected]: (state, action) => {},
