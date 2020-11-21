@@ -1,6 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from '../forms/Button';
 import Spinner from '../Spinner';
@@ -10,8 +10,10 @@ import ErrorText from '../ErrorText';
 //style
 import './style.scss';
 import { editUserInfo } from '../../redux/userSlice';
+import UploadForm from '../Upload';
 
-const UserInfo = ({ user, setIsEditing, isEditing }) => {
+const UserInfo = ({ user, setIsEditing, isEditing, showUpload }) => {
+  const [photoURL, setPhotoURL] = useState(null);
   const dispatch = useDispatch();
   const initialValues = {
     displayName: user.displayName,
@@ -29,6 +31,7 @@ const UserInfo = ({ user, setIsEditing, isEditing }) => {
         id: user.id,
         displayName: values.displayName,
         bio: values.bio,
+        photoURL: photoURL ? photoURL : user.photoURL,
       })
     );
     onSubmitProps.resetForm();
@@ -41,6 +44,7 @@ const UserInfo = ({ user, setIsEditing, isEditing }) => {
           <img src={user.photoURL} alt='' />
         </div>
       </Link>
+      {showUpload && <UploadForm svg='add' setPhotoURL={setPhotoURL} />}
       {!isEditing ? (
         <>
           <h3 className='username'>{user.displayName}</h3>

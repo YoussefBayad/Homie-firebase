@@ -5,20 +5,23 @@ import { motion } from 'framer-motion';
 //style
 import './style.scss';
 
-const ProgressBar = ({ file, setFile }) => {
+const ProgressBar = ({ file, setFile, setPhotoURL }) => {
   const { progress, url } = useStorage(file);
 
   useEffect(() => {
     if (url) {
+      setPhotoURL(url);
       setFile(null);
     }
-  }, [url, setFile]);
+  }, [url, setFile, setPhotoURL]);
 
   return (
-    <motion.div
-      className='progress-bar'
-      initial={{ width: 0 }}
-      animate={{ width: progress + '%' }}></motion.div>
+    <div className='progress-bar'>
+      <motion.div
+        className='progress-bar-inner'
+        initial={{ width: 0 }}
+        animate={{ width: progress + '%' }}></motion.div>
+    </div>
   );
 };
 

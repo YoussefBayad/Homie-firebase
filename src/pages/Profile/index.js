@@ -12,6 +12,7 @@ import Button from '../../components/forms/Button';
 
 //style
 import './style.scss';
+import UploadForm from '../../components/Upload';
 
 const Profile = () => {
   const user = useSelector((state) => state.auth.user);
@@ -42,8 +43,12 @@ const Profile = () => {
 
   return (
     <div className='profile'>
-      <UserInfo user={user} setIsEditing={setIsEditing} isEditing={isEditing} />
-
+      <UserInfo
+        showUpload
+        user={user}
+        setIsEditing={setIsEditing}
+        isEditing={isEditing}
+      />
       {!isEditing && (
         <Button
           className='btn profile-info-edit'

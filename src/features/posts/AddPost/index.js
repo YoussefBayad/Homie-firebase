@@ -9,12 +9,12 @@ import './style.scss';
 import { useMemo } from 'react';
 import { useCallback } from 'react';
 import UploadForm from '../../../components/Upload';
-const photoURL = null;
 
 const AddPost = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
   const [content, setContent] = useState('');
+  const [photoURL, setPhotoURL] = useState(null);
   const canSave = useMemo(() => content.trim() && true, [content]);
 
   const handleAddPost = useCallback(() => {
@@ -52,7 +52,7 @@ const AddPost = () => {
         />
 
         <div className='second-row'>
-          <UploadForm svg='image' />
+          <UploadForm svg='image' setPhotoURL={setPhotoURL} />
           <Button onClick={handleAddPost} disabled={!canSave}>
             Post
           </Button>

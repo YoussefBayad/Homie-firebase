@@ -1,7 +1,20 @@
 @import '../../default.scss';
 
 .progress-bar {
-  height: 5px;
-  background: $accent;
+  height: 1rem;
+  border: 0.5px solid $grey;
+  border-radius: 3rem;
   margin-top: 20px;
+
+  .progress-bar-inner {
+    height: 100%;
+
+    background: linear-gradient(
+      45deg,
+      lighten($blue, 40%) 0%,
+      lighten($blue, 20%) 55%,
+      $blue 75%,
+      darken($blue, 20%) 100%
+    );
+  }
 }

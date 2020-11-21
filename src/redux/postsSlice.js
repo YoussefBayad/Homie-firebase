@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { db } from '../Firebase/utils';
-import avatar from '../assets/icon/me.jpg';
+import avatar from '../assets/icon/unknownUser.jpg';
 const initialState = {
   data: [],
   loading: false,
