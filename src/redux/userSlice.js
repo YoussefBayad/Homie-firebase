@@ -1,8 +1,16 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import avatar from '../assets/icon/me.jpg';
+import avatar from '../assets/icon/unknownUser.jpg';
 import { db } from '../Firebase/utils';
 const initialState = {
-  user: null,
+  user: {
+    displayName: 'joseph bayad',
+    photoURL: avatar,
+    bio: 'I will make it',
+    id: 1,
+    postsCount: 27,
+    followersCount: '2.5k',
+    followingCount: 86,
+  },
   loading: false,
   error: undefined,
 };

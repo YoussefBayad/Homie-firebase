@@ -21,7 +21,7 @@ import './default.scss';
 import Profile from './pages/Profile';
 
 function App() {
-  useAuthListener();
+  // useAuthListener();
   return (
     <>
       <Switch>
