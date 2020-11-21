@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Button from '../../../components/forms/Button';
-import { ReactComponent as ImgIcon } from '../../../assets/icon/media.svg';
 import { addPost } from '../../../redux/postsSlice';
 import Textarea from '../../../components/forms/Textarea';
 
@@ -9,6 +8,7 @@ import Textarea from '../../../components/forms/Textarea';
 import './style.scss';
 import { useMemo } from 'react';
 import { useCallback } from 'react';
+import UploadForm from '../../../components/Upload';
 const photoURL = null;
 
 const AddPost = () => {
@@ -52,8 +52,7 @@ const AddPost = () => {
         />
 
         <div className='second-row'>
-          <ImgIcon fill=' #fcac46' />
-
+          <UploadForm svg='image' />
           <Button onClick={handleAddPost} disabled={!canSave}>
             Post
           </Button>

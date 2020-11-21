@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import ProgressBar from '../ProgressBar';
 import ErrorText from '../ErrorText';
-
+import { ReactComponent as AddIcon } from '../../assets/icon/add.svg';
+import { ReactComponent as ImgIcon } from '../../assets/icon/media.svg';
 //style
 import './style.scss';
-const UploadForm = () => {
+const UploadForm = ({ svg }) => {
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
 
@@ -24,10 +25,12 @@ const UploadForm = () => {
 
   return (
     <form className='upload'>
-      <label>
-        <input type='file' onChange={handleChange} />
-        <span>+</span>
-      </label>
+      <input type='file' onChange={handleChange} />
+      {svg === 'add' ? (
+        <AddIcon fill=' #fcac46' />
+      ) : (
+        <ImgIcon fill=' #fcac46' />
+      )}
       <div className='output'>
         {error && <ErrorText>{error} </ErrorText>}
         {file && <div>{file.name}</div>}

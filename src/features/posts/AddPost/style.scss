@@ -24,10 +24,14 @@
   .second-row {
     width: 100%;
     @include flex('', center, space-between);
-    & svg {
+    & form {
       align-self: flex-end;
-      cursor: pointer;
       @include box(4rem);
+
+      & svg {
+        cursor: pointer;
+        @include box(4rem);
+      }
     }
   }
 }
