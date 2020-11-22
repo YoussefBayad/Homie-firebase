@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Button from '../../../components/forms/Button';
 import { addPost } from '../../../redux/postsSlice';
 import Textarea from '../../../components/forms/Textarea';
-
+// import avatar from '../../../assets/icon/unknownUser.jpg';
 //style
 import './style.scss';
 import { useMemo } from 'react';
@@ -50,7 +50,11 @@ const AddPost = () => {
           content={content}
           setContent={setContent}
         />
-
+        {photoURL && (
+          <div className='post-img'>
+            <img src={photoURL} alt='post' />
+          </div>
+        )}
         <div className='second-row'>
           <UploadForm svg='image' setPhotoURL={setPhotoURL} />
           <Button onClick={handleAddPost} disabled={!canSave}>

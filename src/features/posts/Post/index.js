@@ -9,6 +9,7 @@ import Like from '../../likes/Like';
 import { ReactComponent as CommentIcon } from '../../../assets/icon/comment.svg';
 import { ReactComponent as ShareIcon } from '../../../assets/icon/share.svg';
 import { deletePost, editPost } from '../../../redux/postsSlice';
+import avatar from '../../../assets/icon/unknownUser.jpg';
 
 //style
 import './style.scss';
@@ -16,12 +17,13 @@ import { useMemo } from 'react';
 
 const Post = ({
   id,
-  user: { id: userId, photoURL, displayName },
+  user: { id: userId, userPhotoURL, displayName },
   createdAt,
   content,
   commentsCount,
   likesCount,
   sharesCount,
+  photoURL,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
 
@@ -30,7 +32,7 @@ const Post = ({
       <div className='post-data'>
         <PostHeader
           id={userId}
-          photoURL={photoURL}
+          photoURL={userPhotoURL}
           displayName={displayName}
           createdAt={createdAt}
         />
@@ -43,7 +45,8 @@ const Post = ({
       </div>
       {!isEditing ? (
         <div className='post-body'>
-          <p> {content}</p>
+          <p className='post-content'> {content}</p>
+          {photoURL && <img src={photoURL} alt='post' />}
         </div>
       ) : (
         <EditPost

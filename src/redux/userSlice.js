@@ -5,7 +5,7 @@ const initialState = {
   user: {
     displayName: 'joseph bayad',
     photoURL: avatar,
-    bio: 'I will make it',
+    bio: '',
     id: 1,
     postsCount: 27,
     followersCount: '2.5k',

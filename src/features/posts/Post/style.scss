@@ -18,8 +18,9 @@
     margin-top: 0.5rem;
     margin-bottom: 2rem;
     margin-left: 1rem;
-    & p {
+    .post-content {
       font-weight: bold;
+      margin: 1.5rem 0;
     }
   }
 
