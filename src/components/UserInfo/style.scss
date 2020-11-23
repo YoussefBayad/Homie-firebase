@@ -16,6 +16,11 @@
     font-size: $small;
     color: darken($grey, 20%);
   }
+  .user-new-img {
+    height: 50%;
+    width: 50%;
+    object-fit: contain;
+  }
 }
 .profile-numbers {
   margin: 3rem 0;

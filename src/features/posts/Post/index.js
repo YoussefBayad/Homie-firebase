@@ -17,7 +17,7 @@ import { useMemo } from 'react';
 
 const Post = ({
   id,
-  user: { id: userId, userPhotoURL, displayName },
+  user: { id: userId, photoURL: userPhotoURL, displayName },
   createdAt,
   content,
   commentsCount,

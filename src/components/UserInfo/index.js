@@ -14,6 +14,7 @@ import UploadForm from '../Upload';
 
 const UserInfo = ({ user, setIsEditing, isEditing, showUpload }) => {
   const [photoURL, setPhotoURL] = useState(null);
+  console.log('photoURL', photoURL);
   const dispatch = useDispatch();
   const initialValues = {
     displayName: user.displayName,
@@ -31,11 +32,13 @@ const UserInfo = ({ user, setIsEditing, isEditing, showUpload }) => {
         id: user.id,
         displayName: values.displayName,
         bio: values.bio,
-        photoURL: photoURL ? photoURL : user.photoURL,
+        photoURL: photoURL || user.photoURL,
       })
     );
     onSubmitProps.resetForm();
+
     setIsEditing(false);
+    setPhotoURL(null);
   };
   return (
     <div className='user-info'>
@@ -45,7 +48,7 @@ const UserInfo = ({ user, setIsEditing, isEditing, showUpload }) => {
         </div>
       </Link>
       {showUpload && <UploadForm svg='add' setPhotoURL={setPhotoURL} />}
-      {!isEditing ? (
+      {!photoURL && !isEditing ? (
         <>
           <h3 className='username'>{user.displayName}</h3>
           <h4 className='bio'>{user.bio}</h4>
@@ -58,6 +61,9 @@ const UserInfo = ({ user, setIsEditing, isEditing, showUpload }) => {
           validateOnBlur={false}
           onSubmit={onSubmit}>
           <Form>
+            {photoURL && (
+              <img className='user-new-img' src={photoURL} alt='user avatar' />
+            )}
             <Field
               type='displayName'
               placeholder='Username'

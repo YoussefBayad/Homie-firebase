@@ -16,6 +16,8 @@ GoogleProvider.setCustomParameters({ prompt: 'select_account' });
 
 export const signInWithGoogle = () => auth.signInWithPopup(GoogleProvider);
 
+const unknownUser =
+  'https://firebasestorage.googleapis.com/v0/b/homiees.appspot.com/o/unknownUser.jpg?alt=media&token=a37be09e-37a3-496f-b563-69a17010ee81';
 export const handleUserProfile = async (userAuth, additionalData) => {
   if (!userAuth) return;
 
@@ -25,9 +27,9 @@ export const handleUserProfile = async (userAuth, additionalData) => {
   const snapshot = await userRef.get();
 
   if (!snapshot.exists) {
-    const { displayName, email, photoURL } = userAuth;
+    let { displayName, email, photoURL } = userAuth;
     const userRoles = ['user'];
-
+    photoURL = photoURL ? photoURL : unknownUser;
     try {
       await userRef.set({
         displayName,

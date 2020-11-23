@@ -33,6 +33,7 @@ const AddPost = () => {
     };
     dispatch(addPost(post));
     setContent('');
+    setPhotoURL(null);
   }, [user.displayName, user.id, user.photoURL, content, dispatch]);
   return (
     <div className='add-post'>
