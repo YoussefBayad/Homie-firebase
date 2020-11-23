@@ -11,6 +11,8 @@ import useAuthListener from './hooks/useAuthListener';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Profile from './pages/Profile';
+import FourOFour from './pages/404';
 
 //layouts
 import MainLayout from './layouts/MainLayout';
@@ -18,7 +20,6 @@ import Container from './layouts/ContainerLayout';
 
 //style
 import './default.scss';
-import Profile from './pages/Profile';
 
 function App() {
   useAuthListener();
@@ -66,7 +67,9 @@ function App() {
           </MainLayout>
         </WithAuth>
         <Route path='*'>
-          <h1>404</h1>
+          <Container>
+            <FourOFour />
+          </Container>
         </Route>
       </Switch>
     </>
