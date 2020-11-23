@@ -5,7 +5,7 @@ const commentsListener = (postId) => {
   const unsubscribe = db
     .collection('comments')
     .orderBy('createdAt', 'asc')
-    .where('postId', '==', postId)
+    // .where('postId', '==', postId)
     .onSnapshot((snapshot) => {
       snapshot.docChanges().forEach((change) => {
         const state = store.getState();

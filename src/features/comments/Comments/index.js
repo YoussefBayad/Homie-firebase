@@ -1,34 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Comment from '../Comment';
 import ShowComments from '../ShowComments';
 import AddComment from '../AddComment';
 import Spinner from '../../../components/Spinner';
-import commentsListener from '../../../utils/commentsListener';
 
 const Comments = ({ postId, commentsCount }) => {
   const { data: comments, loading, error } = useSelector(
     (state) => state.comments
   );
   const [showComments, setShowComments] = useState(false);
-
+  console.log('postId', postId);
   const postComments = comments
     .filter((comment) => comment.postId === postId)
     .map((comment) => (
       <Comment key={comment.id} {...comment} commentsCount={commentsCount} />
     ));
 
-  useEffect(() => {
-    let unsubscribe = () => {};
-    if (showComments) {
-      console.log('comments mount');
-      unsubscribe = commentsListener(postId);
-    }
-    return () => {
-      unsubscribe();
-      console.log('comments unmount');
-    };
-  }, [showComments, postId]);
   return (
     <>
       <ShowComments
