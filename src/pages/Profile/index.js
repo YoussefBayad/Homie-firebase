@@ -4,7 +4,8 @@ import userInfoListener from '../../utils/userInfoListener';
 import UserInfo from '../../components/UserInfo';
 import Posts from '../../features/posts/Posts';
 import BackToTop from '../../components/BackToTop';
-
+import UploadForm from '../../components/Upload';
+import { useParams } from 'react-router-dom';
 import likesListener from '../../utils/likesListener';
 import postsListener from '../../utils/postsListener';
 import AddPost from '../../features/posts/AddPost';
@@ -12,10 +13,13 @@ import Button from '../../components/forms/Button';
 
 //style
 import './style.scss';
-import UploadForm from '../../components/Upload';
 
 const Profile = () => {
   const user = useSelector((state) => state.auth.user);
+  const { id: userId } = useParams();
+
+  console.log('hii', userId);
+
   const [isEditing, setIsEditing] = useState(false);
 
   const {

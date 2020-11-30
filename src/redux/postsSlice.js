@@ -2,7 +2,38 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { db } from '../Firebase/utils';
 import avatar from '../assets/icon/unknownUser.jpg';
 const initialState = {
-  data: [],
+  data: [
+    {
+      id: 3,
+      user: {
+        photoURL: avatar,
+        id: 1,
+        displayName: 'Joseph Bayad',
+      },
+      content: 'you will make it',
+      createdAt: new Date().toISOString(),
+    },
+    {
+      id: 1,
+      user: {
+        photoURL: avatar,
+        id: 1,
+        displayName: 'Joseph Bayad',
+      },
+      content: 'you will make it',
+      createdAt: new Date().toISOString(),
+    },
+    {
+      id: 2,
+      user: {
+        photoURL: avatar,
+        id: 2,
+        displayName: 'Joseph Bayad',
+      },
+      content: 'hii',
+      createdAt: new Date().toISOString(),
+    },
+  ],
   loading: false,
   error: undefined,
 };
@@ -16,7 +47,7 @@ const initialState = {
 //       displayName: 'Joseph Bayad',
 //     },
 //     content: 'you will make it',
-//     createdAt: new Date().toLocaleString,
+//     createdAt: new Date().toISOString(),
 //   },
 // ]
 

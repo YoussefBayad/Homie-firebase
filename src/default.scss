@@ -160,7 +160,12 @@ svg {
   display: grid;
   grid-template-columns: 30rem 1fr;
 }
-
+.page-shadow {
+  padding: 3rem;
+  box-shadow: 1px 0px 15px -2px $darkgrey;
+  border-radius: 1.5rem 0 0 0;
+  z-index: 2;
+}
 //overlay
 
 .overlay {

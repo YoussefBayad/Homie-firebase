@@ -22,7 +22,7 @@ import Container from './layouts/ContainerLayout';
 import './default.scss';
 
 function App() {
-  useAuthListener();
+  // useAuthListener();
   return (
     <>
       <Switch>
@@ -48,7 +48,13 @@ function App() {
         </WithAuth>
         <WithAuth path='/notification'>
           <MainLayout>
-            <h1>notification</h1>
+            <div>
+              <h1>notification</h1>
+              <a href='/#2' className='back-to-top'>
+                hello
+              </a>
+              <h1>hii</h1>
+            </div>
           </MainLayout>
         </WithAuth>
         <WithAuth path='/search'>

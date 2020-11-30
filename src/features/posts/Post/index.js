@@ -28,7 +28,7 @@ const Post = ({
   const [isEditing, setIsEditing] = useState(false);
 
   return (
-    <div className='post'>
+    <div className='post' id={id}>
       <div className='post-data'>
         <PostHeader
           id={userId}

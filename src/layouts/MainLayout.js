@@ -7,7 +7,7 @@ const MainLayout = ({ children }) => {
   return (
     <div className='main-layout'>
       <Sidebar />
-      {children}
+      <div className='page-shadow'>{children}</div>
     </div>
   );
 };
