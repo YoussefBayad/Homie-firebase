@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { db } from '../Firebase/utils';
 import avatar from '../assets/icon/unknownUser.jpg';
 
 const initialState = {
@@ -12,16 +13,18 @@ const initialState = {
       type: 'comment',
       read: false,
       postId: 2,
+      id: 2,
     },
     {
       createdAt: new Date().toISOString(),
       recipient: 1,
       sender: 2,
-      senderName: 'kawtar',
+      senderName: 'Kawtar',
       senderPhotoURL: avatar,
       type: 'like',
-      read: true,
+      read: false,
       postId: 3,
+      id: 1,
     },
   ],
   loading: false,
@@ -30,6 +33,15 @@ const initialState = {
 
 export const fetchNotifications = createAsyncThunk(
   'notifications/fetchNotifications'
+);
+
+export const markNotificationsRead = createAsyncThunk(
+  'notifications/markNotificationsRead',
+  async (nots) => {
+    await nots.forEach((notId) => {
+      db.doc(`/notifications/${notId}`).update({ read: true });
+    });
+  }
 );
 
 const notificationsSlice = createSlice({

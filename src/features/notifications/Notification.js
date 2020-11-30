@@ -3,7 +3,6 @@ import UsernameAndDate from '../../components/UsernameAndDate';
 import { ReactComponent as LikeIcon } from '../../assets/icon/heart.svg';
 import { ReactComponent as CommentIcon } from '../../assets/icon/comment.svg';
 import './style.scss';
-import { Link } from 'react-router-dom';
 
 const Notification = ({
   type,
