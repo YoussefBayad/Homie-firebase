@@ -17,7 +17,6 @@ const notificationsSlice = createSlice({
   reducers: {
     deleteNotification(state, action) {
       if (!action.payload) return;
-      console.log('im inside');
       state.data = state.data.filter(
         (comment) => comment.id !== action.payload
       );

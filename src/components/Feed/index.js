@@ -18,18 +18,16 @@ const Feed = () => {
     (state) => state.auth.user
   );
   useEffect(() => {
-    console.log('mount');
     const unsubscribePosts = postsListener();
     const unsubscribeLikes = likesListener(userId, displayName, photoURL);
     const unsubscribeComments = commentsListener();
     NotificationListener(userId);
     return () => {
-      console.log('cleanUp');
       unsubscribePosts();
       unsubscribeLikes();
       unsubscribeComments();
     };
-  }, [userId, displayName]);
+  }, [userId, displayName, photoURL]);
   return (
     <div className='feed '>
       {useMemo(

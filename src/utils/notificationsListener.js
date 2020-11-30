@@ -3,7 +3,6 @@ import store from '../redux/createStore';
 import { deleteNotification } from '../redux/notificationsSlice';
 
 const NotificationListener = (userId) => {
-  console.log('notifications Listener');
   const unsubscribe = db
     .collection('notifications')
     .where('recipient', '==', userId)
@@ -19,12 +18,12 @@ const NotificationListener = (userId) => {
             type: 'notifications/fetchNotifications/fulfilled',
             payload: { ...change.doc.data(), id: change.doc.id },
           });
-          console.log('added', { ...change.doc.data(), id: change.doc.id });
+          // console.log('added', { ...change.doc.data(), id: change.doc.id });
         }
 
         if (change.type === 'removed') {
           store.dispatch(deleteNotification(change.doc.id));
-          console.log('removed', change.doc.id);
+          // console.log('removed', change.doc.id);
         }
       });
     });

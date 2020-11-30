@@ -22,7 +22,7 @@ import Container from './layouts/ContainerLayout';
 import './default.scss';
 
 function App() {
-  useAuthListener();
+  // useAuthListener();
   return (
     <>
       <Switch>

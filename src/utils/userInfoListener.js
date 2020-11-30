@@ -9,14 +9,14 @@ const userInfoListener = (userId) => {
           type: 'user/editUserInfo/fulfilled',
           payload: { ...change.doc.data(), id: change.doc.id },
         });
-        console.log('edited', change.doc.data().content, change.doc.id);
+        // console.log('edited', change.doc.data().content, change.doc.id);
       }
       if (change.type === 'removed') {
         store.dispatch({
           type: 'posts/deleteUserAccount/fulfilled',
           payload: change.doc.id,
         });
-        console.log('removed', { ...change.doc.data(), id: change.doc.id });
+        // console.log('removed', { ...change.doc.data(), id: change.doc.id });
       }
     });
   });

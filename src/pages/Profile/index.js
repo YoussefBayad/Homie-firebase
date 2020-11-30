@@ -34,12 +34,10 @@ const Profile = () => {
     const unsubscribeUser = userInfoListener(id);
     const unsubscribeLikes = likesListener(id);
     const unsubscribePost = postsListener();
-    console.log('mount');
     return () => {
       unsubscribeUser();
       unsubscribeLikes();
       unsubscribePost();
-      console.log('unmount');
     };
   }, [id]);
 

@@ -30,6 +30,7 @@ const AddComment = ({ postId, setShowComments, commentsCount }) => {
         postId,
       };
       dispatch(addComment(comment));
+
       dispatch(editPost({ id: postId, commentsCount: commentsCount + 1 }));
       setShowComments(true);
       setContent('');

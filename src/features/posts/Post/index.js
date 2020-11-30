@@ -26,7 +26,6 @@ const Post = ({
   photoURL,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
-
   return (
     <div className='post' id={id}>
       <div className='post-data'>
@@ -38,6 +37,7 @@ const Post = ({
         />
         <PostSetting
           id={id}
+          postId={id}
           userId={userId}
           setIsEditing={setIsEditing}
           deleteThunk={deletePost}

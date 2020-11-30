@@ -56,7 +56,6 @@ const likesSlice = createSlice({
       state.data.push(action.payload);
     },
     [unlike.fulfilled]: (state, action) => {
-      console.log('inside reducer', action.payload);
       state.data = state.data.filter((like) => like.id !== action.payload);
     },
   },
