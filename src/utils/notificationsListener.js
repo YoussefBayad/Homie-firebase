@@ -20,7 +20,13 @@ const NotificationListener = (userId) => {
           });
           // console.log('added', { ...change.doc.data(), id: change.doc.id });
         }
-
+        if (change.type === 'modified') {
+          store.dispatch({
+            type: 'notifications/markNotificationsRead/fulfilled',
+            payload: { ...change.doc.data(), id: change.doc.id },
+          });
+          // console.log('added', { ...change.doc.data(), id: change.doc.id });
+        }
         if (change.type === 'removed') {
           store.dispatch(deleteNotification(change.doc.id));
           // console.log('removed', change.doc.id);

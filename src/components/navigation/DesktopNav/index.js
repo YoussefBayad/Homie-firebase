@@ -13,7 +13,9 @@ import { ReactComponent as LogoutIcon } from '../../../assets/icon/logout.svg';
 import './style.scss';
 
 const DesktopNav = ({ userId }) => {
-  const notifications = useSelector((state) => state.notifications.data);
+  const notifications = useSelector((state) =>
+    state.notifications.data.filter((not) => !not.read)
+  );
 
   return (
     <nav className='desktop-nav'>

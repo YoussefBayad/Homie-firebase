@@ -18,8 +18,8 @@ const likesListener = (userId, userName, photoURL) => {
             .get()
             .then((doc) => {
               if (
-                doc.exists &&
-                doc.data().user.id !== change.doc.data().userId
+                doc.exists
+                // && doc.data().user.id !== change.doc.data().userId
               ) {
                 return db.doc(`/notifications/${change.doc.id}`).set({
                   createdAt: new Date().toISOString(),

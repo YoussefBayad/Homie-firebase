@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { markNotificationsRead } from '../../redux/notificationsSlice';
 import Notification from './Notification';
@@ -10,7 +11,12 @@ const Notifications = () => {
   let unreadNotificationsIds = notifications
     .filter((not) => !not.read)
     .map((not) => not.id);
-  dispatch(markNotificationsRead(unreadNotificationsIds));
+
+  useEffect(() => {
+    return () => {
+      dispatch(markNotificationsRead(unreadNotificationsIds));
+    };
+  }, [dispatch, unreadNotificationsIds]);
   return (
     <div className='notifications'>
       {notifications.map((not) => (
