@@ -3,6 +3,7 @@ import userReducer from './userSlice';
 import postsReducer from './postsSlice';
 import commentsReducer from './commentsSlice';
 import likesReducer from './likesSlice';
+import notificationsReducer from './notificationsSlice';
 
 export default configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export default configureStore({
     posts: postsReducer,
     comments: commentsReducer,
     likes: likesReducer,
+    notifications: notificationsReducer,
   },
 });

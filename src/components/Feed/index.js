@@ -11,7 +11,7 @@ import postsListener from '../../utils/postsListener';
 import likesListener from '../../utils/likesListener';
 import { useSelector } from 'react-redux';
 import commentsListener from '../../utils/commentsListener';
-import notificationCreator from '../../utils/notificationCreator';
+import NotificationListener from '../../utils/notificationsListener';
 
 const Feed = () => {
   const userId = useSelector((state) => state.auth.user.id);
@@ -20,8 +20,7 @@ const Feed = () => {
     const unsubscribePosts = postsListener();
     const unsubscribeLikes = likesListener(userId);
     const unsubscribeComments = commentsListener();
-    // notificationCreator();
-
+    NotificationListener(userId);
     return () => {
       console.log('cleanUp');
       unsubscribePosts();

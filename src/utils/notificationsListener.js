@@ -1,7 +1,9 @@
 import { db } from '../Firebase/utils';
 import store from '../redux/createStore';
+import { deleteNotification } from '../redux/notificationsSlice';
 
 const NotificationListener = (userId) => {
+  console.log('notifications Listener');
   const unsubscribe = db
     .collection('notifications')
     .where('recipient', '==', userId)
@@ -14,23 +16,14 @@ const NotificationListener = (userId) => {
 
         if (change.type === 'added' && !not) {
           store.dispatch({
-            type: 'notification/fetchNotification/fulfilled',
+            type: 'notifications/fetchNotifications/fulfilled',
             payload: { ...change.doc.data(), id: change.doc.id },
           });
           console.log('added', { ...change.doc.data(), id: change.doc.id });
         }
-        //   if (change.type === 'modified') {
-        //     store.dispatch({
-        //       type: 'likes/editLike/fulfilled',
-        //       payload: { ...change.doc.data(), id: change.doc.id },
-        //     });
-        //     console.log('edited', change.doc.data().content, change.doc.id);
-        //   }
+
         if (change.type === 'removed') {
-          store.dispatch({
-            type: 'likes/unlike/fulfilled',
-            payload: change.doc.id,
-          });
+          store.dispatch(deleteNotification(change.doc.id));
           console.log('removed', change.doc.id);
         }
       });
