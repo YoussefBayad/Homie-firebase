@@ -14,11 +14,13 @@ import commentsListener from '../../utils/commentsListener';
 import NotificationListener from '../../utils/notificationsListener';
 
 const Feed = () => {
-  const userId = useSelector((state) => state.auth.user.id);
+  const { id: userId, displayName, photoURL } = useSelector(
+    (state) => state.auth.user
+  );
   useEffect(() => {
     console.log('mount');
     const unsubscribePosts = postsListener();
-    const unsubscribeLikes = likesListener(userId);
+    const unsubscribeLikes = likesListener(userId, displayName, photoURL);
     const unsubscribeComments = commentsListener();
     NotificationListener(userId);
     return () => {
@@ -27,7 +29,7 @@ const Feed = () => {
       unsubscribeLikes();
       unsubscribeComments();
     };
-  }, [userId]);
+  }, [userId, displayName]);
   return (
     <div className='feed '>
       {useMemo(

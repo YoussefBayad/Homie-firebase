@@ -1,7 +1,7 @@
 import { db } from '../Firebase/utils';
 import store from '../redux/createStore';
 
-const likesListener = (userId) => {
+const likesListener = (userId, userName, photoURL) => {
   const unsubscribe = db
     .collection('likes')
     .where('userId', '==', userId)
@@ -25,6 +25,8 @@ const likesListener = (userId) => {
                   createdAt: new Date().toISOString(),
                   recipient: doc.data().user.id,
                   sender: change.doc.data().userId,
+                  senderName: userName,
+                  senderPhotoURL: photoURL,
                   type: 'like',
                   read: false,
                   screamId: doc.id,

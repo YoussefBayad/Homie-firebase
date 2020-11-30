@@ -28,6 +28,8 @@ const commentsListener = (postId) => {
                   createdAt: new Date().toISOString(),
                   recipient: doc.data().user.id,
                   sender: change.doc.data().user.id,
+                  senderName: doc.data().user.displayName,
+                  senderPhotoURL: doc.data().user.photoURL,
                   type: 'comment',
                   read: false,
                   screamId: doc.id,
