@@ -14,7 +14,6 @@ import UploadForm from '../Upload';
 
 const UserInfo = ({ user, setIsEditing, isEditing, showUpload }) => {
   const [photoURL, setPhotoURL] = useState(null);
-  console.log('photoURL', photoURL);
   const dispatch = useDispatch();
   const initialValues = {
     displayName: user.displayName,

@@ -18,8 +18,6 @@ const Profile = () => {
   const user = useSelector((state) => state.auth.user);
   const { id: userId } = useParams();
 
-  console.log('hii', userId);
-
   const [isEditing, setIsEditing] = useState(false);
 
   const {

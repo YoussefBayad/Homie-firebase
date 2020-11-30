@@ -36,7 +36,7 @@ const AddPost = () => {
     setPhotoURL(null);
   }, [user.displayName, user.id, user.photoURL, content, dispatch]);
   return (
-    <div className='add-post'>
+    <div className='add-post' id='top'>
       {useMemo(
         () => (
           <div className='circle'>

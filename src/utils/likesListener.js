@@ -14,20 +14,36 @@ const likesListener = (userId) => {
             type: 'likes/like/fulfilled',
             payload: { ...change.doc.data(), id: change.doc.id },
           });
+          db.doc(`/posts/${change.doc.data().postId}`)
+            .get()
+            .then((doc) => {
+              if (
+                doc.exists &&
+                doc.data().user.id !== change.doc.data().userId
+              ) {
+                return db.doc(`/notifications/${change.doc.id}`).set({
+                  createdAt: new Date().toISOString(),
+                  recipient: doc.data().user.id,
+                  sender: change.doc.data().userId,
+                  type: 'like',
+                  read: false,
+                  screamId: doc.id,
+                });
+              }
+            })
+            .catch((err) => console.error(err));
+
           console.log('added', { ...change.doc.data(), id: change.doc.id });
         }
-        //   if (change.type === 'modified') {
-        //     store.dispatch({
-        //       type: 'likes/editLike/fulfilled',
-        //       payload: { ...change.doc.data(), id: change.doc.id },
-        //     });
-        //     console.log('edited', change.doc.data().content, change.doc.id);
-        //   }
+
         if (change.type === 'removed') {
           store.dispatch({
             type: 'likes/unlike/fulfilled',
             payload: change.doc.id,
           });
+          db.doc(`/notifications/${change.doc.id}`)
+            .delete()
+            .catch((err) => console.error(err));
           console.log('removed', change.doc.id);
         }
       });

@@ -10,6 +10,8 @@
     "@testing-library/user-event": "^7.2.1",
     "date-fns": "^2.16.1",
     "firebase": "^8.0.0",
+    "firebase-admin": "^9.4.1",
+    "firebase-functions": "^3.11.0",
     "formik": "^2.2.1",
     "framer-motion": "^2.9.4",
     "node-sass": "^4.14.1",
@@ -42,4 +44,5 @@
       "last 1 safari version"
     ]
   }
+
 }

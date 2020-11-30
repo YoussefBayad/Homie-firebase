@@ -17,6 +17,27 @@ const commentsListener = (postId) => {
             type: 'comments/addComment/fulfilled',
             payload: { ...change.doc.data(), id: change.doc.id },
           });
+          db.doc(`/posts/${change.doc.data().postId}`)
+            .get()
+            .then((doc) => {
+              if (
+                doc.exists &&
+                doc.data().user.id !== change.doc.data().user.id
+              ) {
+                return db.doc(`/notifications/${change.doc.id}`).set({
+                  createdAt: new Date().toISOString(),
+                  recipient: doc.data().user.id,
+                  sender: change.doc.data().user.id,
+                  type: 'comment',
+                  read: false,
+                  screamId: doc.id,
+                });
+              }
+            })
+            .catch((err) => {
+              console.error(err);
+              return;
+            });
           console.log('added', { ...change.doc.data(), id: change.doc.id });
         }
         if (change.type === 'modified') {
@@ -31,6 +52,9 @@ const commentsListener = (postId) => {
             type: 'comments/deleteComment/fulfilled',
             payload: change.doc.id,
           });
+          db.doc(`/notifications/${change.doc.id}`)
+            .delete()
+            .catch((err) => console.error(err));
           console.log('removed', change.doc.id);
         }
       });

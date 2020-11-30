@@ -10,7 +10,6 @@ const Comments = ({ postId, commentsCount }) => {
     (state) => state.comments
   );
   const [showComments, setShowComments] = useState(false);
-  console.log('postId', postId);
   const postComments = comments
     .filter((comment) => comment.postId === postId)
     .map((comment) => (

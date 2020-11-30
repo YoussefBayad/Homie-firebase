@@ -1,8 +1,12 @@
-import { db, functions } from '../Firebase/utils';
+import { db } from '../Firebase/utils';
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
+admin.initializeApp(functions.config().firebase);
 
 const notificationCreator = () => {
   // on like create
   functions.firestore.document('likes/{id}').onCreate((snapshot) => {
+    console.log('snap', snapshot.data());
     return db
       .doc(`/posts/${snapshot.data().postId}`)
       .get()

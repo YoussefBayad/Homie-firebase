@@ -20,7 +20,8 @@ const Feed = () => {
     const unsubscribePosts = postsListener();
     const unsubscribeLikes = likesListener(userId);
     const unsubscribeComments = commentsListener();
-    notificationCreator();
+    // notificationCreator();
+
     return () => {
       console.log('cleanUp');
       unsubscribePosts();
@@ -42,7 +43,7 @@ const Feed = () => {
         ),
         []
       )}
-      <AddPost id='top' />
+      <AddPost />
       <Posts />
       <BackToTop />
     </div>
