@@ -1,8 +1,29 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { db } from '../Firebase/utils';
+import avatar from '../assets/icon/unknownUser.jpg';
 
 const initialState = {
-  data: [],
+  data: [
+    {
+      createdAt: new Date().toISOString(),
+      recipient: 1,
+      sender: 2,
+      senderName: 'rihana',
+      senderPhotoURL: avatar,
+      type: 'comment',
+      read: false,
+      postId: 2,
+    },
+    {
+      createdAt: new Date().toISOString(),
+      recipient: 1,
+      sender: 2,
+      senderName: 'kawtar',
+      senderPhotoURL: avatar,
+      type: 'like',
+      read: true,
+      postId: 3,
+    },
+  ],
   loading: false,
   error: undefined,
 };

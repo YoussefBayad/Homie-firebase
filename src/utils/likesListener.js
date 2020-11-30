@@ -29,7 +29,8 @@ const likesListener = (userId, userName, photoURL) => {
                   senderPhotoURL: photoURL,
                   type: 'like',
                   read: false,
-                  screamId: doc.id,
+                  postId: doc.id,
+                  id: change.doc.id,
                 });
               }
             })

@@ -13,6 +13,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import FourOFour from './pages/404';
+import NotificationsPage from './pages/Notifications';
 
 //layouts
 import MainLayout from './layouts/MainLayout';
@@ -48,13 +49,7 @@ function App() {
         </WithAuth>
         <WithAuth path='/notification'>
           <MainLayout>
-            <div>
-              <h1>notification</h1>
-              <a href='/#2' className='back-to-top'>
-                hello
-              </a>
-              <h1>hii</h1>
-            </div>
+            <NotificationsPage />
           </MainLayout>
         </WithAuth>
         <WithAuth path='/search'>

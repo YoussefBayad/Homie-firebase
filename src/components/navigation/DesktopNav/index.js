@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { auth } from '../../../Firebase/utils';
 import { ReactComponent as SearchIcon } from '../../../assets/icon/search.svg';
 import { ReactComponent as MingleIcon } from '../../../assets/icon/direct.svg';
@@ -12,6 +13,8 @@ import { ReactComponent as LogoutIcon } from '../../../assets/icon/logout.svg';
 import './style.scss';
 
 const DesktopNav = ({ userId }) => {
+  const notifications = useSelector((state) => state.notifications.data);
+
   return (
     <nav className='desktop-nav'>
       <NavLink exact to='/' className='link' activeClassName='main-nav-active'>
@@ -20,7 +23,7 @@ const DesktopNav = ({ userId }) => {
       </NavLink>
       <NavLink to='/chat' className='link' activeClassName='main-nav-active'>
         <MingleIcon />
-        <p>Mingle</p>
+        <p>Chat</p>
       </NavLink>
       <NavLink
         to='/notification'
@@ -28,6 +31,9 @@ const DesktopNav = ({ userId }) => {
         activeClassName='main-nav-active'>
         <NotificationIcon />
         <p>notification</p>
+        {notifications.length > 0 ? (
+          <p className='notifications-count'>{notifications.length}</p>
+        ) : null}
       </NavLink>
       <NavLink to='/search' className='link' activeClassName='main-nav-active'>
         <SearchIcon />

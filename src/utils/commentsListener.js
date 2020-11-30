@@ -32,7 +32,8 @@ const commentsListener = (postId) => {
                   senderPhotoURL: doc.data().user.photoURL,
                   type: 'comment',
                   read: false,
-                  screamId: doc.id,
+                  postId: doc.id,
+                  id: change.doc.id,
                 });
               }
             })

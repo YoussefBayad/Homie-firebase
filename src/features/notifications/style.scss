@@ -1,0 +1,32 @@
+@import '../../default.scss';
+
+.notification {
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  margin-bottom: 1.5rem;
+  z-index: 3;
+  cursor: pointer;
+  .post-header {
+    @include flex(row, center, start);
+    margin-bottom: 1.5rem;
+    z-index: -3;
+  }
+  .notification-p {
+    margin-left: 0.5rem;
+    @include flex(row, center, start);
+    color: black;
+    & svg {
+      margin-right: 1.5rem;
+      &:hover {
+        fill: $success;
+      }
+    }
+  }
+}
+.grey {
+  background: $grey;
+}
+
+.lightgrey {
+  background: $lightgrey;
+}

@@ -1,0 +1,11 @@
+@import '../../default.scss';
+
+.notifications-page {
+  margin: auto;
+  min-width: 35rem;
+  max-width: 70rem;
+  & h1 {
+    font-size: $title;
+    margin-bottom: 6rem;
+  }
+}
