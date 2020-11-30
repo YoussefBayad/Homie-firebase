@@ -1,0 +1,25 @@
+@import '../../../default.scss';
+
+.notifications-icon {
+  position: relative;
+
+  .notifications {
+    border: 1px solid black;
+    border-radius: 1.5rem;
+    padding: 1rem;
+    position: absolute;
+    background-color: $sidebar;
+    right: 0;
+    width: 30rem;
+    z-index: 2;
+  }
+  .notifications-count {
+    @include box(2.5rem);
+
+    font-size: $small;
+
+    position: absolute;
+    top: -1rem;
+    left: 1rem;
+  }
+}

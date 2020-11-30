@@ -49,11 +49,4 @@
       }
     }
   }
-  .notifications-count {
-    @include flex(row, center, center);
-    @include box(3rem);
-    border-radius: 50%;
-    background-color: $accent;
-    color: $white !important;
-  }
 }
