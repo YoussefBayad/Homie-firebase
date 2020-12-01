@@ -6,11 +6,13 @@
   .notifications {
     border: 1px solid black;
     border-radius: 1.5rem;
-    padding: 1rem;
+    padding: 1.5rem;
     position: absolute;
     background-color: $sidebar;
     right: 0;
     width: 30rem;
+    height: 50rem;
+    overflow: auto;
     z-index: 2;
   }
   .notifications-count {

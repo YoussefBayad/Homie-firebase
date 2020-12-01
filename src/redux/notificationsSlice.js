@@ -3,30 +3,7 @@ import { db } from '../Firebase/utils';
 import avatar from '../assets/icon/unknownUser.jpg';
 
 const initialState = {
-  data: [
-    {
-      createdAt: new Date().toISOString(),
-      recipient: 1,
-      sender: 2,
-      senderName: 'rihana',
-      senderPhotoURL: avatar,
-      type: 'comment',
-      read: false,
-      postId: 2,
-      id: 2,
-    },
-    {
-      createdAt: new Date().toISOString(),
-      recipient: 1,
-      sender: 2,
-      senderName: 'Kawtar',
-      senderPhotoURL: avatar,
-      type: 'like',
-      read: false,
-      postId: 3,
-      id: 1,
-    },
-  ],
+  data: [],
   loading: false,
   error: undefined,
 };
@@ -83,6 +60,7 @@ const notificationsSlice = createSlice({
     [fetchNotifications.fulfilled]: (state, action) => {
       if (!action.payload) return;
       state.data.push(action.payload);
+      state.data.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
     },
     [markNotificationsRead.fulfilled]: (state, action) => {
       if (!action.payload) return;

@@ -19,6 +19,7 @@ const Notifications = () => {
   }, [dispatch, unreadNotificationsIds]);
   return (
     <div className='notifications'>
+      {notifications.length === 0 && <p>There is no notifications to show</p>}
       {notifications.map((not) => (
         <Notification key={not.id} {...not} />
       ))}

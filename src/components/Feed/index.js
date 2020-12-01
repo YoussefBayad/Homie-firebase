@@ -17,9 +17,7 @@ const Feed = () => {
   const { id: userId, displayName, photoURL } = useSelector(
     (state) => state.auth.user
   );
-  const notifications = useSelector((state) =>
-    state.notifications.data.filter((not) => !not.read)
-  );
+
   useEffect(() => {
     const unsubscribePosts = postsListener();
     const unsubscribeLikes = likesListener(userId, displayName, photoURL);
@@ -39,7 +37,7 @@ const Feed = () => {
             <Filter />
             <div className='right-nav'>
               <ChatIcon />
-              <NotificationIcon notifications={notifications.length} />
+              <NotificationIcon />
             </div>
           </nav>
         ),
