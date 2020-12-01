@@ -14,6 +14,7 @@ import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import FourOFour from './pages/404';
 import NotificationsPage from './pages/Notifications';
+import Chat from './pages/Chat';
 
 //layouts
 import MainLayout from './layouts/MainLayout';
@@ -42,9 +43,9 @@ function App() {
             <Signup />
           </Container>
         </WithNoAuth>
-        <WithAuth path='/chat'>
+        <WithAuth path='/chat/:sender/:receiver'>
           <MainLayout>
-            <h1>Chat</h1>
+            <Chat />
           </MainLayout>
         </WithAuth>
         <WithAuth path='/notification'>

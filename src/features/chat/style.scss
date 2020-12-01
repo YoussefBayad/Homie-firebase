@@ -1,0 +1,52 @@
+@import '../../default.scss';
+
+.chat-users {
+  height: 90vh;
+  overflow: auto;
+  border: 1px solid $black;
+  border-left: none;
+  border-radius: 0 1.5rem 1.5rem 0;
+}
+
+.chat-body {
+  display: grid;
+  grid-template-rows: 0.2fr 1fr 0.2fr;
+}
+.messages {
+  @include flex(column, start, start);
+}
+.message {
+  padding: 1.5rem;
+  background: $sidebar;
+  border-radius: 1.5rem;
+  margin-bottom: 2rem;
+  min-width: 20rem;
+
+  @include flex(row, center, space-between);
+  .message-content {
+    width: 100%;
+  }
+  .timestamp {
+    font-size: $smallest;
+    margin-left: 1.5rem;
+    float: right;
+    color: $grey;
+  }
+}
+.sender {
+  background-color: $blue;
+  align-self: flex-end;
+  color: white;
+  .timestamp {
+    color: $lightgrey;
+  }
+}
+
+// add message
+
+.add-message {
+  .add-comment-input {
+    border: 1px $blue solid;
+    padding: 1.5rem;
+  }
+}
