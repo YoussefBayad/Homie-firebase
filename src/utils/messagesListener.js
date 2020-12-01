@@ -14,7 +14,7 @@ const messagesListener = (sender, receiver) => {
         );
         if (change.type === 'added' && !message) {
           store.dispatch({
-            type: 'messages/fetchMessages/fulfilled',
+            type: 'messages/addMessage/fulfilled',
             payload: { ...change.doc.data(), id: change.doc.id },
           });
         }
