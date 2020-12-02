@@ -13,22 +13,16 @@ import Button from '../../components/forms/Button';
 
 //style
 import './style.scss';
+import fetchUser from '../../utils/fetchUser';
+import Spinner from '../../components/Spinner';
 
 const Profile = () => {
-  const user = useSelector((state) => state.auth.user);
-  const { id: userId } = useParams();
+  const currentUser = useSelector((state) => state.auth.user);
+  const { id } = useParams();
+  let user = null;
+  Number(id) === currentUser.id ? (user = currentUser) : (user = fetchUser(id));
 
   const [isEditing, setIsEditing] = useState(false);
-
-  const {
-    id,
-    displayName,
-    photoURL,
-    bio,
-    postsCount,
-    followersCount,
-    followingCount,
-  } = user;
 
   useEffect(() => {
     const unsubscribeUser = userInfoListener(id);
@@ -43,22 +37,27 @@ const Profile = () => {
 
   return (
     <div className='profile'>
-      <UserInfo
-        showUpload
-        user={user}
-        setIsEditing={setIsEditing}
-        isEditing={isEditing}
-      />
-      {!isEditing && (
-        <Button
-          className='btn profile-info-edit'
-          onClick={() => setIsEditing(true)}>
-          Edit Info
-        </Button>
+      {user && (
+        <>
+          <UserInfo
+            showUpload
+            user={user}
+            setIsEditing={setIsEditing}
+            isEditing={isEditing}
+          />
+          {!isEditing && (
+            <Button
+              className='btn profile-info-edit'
+              onClick={() => setIsEditing(true)}>
+              Edit Info
+            </Button>
+          )}
+        </>
       )}
+      {!user && <Spinner />}
       <h2>Posts</h2>
       <AddPost />
-      <Posts userId={user.id} />
+      <Posts userId={id} />
       <BackToTop />
     </div>
   );
