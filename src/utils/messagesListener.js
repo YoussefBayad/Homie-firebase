@@ -3,10 +3,10 @@ import store from '../redux/createStore';
 
 const messagesListener = (sender, receiver) => {
   const unsubscribe = db
-    .collection('likes')
-    .where('sender', '==', sender)
-    .where('receiver', '==', receiver)
+    .collection('messages')
+
     .onSnapshot((snapshot) => {
+      console.log('hii', sender, receiver);
       snapshot.docChanges().forEach((change) => {
         const state = store.getState();
         const message = state.messages.data.find(

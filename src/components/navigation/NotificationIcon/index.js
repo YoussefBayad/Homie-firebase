@@ -6,17 +6,16 @@ import Notifications from '../../../features/notifications';
 import './style.scss';
 
 const NotificationIcon = () => {
-  const notifications = useSelector((state) =>
-    state.notifications.data.filter((not) => !not.read)
-  );
+  const notifications = useSelector((state) => state.notifications.data);
+  const unreadNots = notifications.filter((not) => !not.read);
   const [isOpen, setIsOpen] = useState(false);
 
   const [ref] = useOutsideClickRef(() => setIsOpen(false));
   return (
     <div className='notifications-icon'>
       <Icon onClick={() => setIsOpen((prev) => !prev)} />
-      {notifications.length > 0 ? (
-        <p className='notifications-count'>{notifications.length}</p>
+      {unreadNots.length > 0 ? (
+        <p className='notifications-count'>{unreadNots.length}</p>
       ) : (
         ''
       )}

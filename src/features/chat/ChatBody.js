@@ -10,10 +10,8 @@ import AddMessage from './AddMessage';
 import './style.scss';
 
 const ChatBody = ({ sender, receiver }) => {
-  const { data: messages, loading, error } = useSelector(
-    (state) => state.messages
-  );
-
+  const { data, loading, error } = useSelector((state) => state.messages);
+  const messages = data.filter((message) => message.receiver === receiver);
   useEffect(() => {
     const unsubscribe = messagesListener(sender, receiver);
     return () => {
@@ -22,11 +20,11 @@ const ChatBody = ({ sender, receiver }) => {
   }, [sender, receiver]);
   return (
     <div className='chat-body'>
-      <h1>receiver name</h1>
+      <h1>{receiver}</h1>
       {loading && <Spinner />}
-      {messages && <Messages messages={messages} />}
+      {messages && <Messages messages={messages} currentUserId={sender} />}
       {error && <ErrorText>Something wet wrong refresh</ErrorText>}
-      <AddMessage />
+      <AddMessage sender={sender} receiver={receiver} />
     </div>
   );
 };

@@ -16,14 +16,17 @@ const DesktopNav = ({ userId }) => {
   const notifications = useSelector((state) =>
     state.notifications.data.filter((not) => !not.read)
   );
-
+  const admin = 'volTozosNrMZJuUCZqvPswYPWzm2';
   return (
     <nav className='desktop-nav'>
       <NavLink exact to='/' className='link' activeClassName='main-nav-active'>
         <FeedIcon />
         <p>Feed</p>
       </NavLink>
-      <NavLink to='/chat' className='link' activeClassName='main-nav-active'>
+      <NavLink
+        to={`/chat/${userId}/${admin}`}
+        className='link'
+        activeClassName='main-nav-active'>
         <MingleIcon />
         <p>Chat</p>
       </NavLink>

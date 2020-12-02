@@ -3,5 +3,6 @@
 .chat-page {
   min-width: 50rem;
   display: grid;
-  grid-template-columns: 0.5fr 1fr;
+  grid-template-columns: 0.3fr 0.7fr;
+  grid-column-gap: 1.5rem;
 }

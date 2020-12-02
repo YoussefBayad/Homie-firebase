@@ -36,7 +36,7 @@ const Feed = () => {
           <nav className='feed-nav'>
             <Filter />
             <div className='right-nav'>
-              <ChatIcon />
+              {/* <ChatIcon /> */}
               <NotificationIcon />
             </div>
           </nav>

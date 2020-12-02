@@ -2,10 +2,28 @@
 
 .chat-users {
   height: 90vh;
-  overflow: auto;
+  // overflow-y: scroll;
   border: 1px solid $black;
   border-left: none;
   border-radius: 0 1.5rem 1.5rem 0;
+  .chat-user {
+    padding: 1.5rem;
+    color: black;
+    text-align: left;
+    @include flex('', start, '');
+    border-bottom: 1px black solid;
+    &:last-child {
+      border: none;
+    }
+    .circle img {
+      @include box(7rem);
+      margin-right: 1.5rem;
+    }
+  }
+  .chat-nav-active {
+    background-color: $lightgrey;
+    border-radius: 0 0 0 1.5rem;
+  }
 }
 
 .chat-body {
