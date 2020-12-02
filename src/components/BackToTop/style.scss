@@ -3,7 +3,8 @@
 .back-to-top {
   display: block;
   @include box(5rem);
-  margin: 3rem auto;
+  margin: auto;
+  margin-bottom: 8rem;
   border-radius: 50%;
   @include background-transition($accent2, lighten($accent2, 20%));
   @include flex('', center, center);

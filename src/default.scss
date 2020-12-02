@@ -62,7 +62,7 @@ $desktop: 1280;
   }
 }
 @mixin tablet {
-  @media only screen and (min-width: $tablet * 1px) {
+  @media only screen and (max-width: $tablet * 1px) {
     @content;
   }
 }
@@ -235,4 +235,25 @@ textarea {
   border-radius: 50%;
   background-color: $accent;
   color: $white !important;
+}
+
+// media quires
+
+@include tablet {
+  .sidebar {
+    display: none;
+  }
+  .mobile-nav {
+    display: block;
+    .mobile-nav-inner {
+      @include flex(row, center, space-around);
+    }
+  }
+  .main-layout {
+    grid-template-columns: 1fr;
+    min-height: 100vh;
+  }
+  .page-shadow {
+    box-shadow: none;
+  }
 }

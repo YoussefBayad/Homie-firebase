@@ -47,6 +47,7 @@ const AddPost = () => {
       )}
       <div className='first-row'>
         <Textarea
+          id='add-post-input'
           placeholder="What's on your mind?"
           content={content}
           setContent={setContent}

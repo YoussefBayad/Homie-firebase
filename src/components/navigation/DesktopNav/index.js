@@ -36,9 +36,9 @@ const DesktopNav = ({ userId }) => {
         activeClassName='main-nav-active'>
         <NotificationIcon />
         <p>notification</p>
-        {notifications.length > 0 ? (
+        {notifications.length > 0 && (
           <p className='notifications-count'>{notifications.length}</p>
-        ) : null}
+        )}
       </NavLink>
       <NavLink to='/search' className='link' activeClassName='main-nav-active'>
         <SearchIcon />

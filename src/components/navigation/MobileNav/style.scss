@@ -1,0 +1,55 @@
+@import '../../../default.scss';
+
+.mobile-nav {
+  width: 100%;
+  display: none;
+  height: 10rem;
+  position: fixed;
+  background: $sidebar;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  border-radius: 5rem 5rem 0 0;
+}
+.mobile-nav-inner {
+  min-width: 35rem;
+  max-width: 55rem;
+  height: 100%;
+  margin: auto;
+  .link {
+    @include flex('', center, '');
+    svg {
+      width: 3rem;
+    }
+
+    &:hover {
+      & p {
+        color: lighten($accent, 20%);
+      }
+      & svg {
+        fill: lighten($accent, 20%);
+      }
+    }
+  }
+  .add {
+    background-color: white;
+    @include box(6rem);
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    margin-bottom: 3rem;
+
+    & svg {
+      fill: darken($accent, 10%);
+      @include box(4rem);
+    }
+  }
+  .main-nav-active {
+    & p {
+      color: $accent;
+    }
+    & svg {
+      fill: $accent;
+    }
+  }
+}

@@ -1,11 +1,16 @@
 @import '../../default.scss';
 
+.chat-body,
+.chat-users {
+  height: calc(100vh - 15rem);
+}
 .chat-users {
   height: 90vh;
   // overflow-y: scroll;
   border: 1px solid $black;
   border-left: none;
   border-radius: 0 1.5rem 1.5rem 0;
+
   .chat-user {
     padding: 1.5rem;
     color: black;
