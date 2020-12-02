@@ -11,13 +11,16 @@ import './style.scss';
 
 const ChatBody = ({ sender, receiver }) => {
   const { data, loading, error } = useSelector((state) => state.messages);
-  const messages = data.filter((message) => message.receiver === receiver);
+  console.log('re', receiver);
+  const messages = data
+    .filter((msg) => msg.receiver === sender || msg.sender === sender)
+    .filter((msg) => msg.sender === receiver || msg.receiver === receiver);
   useEffect(() => {
-    const unsubscribe = messagesListener(sender, receiver);
+    const unsubscribe = messagesListener(sender);
     return () => {
       unsubscribe();
     };
-  }, [sender, receiver]);
+  }, []);
   return (
     <div className='chat-body'>
       <h1>{receiver}</h1>
