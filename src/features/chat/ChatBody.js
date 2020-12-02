@@ -11,7 +11,6 @@ import './style.scss';
 
 const ChatBody = ({ sender, receiver }) => {
   const { data, loading, error } = useSelector((state) => state.messages);
-  console.log('re', receiver);
   const messages = data
     .filter((msg) => msg.receiver === sender || msg.sender === sender)
     .filter((msg) => msg.sender === receiver || msg.receiver === receiver);
@@ -20,10 +19,10 @@ const ChatBody = ({ sender, receiver }) => {
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [sender]);
   return (
     <div className='chat-body'>
-      <h1>{receiver}</h1>
+      <h1>Chat</h1>
       {loading && <Spinner />}
       {messages && <Messages messages={messages} currentUserId={sender} />}
       {error && <ErrorText>Something wet wrong refresh</ErrorText>}

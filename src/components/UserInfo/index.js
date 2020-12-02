@@ -1,6 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from '../forms/Button';
 import Spinner from '../Spinner';
@@ -15,6 +15,8 @@ import UploadForm from '../Upload';
 const UserInfo = ({ user, setIsEditing, isEditing, showUpload }) => {
   const [photoURL, setPhotoURL] = useState(null);
   const dispatch = useDispatch();
+  const posts = useSelector((state) => state.posts.data);
+  const postsCount = posts.filter((post) => post.user.id === user.id).length;
   const initialValues = {
     displayName: user.displayName,
     bio: user.bio,
@@ -80,7 +82,7 @@ const UserInfo = ({ user, setIsEditing, isEditing, showUpload }) => {
       )}
       <div className='profile-numbers'>
         <div className='profile-number'>
-          <p>{user.postsCount}</p>
+          <p>{postsCount}</p>
           <p>posts</p>
         </div>
         <div className='profile-number'>
