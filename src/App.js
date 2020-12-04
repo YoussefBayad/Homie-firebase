@@ -22,7 +22,7 @@ import Container from './layouts/ContainerLayout';
 
 //style
 import './default.scss';
-import MobileNav from './components/navigation/MobileNav';
+import Search from './pages/Search';
 
 function App() {
   // useAuthListener();
@@ -56,7 +56,7 @@ function App() {
         </WithAuth>
         <WithAuth path='/search'>
           <MainLayout>
-            <h1>search</h1>
+            <Search />
           </MainLayout>
         </WithAuth>
         <WithAuth path='/admin'>

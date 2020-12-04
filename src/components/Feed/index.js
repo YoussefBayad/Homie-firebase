@@ -34,11 +34,11 @@ const Feed = () => {
       {useMemo(
         () => (
           <nav className='feed-nav'>
-            <Filter />
-            <div className='right-nav'>
-              {/* <ChatIcon /> */}
-              <NotificationIcon />
-            </div>
+            {/* <Filter /> */}
+            {/* <div className='right-nav'> */}
+            {/* <ChatIcon /> */}
+            <NotificationIcon />
+            {/* </div> */}
           </nav>
         ),
         []

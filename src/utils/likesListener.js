@@ -35,8 +35,6 @@ const likesListener = (userId, userName, photoURL) => {
               }
             })
             .catch((err) => console.error(err));
-
-          // console.log('added', { ...change.doc.data(), id: change.doc.id });
         }
 
         if (change.type === 'removed') {
@@ -47,7 +45,6 @@ const likesListener = (userId, userName, photoURL) => {
           db.doc(`/notifications/${change.doc.id}`)
             .delete()
             .catch((err) => console.error(err));
-          // console.log('removed', change.doc.id);
         }
       });
     });

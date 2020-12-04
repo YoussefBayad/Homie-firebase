@@ -41,14 +41,12 @@ const commentsListener = (postId) => {
               console.error(err);
               return;
             });
-          // console.log('added', { ...change.doc.data(), id: change.doc.id });
         }
         if (change.type === 'modified') {
           store.dispatch({
             type: 'comments/editComment/fulfilled',
             payload: { ...change.doc.data(), id: change.doc.id },
           });
-          // console.log('edited', change.doc.data().content, change.doc.id);
         }
         if (change.type === 'removed') {
           store.dispatch({
@@ -58,7 +56,6 @@ const commentsListener = (postId) => {
           db.doc(`/notifications/${change.doc.id}`)
             .delete()
             .catch((err) => console.error(err));
-          // console.log('removed', change.doc.id);
         }
       });
     });

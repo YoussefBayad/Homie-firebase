@@ -2,22 +2,53 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { db } from '../Firebase/utils';
 import avatar from '../assets/icon/unknownUser.jpg';
 const initialState = {
-  data: [],
+  data: [
+    {
+      id: 1,
+      user: {
+        photoURL: avatar,
+        id: 1,
+        displayName: 'Joseph Bayad',
+      },
+      content: 'you will make it',
+      createdAt: new Date().toISOString(),
+    },
+    {
+      id: 12,
+      user: {
+        photoURL: avatar,
+        id: 1,
+        displayName: 'Joseph Bayad',
+      },
+      content: "what 's up bro'",
+      createdAt: new Date().toISOString(),
+    },
+    {
+      id: 5,
+      user: {
+        photoURL: avatar,
+        id: 1,
+        displayName: 'Joseph Bayad',
+      },
+      content: 'heyyy every body',
+      createdAt: new Date().toISOString(),
+    },
+  ],
   loading: false,
   error: undefined,
 };
 
 // [
-//   {
+// {
+//   id: 1,
+//   user: {
+//     photoURL: avatar,
 //     id: 1,
-//     user: {
-//       photoURL: avatar,
-//       id: 1,
-//       displayName: 'Joseph Bayad',
-//     },
-//     content: 'you will make it',
-//     createdAt: new Date().toISOString(),
+//     displayName: 'Joseph Bayad',
 //   },
+//   content: 'you will make it',
+//   createdAt: new Date().toISOString(),
+// },
 // ]
 
 export const fetchPosts = createAsyncThunk(

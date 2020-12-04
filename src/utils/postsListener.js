@@ -15,7 +15,6 @@ const postsListener = () => {
             type: 'posts/addPost/fulfilled',
             payload: { ...change.doc.data(), id: change.doc.id },
           });
-          // console.log('added', { ...change.doc.data(), id: change.doc.id });
         }
 
         if (change.type === 'modified') {
@@ -23,7 +22,6 @@ const postsListener = () => {
             type: 'posts/editPost/fulfilled',
             payload: { ...change.doc.data(), id: change.doc.id },
           });
-          // console.log('edited', change.doc.data().content, change.doc.id);
         }
 
         if (change.type === 'removed') {

@@ -6,11 +6,12 @@
     // top: -1px;
     // padding: 3rem 0;
     // background-color: $white;
-    // width: 100%;
+    width: 100%;
     // z-index: 2;
-    @include flex('', center, space-between);
-    .right-nav {
-      @include flex('', center, space-between);
-    }
+
+    @include flex('', center, flex-end);
+    // .right-nav {
+    //   @include flex('', center, space-between);
+    // }
   }
 }

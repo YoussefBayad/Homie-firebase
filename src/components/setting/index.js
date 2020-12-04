@@ -16,7 +16,6 @@ const PostSetting = ({ id, userId, setIsEditing, deleteThunk, postId }) => {
     () => posts.find((post) => post.id === postId),
     [postId, posts]
   );
-  console.log('commentsCount', commentsCount);
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [ref] = useOutsideClickRef(() => setIsOpen(false));

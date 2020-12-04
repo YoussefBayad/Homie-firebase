@@ -2,10 +2,15 @@ import React from 'react';
 import './style.scss';
 import { ReactComponent as SearchIcon } from '../../../assets/icon/search.svg';
 
-const Filter = () => {
+const Filter = ({ ...rest }) => {
   return (
     <div className='filter-box'>
-      <input className='filter' type='text' placeholder='Search ...' />
+      <input
+        {...rest}
+        className='filter'
+        type='text'
+        placeholder='Search ...'
+      />
       <SearchIcon />
     </div>
   );

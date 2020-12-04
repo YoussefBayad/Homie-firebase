@@ -21,7 +21,6 @@ const Profile = () => {
   const { id } = useParams();
   let user = null;
   Number(id) === currentUser.id ? (user = currentUser) : (user = fetchUser(id));
-
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {

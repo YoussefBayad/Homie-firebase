@@ -4,7 +4,6 @@ import './style.scss';
 
 const Message = ({ sender, receiver, content, createdAt, currentUserId }) => {
   const date = parseISO(createdAt);
-  console.log('date', date);
   const timeAgo = formatDistanceToNow(date);
   return (
     <div className={`message ${sender === currentUserId && 'sender'}`}>
