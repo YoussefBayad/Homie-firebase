@@ -17,7 +17,7 @@ const initialState = {
       id: 12,
       user: {
         photoURL: avatar,
-        id: 1,
+        id: 3,
         displayName: 'Joseph Bayad',
       },
       content: "what 's up bro'",

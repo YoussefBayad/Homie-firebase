@@ -4,7 +4,6 @@ import userInfoListener from '../../utils/userInfoListener';
 import UserInfo from '../../components/UserInfo';
 import Posts from '../../features/posts/Posts';
 import BackToTop from '../../components/BackToTop';
-import UploadForm from '../../components/Upload';
 import { useParams } from 'react-router-dom';
 import likesListener from '../../utils/likesListener';
 import postsListener from '../../utils/postsListener';
@@ -13,14 +12,12 @@ import Button from '../../components/forms/Button';
 
 //style
 import './style.scss';
-import fetchUser from '../../utils/fetchUser';
 import Spinner from '../../components/Spinner';
 
 const Profile = () => {
-  const currentUser = useSelector((state) => state.auth.user);
   const { id } = useParams();
-  let user = null;
-  Number(id) === currentUser.id ? (user = currentUser) : (user = fetchUser(id));
+  const users = useSelector((state) => state.users.data);
+  const user = users.find((user) => user.id === Number(id));
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {

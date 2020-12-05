@@ -10,20 +10,20 @@ import './style.scss';
 
 const Search = () => {
   const [query, setQuery] = useState('');
-  // const users = useSelector(state => state.users.data);
+  const users = useSelector((state) => state.users.data);
   const posts = useSelector((state) => state.posts.data);
   const [postsResults, setPostsResults] = useState([]);
-  // const [usersResults, setUsersResults] = useState([]);
+  const [usersResults, setUsersResults] = useState([]);
 
   useEffect(() => {
     setPostsResults(filterData(query, posts));
-    // setUsersResults(filterData(query, users));
-  }, [query, posts]);
+    setUsersResults(filterData(query, users));
+  }, [query, posts, users]);
 
   return (
     <div className='search-page'>
       <Filter value={query} onChange={(e) => setQuery(e.target.value)} />
-      <SearchResults posts={postsResults} query={query} />
+      <SearchResults posts={postsResults} users={usersResults} query={query} />
     </div>
   );
 };

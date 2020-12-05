@@ -5,6 +5,7 @@ import commentsReducer from './commentsSlice';
 import likesReducer from './likesSlice';
 import notificationsReducer from './notificationsSlice';
 import messagesReducer from './messagesSlice';
+import usersReducer from './usersSlice';
 
 export default configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export default configureStore({
     likes: likesReducer,
     notifications: notificationsReducer,
     messages: messagesReducer,
+    users: usersReducer,
   },
 });
