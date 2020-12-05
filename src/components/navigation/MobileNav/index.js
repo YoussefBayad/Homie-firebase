@@ -4,19 +4,18 @@ import { useSelector } from 'react-redux';
 import { ReactComponent as SearchIcon } from '../../../assets/icon/search.svg';
 import { ReactComponent as MingleIcon } from '../../../assets/icon/direct.svg';
 import { ReactComponent as NotificationIcon } from '../../../assets/icon/notification.svg';
-import { ReactComponent as UserIcon } from '../../../assets/icon/user.svg';
 import { ReactComponent as FeedIcon } from '../../../assets/icon/feed.svg';
-import { ReactComponent as LogoutIcon } from '../../../assets/icon/logout.svg';
 import { ReactComponent as AddIcon } from '../../../assets/icon/add.svg';
 
 //style
 import './style.scss';
+const admin = 'volTozosNrMZJuUCZqvPswYPWzm2';
 
-const MobileNav = ({ userId }) => {
-  const notifications = useSelector((state) =>
-    state.notifications.data.filter((not) => !not.read)
-  );
-  const admin = 'volTozosNrMZJuUCZqvPswYPWzm2';
+const MobileNav = () => {
+  const allNotifications = useSelector((state) => state.notifications.data);
+  const notifications = allNotifications.filter((not) => !not.read);
+  const userId = useSelector((state) => state.auth.user.id);
+  console.log('hi');
   return (
     <nav className='mobile-nav'>
       <div className='mobile-nav-inner'>
@@ -55,18 +54,6 @@ const MobileNav = ({ userId }) => {
             <p className='notifications-count'>{notifications.length}</p>
           )}
         </NavLink>
-
-        {/* <NavLink
-        to={`/profile/${userId}`}
-        className='link'
-        activeClassName='main-nav-active'>
-        <UserIcon />
-        <p>Profile</p>
-      </NavLink>
-      <div className='link' onClick={() => auth.signOut()}>
-        <LogoutIcon />
-        <p>Logout</p>
-      </div> */}
       </div>
     </nav>
   );

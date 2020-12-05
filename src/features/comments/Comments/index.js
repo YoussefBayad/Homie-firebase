@@ -26,6 +26,9 @@ const Comments = ({ postId, commentsCount }) => {
 
       {loading && <Spinner />}
       {error && <h1>{error.message}</h1>}
+      {showComments && postComments.length === 0 && (
+        <p className='no-comment'>There is no comments on this post</p>
+      )}
       {showComments && postComments}
 
       <AddComment
