@@ -240,6 +240,18 @@ textarea {
 // media quires
 
 @include tablet {
+  .main-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: 10rem 1fr 10rem;
+    min-height: 100vh;
+  }
+  .page-shadow {
+    margin-top: 3rem;
+    padding: 0;
+    box-shadow: none;
+    border-radius: none;
+    z-index: 0;
+  }
   .sidebar {
     display: none;
   }
@@ -249,13 +261,7 @@ textarea {
       @include flex(row, center, space-around);
     }
   }
-  .main-layout {
-    grid-template-columns: 1fr;
-    min-height: 100vh;
-  }
-  .page-shadow {
-    box-shadow: none;
-  }
+
   .top-mobile-nav {
     display: block;
   }
