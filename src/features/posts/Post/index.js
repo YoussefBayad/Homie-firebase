@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Comments from '../../comments/Comments';
 import PostSetting from '../../../components/setting';
 import PostHeader from '../../../components/UsernameAndDate/';
 import EditPost from '../../../components/Edit';
 import Like from '../../likes/Like';
-//icons
+import Share from '../../share';
 
+//icons
 import { ReactComponent as CommentIcon } from '../../../assets/icon/comment.svg';
-import { ReactComponent as ShareIcon } from '../../../assets/icon/share.svg';
 import { deletePost, editPost } from '../../../redux/postsSlice';
-import avatar from '../../../assets/icon/unknownUser.jpg';
 
 //style
 import './style.scss';
-import { useMemo } from 'react';
 
 const Post = ({
   id,
@@ -69,8 +67,7 @@ const Post = ({
               <p className='count'>{commentsCount}</p>
             </div>
             <div className='interaction'>
-              <ShareIcon />
-              <p className='count'>{sharesCount}</p>
+              <Share sharesCount={sharesCount} />
             </div>
           </div>
         ),

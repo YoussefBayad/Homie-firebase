@@ -1,0 +1,13 @@
+@import '../../components/setting/style.scss';
+
+.share-modal {
+  position: absolute;
+  background-color: darken($lightgrey, 9%);
+  color: $black;
+  font-size: $small;
+  padding: 0.5rem;
+  padding-right: 0rem;
+  border-radius: 1.5rem;
+  width: 10rem;
+  margin-top: 13rem;
+}

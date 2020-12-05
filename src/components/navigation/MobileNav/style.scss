@@ -33,7 +33,7 @@
     }
   }
   .add {
-    background-color: white;
+    background-color: lighten($accent, 10%);
     @include box(6rem);
     display: grid;
     place-items: center;
@@ -41,8 +41,14 @@
     margin-bottom: 3rem;
 
     & svg {
-      fill: darken($accent, 10%);
+      fill: $white;
       @include box(4rem);
+      &:hover {
+        fill: $accent;
+      }
+    }
+    &:hover {
+      background: $white;
     }
   }
   .main-nav-active {
