@@ -1,7 +1,6 @@
 @import '../../default.scss';
 
 .four-o-four {
-  margin-top: 3rem;
   text-align: center;
 
   .title {
@@ -24,5 +23,13 @@
   }
   & a {
     padding: 1.5rem 3rem;
+  }
+}
+
+@include tablet {
+  .four-o-four {
+    & h1 {
+      font-size: 20rem;
+    }
   }
 }
