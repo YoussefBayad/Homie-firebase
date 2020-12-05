@@ -15,6 +15,7 @@ import Profile from './pages/Profile';
 import FourOFour from './pages/404';
 import NotificationsPage from './pages/Notifications';
 import Chat from './pages/Chat';
+import Search from './pages/Search';
 
 //layouts
 import MainLayout from './layouts/MainLayout';
@@ -22,7 +23,6 @@ import Container from './layouts/ContainerLayout';
 
 //style
 import './default.scss';
-import Search from './pages/Search';
 
 function App() {
   // useAuthListener();

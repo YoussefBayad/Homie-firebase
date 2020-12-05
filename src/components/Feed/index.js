@@ -1,24 +1,26 @@
-import React, { memo, useEffect, useMemo } from 'react';
-import Filter from '../forms/Filter';
+import React, { memo, useEffect } from 'react';
 import NotificationIcon from '../navigation/NotificationIcon';
-import ChatIcon from '../navigation/ChatIcon';
 import AddPost from '../../features/posts/AddPost';
 import Posts from '../../features/posts/Posts';
 import BackToTop from '../BackToTop';
-//style
-import './style.scss';
 import postsListener from '../../utils/postsListener';
 import likesListener from '../../utils/likesListener';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import commentsListener from '../../utils/commentsListener';
 import NotificationListener from '../../utils/notificationsListener';
+import { fetchUsers } from '../../redux/usersSlice';
+//style
+import './style.scss';
 
 const Feed = () => {
+  const dispatch = useDispatch();
+
   const { id: userId, displayName, photoURL } = useSelector(
     (state) => state.auth.user
   );
 
   useEffect(() => {
+    dispatch(fetchUsers());
     const unsubscribePosts = postsListener();
     const unsubscribeLikes = likesListener(userId, displayName, photoURL);
     const unsubscribeComments = commentsListener();
@@ -28,21 +30,12 @@ const Feed = () => {
       unsubscribeLikes();
       unsubscribeComments();
     };
-  }, [userId, displayName, photoURL]);
+  }, [userId, displayName, photoURL, dispatch]);
   return (
     <div className='feed '>
-      {useMemo(
-        () => (
-          <nav className='feed-nav'>
-            {/* <Filter /> */}
-            {/* <div className='right-nav'> */}
-            {/* <ChatIcon /> */}
-            <NotificationIcon />
-            {/* </div> */}
-          </nav>
-        ),
-        []
-      )}
+      <nav className='feed-nav'>
+        <NotificationIcon />
+      </nav>
       <AddPost />
       <Posts />
       <BackToTop />

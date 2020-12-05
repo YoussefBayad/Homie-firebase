@@ -37,7 +37,14 @@ const initialState = {
 };
 
 export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
-  const users = await db.collection('users').get();
+  const collection = await db.collection('users').get();
+
+  let users = [];
+
+  for (const doc of collection.docs) {
+    users.push({ ...doc.data(), id: doc.id });
+  }
+
   return users;
 });
 
