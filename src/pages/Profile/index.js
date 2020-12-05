@@ -17,7 +17,9 @@ import Spinner from '../../components/Spinner';
 const Profile = () => {
   const { id } = useParams();
   const users = useSelector((state) => state.users.data);
+  const currentUserId = useSelector((state) => state.auth.user.id);
   const user = users.find((user) => user.id === Number(id));
+  const ifCurrentUser = user.id === currentUserId;
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
@@ -41,7 +43,7 @@ const Profile = () => {
             setIsEditing={setIsEditing}
             isEditing={isEditing}
           />
-          {!isEditing && (
+          {ifCurrentUser && !isEditing && (
             <Button
               className='btn profile-info-edit'
               onClick={() => setIsEditing(true)}>
@@ -52,7 +54,7 @@ const Profile = () => {
       )}
       {!user && <Spinner />}
       <h2>Posts</h2>
-      <AddPost />
+      {ifCurrentUser && <AddPost />}
       <Posts userId={id} />
       <BackToTop />
     </div>
