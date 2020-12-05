@@ -1,1 +1,16 @@
 @import '../../default.scss';
+
+.search-page {
+  .filter-box {
+    max-width: 50rem;
+  }
+}
+
+@include tablet {
+  .search-page {
+    .filter-box {
+      max-width: 100%;
+      margin: auto;
+    }
+  }
+}

@@ -1,0 +1,46 @@
+@import '../../default.scss';
+
+.search-results {
+  margin-top: 3rem;
+  .user-result,
+  .post-result {
+    background-color: $lightgrey;
+    padding: 1rem;
+    border-radius: 3rem;
+    margin-bottom: 1rem;
+  }
+  .no-result {
+    color: $grey;
+  }
+  .post-header {
+    @include flex(row, start, flex-start);
+    .username-and-date {
+      margin-top: 1rem;
+    }
+  }
+
+  // users results
+
+  .search-users {
+    margin-bottom: 3rem;
+    .post-header {
+      margin-bottom: 1.5rem;
+    }
+  }
+  .search-users-results {
+    margin-top: 1.5rem;
+  }
+
+  // posts results
+
+  .search-posts-results {
+    margin-top: 1.5rem;
+
+    .post-result {
+      .post-content {
+        margin-left: 1rem;
+        margin-top: 0.5rem;
+      }
+    }
+  }
+}
