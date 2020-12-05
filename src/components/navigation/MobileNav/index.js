@@ -15,7 +15,6 @@ const MobileNav = () => {
   const allNotifications = useSelector((state) => state.notifications.data);
   const notifications = allNotifications.filter((not) => !not.read);
   const userId = useSelector((state) => state.auth.user.id);
-  console.log('hi');
   return (
     <nav className='mobile-nav'>
       <div className='mobile-nav-inner'>

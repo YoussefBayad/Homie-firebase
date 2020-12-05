@@ -1,26 +1,23 @@
 @import '../../default.scss';
 
 .upload {
-  // margin: 30px auto 10px;
-  // text-align: center;
-
+  position: relative;
+  .upload-input {
+    @include flex(row, center, center);
+    width: 10rem;
+    position: relative;
+    margin: auto;
+  }
   & input {
-    height: 0;
-    width: 0;
+    @include box(10rem);
     opacity: 0;
     position: absolute;
-    @include box(4rem);
     margin: 0;
-    z-index: 2;
     cursor: pointer;
   }
-  & svg {
-    position: relative;
-    top: 0;
-    left: 0;
-    z-index: -1;
+  &svg {
+    cursor: pointer;
   }
-
   .output {
     position: relative;
     top: 0;

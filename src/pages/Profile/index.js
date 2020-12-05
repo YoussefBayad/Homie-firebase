@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import userInfoListener from '../../utils/userInfoListener';
 import UserInfo from '../../components/UserInfo';
 import Posts from '../../features/posts/Posts';
 import BackToTop from '../../components/BackToTop';
-import { Link, Redirect, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import likesListener from '../../utils/likesListener';
 import postsListener from '../../utils/postsListener';
 import AddPost from '../../features/posts/AddPost';
@@ -13,12 +13,15 @@ import { ReactComponent as DirectIcon } from '../../assets/icon/direct.svg';
 
 //style
 import './style.scss';
+import { fetchUsers } from '../../redux/usersSlice';
 
 const Profile = () => {
+  const dispatch = useDispatch();
   const { id } = useParams();
   const users = useSelector((state) => state.users.data);
   const currentUserId = useSelector((state) => state.auth.user.id);
-  const user = users.find((user) => user.id === Number(id));
+  const user = users.length > 0 && users.find((user) => user.id === id);
+
   const ifCurrentUser = user && user.id === currentUserId;
   const [isEditing, setIsEditing] = useState(false);
 
@@ -26,20 +29,22 @@ const Profile = () => {
     const unsubscribeUser = userInfoListener(id);
     const unsubscribeLikes = likesListener(id);
     const unsubscribePost = postsListener();
+    if (users.length === 0) {
+      dispatch(fetchUsers());
+    }
     return () => {
       unsubscribeUser();
       unsubscribeLikes();
       unsubscribePost();
     };
-  }, [id]);
+  }, [id, users, dispatch]);
 
   return (
     <div className='profile'>
-      {!user && <Redirect to='/' />}
-
       {user && (
         <>
           <UserInfo
+            ifCurrentUser={ifCurrentUser}
             showUpload
             user={user}
             setIsEditing={setIsEditing}
@@ -70,4 +75,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default React.memo(Profile);

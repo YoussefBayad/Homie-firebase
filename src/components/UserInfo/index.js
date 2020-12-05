@@ -12,7 +12,13 @@ import './style.scss';
 import { editUserInfo } from '../../redux/userSlice';
 import UploadForm from '../Upload';
 
-const UserInfo = ({ user, setIsEditing, isEditing, showUpload }) => {
+const UserInfo = ({
+  ifCurrentUser,
+  user,
+  setIsEditing,
+  isEditing,
+  showUpload,
+}) => {
   const [photoURL, setPhotoURL] = useState(null);
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts.data);
@@ -48,7 +54,9 @@ const UserInfo = ({ user, setIsEditing, isEditing, showUpload }) => {
           <img src={user.photoURL} alt='' />
         </div>
       </Link>
-      {showUpload && <UploadForm svg='add' setPhotoURL={setPhotoURL} />}
+      {showUpload && ifCurrentUser && (
+        <UploadForm svg='add' setPhotoURL={setPhotoURL} />
+      )}
       {!photoURL && !isEditing ? (
         <>
           <h3 className='username'>{user.displayName}</h3>

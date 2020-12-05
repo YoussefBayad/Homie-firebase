@@ -20,7 +20,7 @@ const Feed = () => {
   );
 
   useEffect(() => {
-    // dispatch(fetchUsers());
+    dispatch(fetchUsers());
     const unsubscribePosts = postsListener();
     const unsubscribeLikes = likesListener(userId, displayName, photoURL);
     const unsubscribeComments = commentsListener();

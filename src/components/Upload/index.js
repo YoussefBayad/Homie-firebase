@@ -25,12 +25,14 @@ const UploadForm = ({ svg, setPhotoURL }) => {
 
   return (
     <form className='upload'>
-      <input type='file' onChange={handleChange} />
-      {svg === 'add' ? (
-        <AddIcon fill=' #fcac46' />
-      ) : (
-        <ImgIcon fill=' #fcac46' />
-      )}
+      <div className='upload-input'>
+        <input type='file' onChange={handleChange} />
+        {svg === 'add' ? (
+          <AddIcon fill=' #fcac46' />
+        ) : (
+          <ImgIcon fill=' #fcac46' />
+        )}
+      </div>
       <div className='output'>
         {error && <ErrorText>{error} </ErrorText>}
         {file && <div>{file.name}</div>}

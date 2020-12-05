@@ -35,6 +35,8 @@
     width: 100%;
     @include flex('', center, space-between);
     & form {
+      @include flex(row, center, space-between);
+
       align-self: flex-end;
       @include box(4rem);
 

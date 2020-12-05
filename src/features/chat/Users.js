@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Spinner from '../../components/Spinner';
 
 //style
 import './style.scss';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUsers } from '../../redux/usersSlice';
 
 const Users = () => {
   const users = useSelector((state) => state.users.data);
   const currentUserId = useSelector((state) => state.auth.user.id);
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (!users) {
+      dispatch(fetchUsers());
+    }
+  }, [dispatch]);
   return (
     <div className='chat-users'>
       {!users ||
