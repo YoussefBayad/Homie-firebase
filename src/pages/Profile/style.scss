@@ -2,9 +2,8 @@
 
 .profile {
   margin: auto;
-  min-width: 35rem;
-  width: 50rem;
-  margin-top: 3rem;
+  min-width: 34rem;
+  max-width: 70rem;
   & h2 {
     margin-top: 3rem;
     color: $darkgrey;
