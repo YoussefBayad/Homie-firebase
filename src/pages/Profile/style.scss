@@ -20,7 +20,18 @@
       font-size: larger;
     }
   }
-
+  .send-message {
+    width: 20rem;
+    @include background-transition($blue, lighten($blue, 20%));
+    display: block;
+    margin: auto;
+    @include flex(row, center, space-between);
+    & svg {
+      transform: rotate(40deg);
+      fill: $white;
+      fill-opacity: 0.2;
+    }
+  }
   .profile-info-edit,
   .profile-info-save {
     @include background-transition($accent2, lighten($accent2, 20%));
@@ -31,5 +42,6 @@
 
   .profile-info-save {
     @include background-transition($blue, lighten($blue, 20%));
+    width: 100%;
   }
 }

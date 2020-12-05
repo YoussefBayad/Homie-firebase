@@ -21,6 +21,9 @@
     width: 50%;
     object-fit: contain;
   }
+  & input {
+    display: block;
+  }
 }
 .profile-numbers {
   margin: 3rem 0;

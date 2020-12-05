@@ -4,11 +4,12 @@ import userInfoListener from '../../utils/userInfoListener';
 import UserInfo from '../../components/UserInfo';
 import Posts from '../../features/posts/Posts';
 import BackToTop from '../../components/BackToTop';
-import { Redirect, useParams } from 'react-router-dom';
+import { Link, Redirect, useParams } from 'react-router-dom';
 import likesListener from '../../utils/likesListener';
 import postsListener from '../../utils/postsListener';
 import AddPost from '../../features/posts/AddPost';
 import Button from '../../components/forms/Button';
+import { ReactComponent as DirectIcon } from '../../assets/icon/direct.svg';
 
 //style
 import './style.scss';
@@ -34,6 +35,8 @@ const Profile = () => {
 
   return (
     <div className='profile'>
+      {!user && <Redirect to='/' />}
+
       {user && (
         <>
           <UserInfo
@@ -49,9 +52,16 @@ const Profile = () => {
               Edit Info
             </Button>
           )}
+          {!ifCurrentUser && (
+            <Link
+              to={`/chat/${currentUserId}/${id}`}
+              className='btn send-message'>
+              Send Message
+              <DirectIcon />
+            </Link>
+          )}
         </>
       )}
-      {!user && <Redirect to='/' />}
       <h2>Posts</h2>
       {ifCurrentUser && <AddPost />}
       <Posts userId={id} />
