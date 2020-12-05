@@ -4,7 +4,7 @@ import userInfoListener from '../../utils/userInfoListener';
 import UserInfo from '../../components/UserInfo';
 import Posts from '../../features/posts/Posts';
 import BackToTop from '../../components/BackToTop';
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import likesListener from '../../utils/likesListener';
 import postsListener from '../../utils/postsListener';
 import AddPost from '../../features/posts/AddPost';
@@ -12,14 +12,13 @@ import Button from '../../components/forms/Button';
 
 //style
 import './style.scss';
-import Spinner from '../../components/Spinner';
 
 const Profile = () => {
   const { id } = useParams();
   const users = useSelector((state) => state.users.data);
   const currentUserId = useSelector((state) => state.auth.user.id);
   const user = users.find((user) => user.id === Number(id));
-  const ifCurrentUser = user.id === currentUserId;
+  const ifCurrentUser = user && user.id === currentUserId;
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
@@ -52,7 +51,7 @@ const Profile = () => {
           )}
         </>
       )}
-      {!user && <Spinner />}
+      {!user && <Redirect to='/' />}
       <h2>Posts</h2>
       {ifCurrentUser && <AddPost />}
       <Posts userId={id} />

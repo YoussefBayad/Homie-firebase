@@ -11,8 +11,8 @@ const UsernameAndDate = ({
   createdAt,
   ...otherProps
 }) => {
-  const date = parseISO(createdAt);
-  const timeAgo = formatDistanceToNow(date);
+  const date = createdAt && parseISO(createdAt);
+  const timeAgo = createdAt && formatDistanceToNow(date);
   return (
     <Link to={`/profile/${id}`}>
       <div className='post-header' {...otherProps}>
@@ -21,9 +21,11 @@ const UsernameAndDate = ({
         </div>
         <div className='username-and-date'>
           <p className='post-username'>{displayName} </p>
-          <p className='post-date' title={date}>
-            <i>{timeAgo} ago</i>
-          </p>
+          {createdAt && (
+            <p className='post-date' title={date}>
+              <i>{timeAgo} ago</i>
+            </p>
+          )}
         </div>
       </div>
     </Link>
