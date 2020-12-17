@@ -1,6 +1,6 @@
 # Homie
 
-Full-stack, Real time, fully-featured social media application using React, Firebase, Redux Toolkit,Sass, Formik, Framer Motion.
+Full-stack, Real time, fully-featured , Responsive social media application using React, Firebase, Redux Toolkit,Sass, Formik, Framer Motion.
 when you add or like or use any of the functionality every user receive it in real time
 To log in: make any email you want and password longer than 6 characters
 
